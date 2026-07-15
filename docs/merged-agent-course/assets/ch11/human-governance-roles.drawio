@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-07-14T00:00:00.000Z" agent="Codex" version="24.7.17" type="device" compressed="false">
+  <diagram id="human-governance-roles" name="Page-1">
+    <mxGraphModel dx="1200" dy="780" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="780" math="0" shadow="0" background="#FFFFFF">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="人不能退出责任闭环" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;sketch=1;curveFitting=1;jiggle=2;fontFamily=Kaiti SC;fontSize=28;fontStyle=1;fontColor=#111827;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="22" width="700" height="38" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="人可以退出重复执行，但不能退出目标、理解、判断、治理与最终责任" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;sketch=1;curveFitting=1;jiggle=2;fontFamily=Kaiti SC;fontSize=15;fontColor=#6B7280;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="64" width="820" height="24" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="human-over" value="&lt;div style=&quot;text-align:left&quot;&gt;&lt;b style=&quot;font-size:19px&quot;&gt;Human-over-the-loop&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#4B5563&quot;&gt;设计目标、政策、权限与预算&lt;br&gt;定义 Verifier 和自治等级&lt;br&gt;决定什么不能被自动优化掉&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#6B7280&quot;&gt;位置：系统治理与最终责任&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#EFF6FF;strokeColor=#93C5FD;strokeWidth=1.5;fontFamily=Kaiti SC;fontSize=14;fontColor=#111827;align=left;verticalAlign=top;spacingTop=16;spacingLeft=22;spacingRight=18;" vertex="1" parent="1">
+          <mxGeometry x="60" y="120" width="310" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="human-on" value="&lt;div style=&quot;text-align:left&quot;&gt;&lt;b style=&quot;font-size:19px&quot;&gt;Human-on-the-loop&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#4B5563&quot;&gt;监控指标、抽样检查与处理异常&lt;br&gt;发现规则漂移和理解债&lt;br&gt;确认绿灯仍代表真实目标&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#6B7280&quot;&gt;位置：持续监督与规则演进&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#F0FDF4;strokeColor=#86EFAC;strokeWidth=1.5;fontFamily=Kaiti SC;fontSize=14;fontColor=#111827;align=left;verticalAlign=top;spacingTop=16;spacingLeft=22;spacingRight=18;" vertex="1" parent="1">
+          <mxGeometry x="830" y="120" width="310" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="human-in" value="&lt;div style=&quot;text-align:left&quot;&gt;&lt;b style=&quot;font-size:19px&quot;&gt;Human-in-the-loop&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#4B5563&quot;&gt;批准高风险和不可逆动作&lt;br&gt;处理模糊判断与价值冲突&lt;br&gt;在关键节点接管或终止&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#6B7280&quot;&gt;位置：运行中的关键判断点&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#FFF7ED;strokeColor=#FDBA74;strokeWidth=1.5;fontFamily=Kaiti SC;fontSize=14;fontColor=#111827;align=left;verticalAlign=top;spacingTop=16;spacingLeft=22;spacingRight=18;" vertex="1" parent="1">
+          <mxGeometry x="60" y="430" width="310" height="180" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="agent-loop" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b style=&quot;font-size:19px&quot;&gt;Agent Execution Loop&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#4B5563&quot;&gt;计划 · 工具调用 · 验证 · 重试&lt;br&gt;状态更新 · 证据留存 · 停止决策&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;color:#D1D5DB&quot;&gt;────────────────────────&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#6B7280&quot;&gt;人逐步退出的是机械执行，不是责任&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#F9FAFB;strokeColor=#6B7280;strokeWidth=1.8;fontFamily=Kaiti SC;fontSize=14;fontColor=#111827;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="440" y="250" width="320" height="190" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="responsibility" value="&lt;div style=&quot;text-align:left&quot;&gt;&lt;b style=&quot;font-size:19px&quot;&gt;不能外包的责任&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#4B5563&quot;&gt;• 目标是否值得，指标是否代表价值&lt;br&gt;• 风险是否可接受，产出是否被理解&lt;br&gt;• 谁批准副作用，谁承担最终后果&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color:#FECACA&quot;&gt;──────────────────────&lt;/span&gt;&lt;br&gt;&lt;b style=&quot;font-size:14px;color:#374151&quot;&gt;“按按钮者”信号&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#6B7280&quot;&gt;只看绿灯和摘要，不读证据，不理解设计&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#FEF2F2;strokeColor=#FCA5A5;strokeWidth=1.5;fontFamily=Kaiti SC;fontSize=14;fontColor=#111827;align=left;verticalAlign=top;spacingTop=14;spacingLeft=20;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="830" y="410" width="310" height="200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="bottom-note" value="&lt;b&gt;三种关系可以同时存在，也可以按风险组合；它们不是成熟度阶梯。&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#F3F4F6;strokeColor=#D1D5DB;strokeWidth=1;fontFamily=Kaiti SC;fontSize=14;fontStyle=1;fontColor=#374151;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="670" width="1080" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="over-label" value="政策与边界" style="text;html=1;strokeColor=none;fillColor=#FFFFFF;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;sketch=1;curveFitting=1;jiggle=2;fontFamily=Kaiti SC;fontSize=14;fontStyle=1;fontColor=#374151;spacing=2;" vertex="1" parent="1">
+          <mxGeometry x="374" y="182" width="64" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="on-input-label" value="监督输入" style="text;html=1;strokeColor=none;fillColor=#FFFFFF;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;sketch=1;curveFitting=1;jiggle=2;fontFamily=Kaiti SC;fontSize=12;fontStyle=1;fontColor=#374151;spacing=1;" vertex="1" parent="1">
+          <mxGeometry x="768" y="244" width="58" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="on-return-label" value="证据回流" style="text;html=1;strokeColor=none;fillColor=#FFFFFF;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;sketch=1;curveFitting=1;jiggle=2;fontFamily=Kaiti SC;fontSize=12;fontStyle=1;fontColor=#374151;spacing=1;" vertex="1" parent="1">
+          <mxGeometry x="768" y="298" width="58" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="in-label" value="批准与判断" style="text;html=1;strokeColor=none;fillColor=#FFFFFF;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;sketch=1;curveFitting=1;jiggle=2;fontFamily=Kaiti SC;fontSize=14;fontStyle=1;fontColor=#374151;spacing=2;" vertex="1" parent="1">
+          <mxGeometry x="374" y="532" width="64" height="22" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="over-to-loop" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;sketch=1;curveFitting=1;jiggle=2;strokeColor=#2563EB;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.25;" edge="1" parent="1" source="human-over" target="agent-loop">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="405" y="210"/><mxPoint x="405" y="298"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="on-to-loop" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;sketch=1;curveFitting=1;jiggle=2;strokeColor=#16A34A;strokeWidth=2;endArrow=block;endFill=1;exitX=0;exitY=0.833333;entryX=1;entryY=0.105263;" edge="1" parent="1" source="human-on" target="agent-loop">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="795" y="270"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="loop-to-on" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;sketch=1;curveFitting=1;jiggle=2;strokeColor=#16A34A;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.210526;entryX=0;entryY=0.944444;" edge="1" parent="1" source="agent-loop" target="human-on">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="795" y="290"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="in-to-loop" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;sketch=1;curveFitting=1;jiggle=2;strokeColor=#EA580C;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.736842;" edge="1" parent="1" source="human-in" target="agent-loop">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="405" y="520"/><mxPoint x="405" y="390"/></Array></mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

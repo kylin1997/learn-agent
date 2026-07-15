@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="1200" height="780">
+  <style>
+    text { font-family: 'Comic Sans MS', 'Kaiti SC', 'KaiTi', 'PingFang SC', sans-serif; letter-spacing: 0; }
+    .title { font-size: 30px; font-weight: 700; fill: #172033; }
+    .subtitle { font-size: 15px; fill: #667085; }
+    .h { font-size: 19px; font-weight: 700; fill: #172033; }
+    .label { font-size: 14px; font-weight: 700; fill: #263244; }
+    .small { font-size: 13px; fill: #475467; }
+    .tiny { font-size: 12px; fill: #667085; }
+    .outline { stroke-width: 2.2; stroke-linejoin: round; stroke-linecap: round; filter: url(#rough); }
+    .edge { fill: none; stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; filter: url(#rough); }
+  </style>
+  <defs>
+    <filter id="rough" x="-50" y="-50" width="1300" height="880" filterUnits="userSpaceOnUse">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="23" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.35" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#16a34a"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#ea580c"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="780" fill="#ffffff"/>
+  <text x="60" y="52" class="title">人不能退出责任闭环</text>
+  <text x="60" y="82" class="subtitle">人可以退出重复执行，但不能退出目标、理解、判断、治理与最终责任</text>
+
+  <rect x="60" y="120" width="310" height="180" rx="9" fill="#eaf3ff" stroke="#72a7e8" class="outline"/>
+  <text x="88" y="156" class="h">Human-over-the-loop</text>
+  <text x="88" y="187" class="small">设计目标、政策、权限与预算</text>
+  <text x="88" y="214" class="small">定义 Verifier 和自治等级</text>
+  <text x="88" y="241" class="small">决定什么不能被自动优化掉</text>
+  <text x="88" y="275" class="tiny">位置：系统治理与最终责任</text>
+
+  <rect x="830" y="120" width="310" height="180" rx="9" fill="#ecf9ef" stroke="#6cc982" class="outline"/>
+  <text x="858" y="156" class="h">Human-on-the-loop</text>
+  <text x="858" y="187" class="small">监控指标、抽样检查与处理异常</text>
+  <text x="858" y="214" class="small">发现规则漂移和理解债</text>
+  <text x="858" y="241" class="small">确认绿灯仍代表真实目标</text>
+  <text x="858" y="275" class="tiny">位置：持续监督与规则演进</text>
+
+  <rect x="60" y="430" width="310" height="180" rx="9" fill="#fff4e8" stroke="#f59e62" class="outline"/>
+  <text x="88" y="466" class="h">Human-in-the-loop</text>
+  <text x="88" y="497" class="small">批准高风险和不可逆动作</text>
+  <text x="88" y="524" class="small">处理模糊判断与价值冲突</text>
+  <text x="88" y="551" class="small">在关键节点接管或终止</text>
+  <text x="88" y="585" class="tiny">位置：运行中的关键判断点</text>
+
+  <rect x="440" y="250" width="320" height="190" rx="10" fill="#fbfcfe" stroke="#667085" class="outline"/>
+  <text x="600" y="294" text-anchor="middle" class="h">Agent Execution Loop</text>
+  <text x="600" y="329" text-anchor="middle" class="small">计划 · 工具调用 · 验证 · 重试</text>
+  <text x="600" y="357" text-anchor="middle" class="small">状态更新 · 证据留存 · 停止决策</text>
+  <path d="M488 383 H712" stroke="#cbd0d8" class="edge"/>
+  <text x="600" y="414" text-anchor="middle" class="tiny">人逐步退出的是机械执行，不是责任</text>
+
+  <path d="M378 210 H405 V310 H432" stroke="#2563eb" class="edge" marker-end="url(#arrow-blue)"/>
+  <text x="416" y="242" class="label">政策与边界</text>
+
+  <path d="M822 270 H768" stroke="#16a34a" class="edge" marker-end="url(#arrow-green)"/>
+  <text x="778" y="258" class="tiny">监督</text>
+  <path d="M768 315 H822" stroke="#16a34a" stroke-dasharray="7 5" class="edge" marker-end="url(#arrow-green)"/>
+  <text x="770" y="339" class="tiny">证据与异常</text>
+
+  <path d="M378 520 H405 V400 H432" stroke="#ea580c" class="edge" marker-end="url(#arrow-orange)"/>
+  <text x="416" y="486" class="label">批准与判断</text>
+
+  <rect x="830" y="410" width="310" height="200" rx="9" fill="#fff0f0" stroke="#ef8f8f" class="outline"/>
+  <text x="858" y="447" class="h">不能外包的责任</text>
+  <text x="858" y="479" class="small">• 目标是否值得，指标是否代表价值</text>
+  <text x="858" y="506" class="small">• 风险是否可接受，产出是否被理解</text>
+  <text x="858" y="533" class="small">• 谁批准副作用，谁承担最终后果</text>
+  <path d="M858 551 H1112" stroke="#efb2b2" class="edge"/>
+  <text x="858" y="580" class="label">“按按钮者”信号</text>
+  <text x="858" y="601" class="tiny">只看绿灯和摘要，不读证据，不理解设计</text>
+
+  <rect x="60" y="670" width="1080" height="60" rx="9" fill="#f8f9fb" stroke="#cbd0d8" class="outline"/>
+  <text x="600" y="706" text-anchor="middle" class="label">三种关系可以同时存在，也可以按风险组合；它们不是成熟度阶梯。</text>
+</svg>
