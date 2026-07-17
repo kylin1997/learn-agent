@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-07-15T00:00:00.000Z" agent="Codex" version="24.7.17" type="device" compressed="false">
+  <diagram id="agent-harness-system-map" name="Page-1">
+    <mxGraphModel dx="1200" dy="920" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="920" math="0" shadow="0" background="#FFFFFF">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="Agent 与 Harness 的两层系统地图" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;sketch=1;curveFitting=1;jiggle=2;fontFamily=Comic Sans MS;fontSize=28;fontStyle=1;fontColor=#172033;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="20" width="700" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="上层回答“什么是智能体”，下层回答“怎样把 LLM 的决策能力做成可靠产品”" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;sketch=1;curveFitting=1;jiggle=2;fontFamily=Kaiti SC;fontSize=15;fontColor=#667085;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="900" height="26" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="general-container" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#FBFCFE;strokeColor=#98A2B3;strokeWidth=1.8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="105" width="1080" height="265" as="geometry"/>
+        </mxCell>
+        <mxCell id="general-title" value="&lt;b&gt;A. 通用智能体：目标驱动的环境交互&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;sketch=1;curveFitting=1;jiggle=2;fontFamily=Kaiti SC;fontSize=19;fontStyle=1;fontColor=#172033;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="85" y="118" width="500" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="goal" value="&lt;b style=&quot;font-size:17px&quot;&gt;Goal + Performance Measure&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#475467&quot;&gt;目标状态、成本、风险、完成条件与奖励信号&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#FFF4E8;strokeColor=#F59E62;strokeWidth=1.6;fontFamily=Kaiti SC;fontSize=14;fontColor=#263244;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1">
+          <mxGeometry x="90" y="160" width="1020" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="environment" value="&lt;b style=&quot;font-size:17px&quot;&gt;Environment&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#475467&quot;&gt;外部世界 · 其他行动者 · 实时状态&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#667085&quot;&gt;环境可能部分可观察、动态且随机&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#EAF3FF;strokeColor=#72A7E8;strokeWidth=1.6;fontFamily=Kaiti SC;fontSize=14;fontColor=#263244;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="100" y="245" width="350" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="agent" value="&lt;b style=&quot;font-size:17px&quot;&gt;Agent&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#475467&quot;&gt;Policy / Model + Internal State&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#475467&quot;&gt;理解目标 · 估计状态 · 选择行动&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#EAFBF7;strokeColor=#42B9A8;strokeWidth=1.6;fontFamily=Kaiti SC;fontSize=14;fontColor=#263244;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="750" y="235" width="350" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="observation-label" value="Observation" style="text;html=1;strokeColor=none;fillColor=#FBFCFE;align=center;verticalAlign=middle;whiteSpace=wrap;fontFamily=Comic Sans MS;fontSize=12;fontColor=#667085;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="552" y="236" width="98" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="action-label" value="Action" style="text;html=1;strokeColor=none;fillColor=#FBFCFE;align=center;verticalAlign=middle;whiteSpace=wrap;fontFamily=Comic Sans MS;fontSize=12;fontColor=#667085;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="565" y="315" width="70" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="observation-edge" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;sketch=1;curveFitting=1;jiggle=2;strokeColor=#2563EB;strokeWidth=2.2;endArrow=block;endFill=1;exitX=1;exitY=0.2;entryX=0;entryY=0.25;" edge="1" parent="1" source="environment" target="agent">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="600" y="263"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="action-edge" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;sketch=1;curveFitting=1;jiggle=2;strokeColor=#16A34A;strokeWidth=2.2;endArrow=block;endFill=1;exitX=0;exitY=0.75;entryX=1;entryY=0.78;" edge="1" parent="1" source="agent" target="environment">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="600" y="316"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="goal-agent" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;sketch=1;curveFitting=1;jiggle=2;strokeColor=#EA580C;strokeWidth=2.2;endArrow=block;endFill=1;exitX=0.82;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="goal" target="agent">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="product-container" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#FBFCFE;strokeColor=#98A2B3;strokeWidth=1.8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="405" width="1080" height="455" as="geometry"/>
+        </mxCell>
+        <mxCell id="product-title" value="&lt;b&gt;B. LLM Agent 产品 = Model + Harness&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;sketch=1;curveFitting=1;jiggle=2;fontFamily=Kaiti SC;fontSize=19;fontStyle=1;fontColor=#172033;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="85" y="418" width="560" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="entry" value="&lt;b style=&quot;font-size:15px&quot;&gt;入口与触发&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#475467&quot;&gt;User / API&lt;br&gt;Event / Cron&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#EAF3FF;strokeColor=#72A7E8;strokeWidth=1.6;fontFamily=Kaiti SC;fontSize=14;fontColor=#263244;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="90" y="500" width="150" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="harness" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#FFFFFF;strokeColor=#667085;strokeWidth=1.9;" vertex="1" parent="1">
+          <mxGeometry x="290" y="470" width="640" height="365" as="geometry"/>
+        </mxCell>
+        <mxCell id="harness-title" value="&lt;b&gt;Operational Runtime&lt;/b&gt; &lt;span style=&quot;font-size:12px;color:#667085&quot;&gt;编排 Model 与 Harness 的交互&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontFamily=Kaiti SC;fontSize=17;fontStyle=1;fontColor=#263244;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="315" y="480" width="520" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="runtime" value="&lt;b style=&quot;font-size:15px&quot;&gt;Orchestrator&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#475467&quot;&gt;会话 · 路由 · 恢复&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#F6EFFF;strokeColor=#A989D4;strokeWidth=1.6;fontFamily=Kaiti SC;fontSize=14;fontColor=#263244;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="330" y="525" width="180" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="loop" value="&lt;b style=&quot;font-size:15px&quot;&gt;Model&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#475467&quot;&gt;理解目标 · 选择行动&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#EAFBF7;strokeColor=#42B9A8;strokeWidth=1.6;fontFamily=Kaiti SC;fontSize=14;fontColor=#263244;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="700" y="525" width="190" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="outcome" value="&lt;b style=&quot;font-size:15px&quot;&gt;结果&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#475467&quot;&gt;Response&lt;br&gt;Side Effect&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ECF9EF;strokeColor=#6CC982;strokeWidth=1.6;fontFamily=Kaiti SC;fontSize=14;fontColor=#263244;align=center;verticalAlign=middle;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="990" y="500" width="130" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="entry-runtime" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;sketch=1;curveFitting=1;jiggle=2;strokeColor=#2563EB;strokeWidth=2.2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.25;" edge="1" parent="1" source="entry" target="runtime"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="265" y="545"/></Array></mxGeometry></mxCell>
+        <mxCell id="runtime-loop" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;sketch=1;curveFitting=1;jiggle=2;strokeColor=#2563EB;strokeWidth=2.2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="runtime" target="loop"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="605" y="565"/></Array></mxGeometry></mxCell>
+        <mxCell id="loop-label" value="Agent Loop" style="text;html=1;strokeColor=none;fillColor=#FFFFFF;align=center;verticalAlign=middle;whiteSpace=wrap;fontFamily=Comic Sans MS;fontSize=12;fontColor=#667085;spacing=0;" vertex="1" parent="1"><mxGeometry x="573" y="546" width="72" height="20" as="geometry"/></mxCell>
+        <mxCell id="loop-outcome" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;sketch=1;curveFitting=1;jiggle=2;strokeColor=#16A34A;strokeWidth=2.2;endArrow=block;endFill=1;exitX=1;exitY=0.25;entryX=0;entryY=0.5;" edge="1" parent="1" source="loop" target="outcome"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="950" y="545"/></Array></mxGeometry></mxCell>
+
+        <mxCell id="capabilities-label" value="Harness capabilities：向 Model 提供信息、行动接口和硬边界" style="text;html=1;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;whiteSpace=wrap;fontFamily=Kaiti SC;fontSize=12;fontColor=#667085;spacing=0;" vertex="1" parent="1"><mxGeometry x="330" y="607" width="420" height="22" as="geometry"/></mxCell>
+        <mxCell id="prompt" value="&lt;b&gt;Prompt&lt;/b&gt;&lt;br&gt;Context&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#667085&quot;&gt;Knowledge&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#FFF4E8;strokeColor=#F59E62;strokeWidth=1.5;fontFamily=Kaiti SC;fontSize=13;fontColor=#263244;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1"><mxGeometry x="330" y="650" width="125" height="78" as="geometry"/></mxCell>
+        <mxCell id="tools" value="&lt;b&gt;Observation&lt;/b&gt;&lt;br&gt;Tools&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#667085&quot;&gt;Actions&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#EAF3FF;strokeColor=#72A7E8;strokeWidth=1.5;fontFamily=Kaiti SC;fontSize=13;fontColor=#263244;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1"><mxGeometry x="475" y="650" width="125" height="78" as="geometry"/></mxCell>
+        <mxCell id="state" value="&lt;b&gt;Session&lt;/b&gt;&lt;br&gt;State&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#667085&quot;&gt;Memory&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#F6EFFF;strokeColor=#A989D4;strokeWidth=1.5;fontFamily=Kaiti SC;fontSize=13;fontColor=#263244;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1"><mxGeometry x="620" y="650" width="125" height="78" as="geometry"/></mxCell>
+        <mxCell id="permission" value="&lt;b&gt;Permission&lt;/b&gt;&lt;br&gt;Sandbox&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#667085&quot;&gt;Human Approval&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#FFF1F2;strokeColor=#E58B98;strokeWidth=1.5;fontFamily=Kaiti SC;fontSize=13;fontColor=#263244;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1"><mxGeometry x="765" y="650" width="125" height="78" as="geometry"/></mxCell>
+        <mxCell id="module-rail" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;sketch=1;curveFitting=1;jiggle=2;strokeColor=#9333EA;strokeWidth=2;endArrow=none;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="392" y="635" as="sourcePoint"/><mxPoint x="827" y="635" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="rail-model" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;sketch=1;curveFitting=1;jiggle=2;strokeColor=#9333EA;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="795" y="635" as="sourcePoint"/><mxPoint x="795" y="613" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="rail-prompt" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;sketch=1;curveFitting=1;jiggle=2;strokeColor=#9333EA;strokeWidth=2;endArrow=none;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="392" y="642" as="sourcePoint"/><mxPoint x="392" y="635" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="rail-tools" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;sketch=1;curveFitting=1;jiggle=2;strokeColor=#9333EA;strokeWidth=2;endArrow=none;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="537" y="642" as="sourcePoint"/><mxPoint x="537" y="635" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="rail-state" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;sketch=1;curveFitting=1;jiggle=2;strokeColor=#9333EA;strokeWidth=2;endArrow=none;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="682" y="642" as="sourcePoint"/><mxPoint x="682" y="635" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="rail-permission" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;sketch=1;curveFitting=1;jiggle=2;strokeColor=#9333EA;strokeWidth=2;endArrow=none;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="827" y="642" as="sourcePoint"/><mxPoint x="827" y="635" as="targetPoint"/></mxGeometry></mxCell>
+
+        <mxCell id="evidence" value="&lt;b&gt;Harness Evidence Plane：Tracing · Evaluation · Feedback · Cost&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#F8F9FB;strokeColor=#CBD0D8;strokeWidth=1.5;fontFamily=Comic Sans MS;fontSize=14;fontStyle=1;fontColor=#263244;align=center;verticalAlign=middle;spacing=4;" vertex="1" parent="1"><mxGeometry x="290" y="790" width="640" height="45" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

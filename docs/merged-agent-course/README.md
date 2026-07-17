@@ -1,32 +1,63 @@
 # 融合版 Agent 教材
 
-本目录用于保存基于 `source/` 下 9 份教程融合重写后的教材。目标是：主要阅读本目录即可系统学习完整内容；需要查看原始上下文、代码或细节时，再通过每章末尾的来源链接回到原文。
+本目录保存基于 `source/` 下 9 份教程融合重写的 Agent 教材。主教材按可迁移的知识主题组织，不按来源工程逐章摘抄；产品安装、配置、命令手册和低成熟度案例不进入正文。
 
-## 章节目录
+## 新版章节目录
 
-1. [Agent 到底是什么](ch01-agent-and-harness.md)
-2. [Agent Loop 与工具调用](ch02-agent-loop-and-tools.md)
-3. [Prompt Runtime 与提示工程](ch03-prompt-runtime.md)
-4. [模型路由、Provider 抽象与调用可靠性](ch04-model-routing.md)
-5. [会话与上下文管理](ch05-session-and-context.md)
-6. [长期记忆系统](ch06-memory-system.md)
-7. [LangChain 与 LangGraph 应用开发](ch07-langchain-langgraph.md)
-8. [权限、安全、沙箱与隐私治理](ch08-security-permission-sandbox.md)
-9. [Skills、MCP、插件与自进化](ch09-skills-mcp-plugins.md)
-10. [Gateway、多渠道、Cron 与主动 Agent](ch10-gateway-cron-proactive.md)
-11. [Loop Engineering：从单次循环到可持续执行系统](ch11-loop-engineering.md)
-12. [多 Agent、任务系统与团队协作](ch12-multi-agent-task-system.md)
-13. [工程化、测试、可观测性与产品化](ch13-engineering-observability-product.md)
-14. [综合项目：构建自己的 Agent](ch14-capstone-agent.md)
+当前按下列 20 章逐章重构。只有已经完成新版重构的章节提供链接，旧版章节文件暂时保留，待对应新章完成后再调整。
+
+### 第一篇：基础心智
+
+1. [Agent、智能体历史与 Harness](ch01-agent-and-harness.md)（已重构）
+2. 大语言模型基础与模型行为（待重构）
+3. Agent Loop、经典范式与工具运行时（待重构）
+
+### 第二篇：运行时与知识
+
+4. Prompt Engineering 与 Prompt Runtime（待重构）
+5. 模型运行时、路由与调用可靠性（待重构）
+6. [会话、状态与上下文工程](ch06-session-state-context-engineering.md)（已重构）
+7. 长期记忆系统（待重构）
+8. RAG 与外部知识系统（待重构）
+
+### 第三篇：框架与应用编排
+
+9. Agent 框架与应用编排（待重构）
+
+### 第四篇：治理与扩展
+
+10. 权限、安全、沙箱与隐私治理（待重构）
+11. Skills 与插件系统（待重构）
+12. MCP、A2A、ANP 与 Agent 互操作（待重构）
+
+### 第五篇：常驻运行与多 Agent
+
+13. Gateway、多渠道、身份与路由（待重构）
+14. 后台任务、Cron、投递与运行时韧性（待重构）
+15. Loop Engineering：从单次循环到可持续执行系统（待重构）
+16. 多 Agent、任务系统与团队协作（待重构）
+
+### 第六篇：评测、进化与生产
+
+17. Agent 测试、评测与基准体系（待重构）
+18. Agent 自进化与后训练（待重构）
+19. 生产工程、可观测性与产品迭代（待重构）
+20. 代表案例与综合 Agent 项目（待重构）
+
+## 内容筛选规则
+
+1. 可迁移的原理和架构进入主教材并完整讲解。
+2. 能解释关键机制的代表实现进入正文或案例框。
+3. 成熟案例用于验证原理，不按项目功能清单逐项收录。
+4. 产品安装、配置、命令操作、硬件部署和低代码点击教程不进入主教材。
+5. 重复、过时或低成熟度内容在覆盖审计中记录，不把“出现过”误写成“已深入覆盖”。
+
+## 统一章节结构
+
+每章根据主题取舍，但尽量包含：学习目标与边界、核心问题、原理、运行机制、最小实现、生产约束、失败模式、测试与验收、代表案例、系统地图、共同结论、自检、开放性问题和原文入口。
+
+来源内容直接融合进正文，不再使用“某某教程补充”式附加段落。外部资料优先使用论文、标准和官方工程文档，并与本地来源分组列出。
 
 ## 覆盖检查
 
-- [9 个来源工程覆盖审计](source-coverage-audit.md)
-
-## 写作约定
-
-- 每章以主题为单位融合 9 份教程，不按原仓库顺序照搬。
-- 每章保留原文入口，方便回源。
-- 原文中重复讲的主题合并为一套工程判断。
-- 原文没有但学习上必要的主题，可以作为外部补充独立成章。
-- `Loop Engineering` 是独立章节，放在 `Gateway、多渠道、Cron 与主动 Agent` 之后。
+- [9 个来源工程覆盖审计](source-coverage-audit.md)（当前仍是旧 14 章编号口径，暂不可用于核对新版章号；新版 20 章完成后统一校准）

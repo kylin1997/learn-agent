@@ -6,10 +6,10 @@
 
 | 教程目录 | 主要侧重点 | 在学习方案中的位置 |
 | --- | --- | --- |
-| `source/easy-langent` | LangChain、LangGraph、RAG、课程项目、应用落地 | 阶段 1、3、5 |
+| `source/easy-langent` | LangChain、LangGraph、RAG、课程项目、应用落地 | 阶段 1、3、4、5 |
 | `source/hermes-book` | Hermes Agent 源码、长期个人 Agent、Gateway、记忆、测试、生命周期 | 阶段 1、2、3、4、7、8、10 |
 | `source/Alice_methodology` | 桌面 Agent 工程方法论、权限、记忆、多 Agent、自进化、人格化 | 阶段 1、2、3、4、6、7、9、10 |
-| `source/hello-claw` | OpenClaw 使用、配置、运维、Skill 场景、构建方案 | 阶段 1、6、7、8、9、10 |
+| `source/hello-claw` | OpenClaw 使用、配置、运维、Skill 场景、构建方案 | 阶段 1、4、6、7、8、9、10 |
 | `source/claw0` | 从零构建 Agent Gateway，强调渠道、路由、主动性、可靠投递 | 阶段 2、4、8 |
 | `source/harness-engineering-from-cc-to-ai-coding` | Claude Code 源码模式、上下文、权限、缓存、多 Agent、工程原则 | 阶段 1、2、3、4、6、7、9、10 |
 | `source/claude-code-analysis` | Claude Code 静态源码分析、安全、组件、竞品、证据索引 | 阶段 2、3、4、6、7、9、10 |
@@ -17,6 +17,24 @@
 | `source/hello-agents` | Datawhale 系统性 Agent 教程，覆盖基础、范式、低代码、框架、记忆/RAG、上下文工程、MCP/A2A/ANP、Agentic RL、评估、旅行助手、Deep Research、赛博小镇和毕业项目 | 阶段 1、2、3、4、5、6、7、8、9、10 |
 
 ## 重复主题合并规则
+
+### Agent 基础、历史与边界
+
+合并来源：
+
+- `hello-agents` Ch01-Ch02：通用定义、PEAS、传统类型、历史与 Workflow/Agent 边界
+- `learn-claude-code` README：Model 与 Harness 的工程分工
+- `Alice_methodology` Ch00-Ch02：生产复杂度、设计哲学与系统地图
+- `Hermes` Part1、`hello-claw` Ch01、`claw0` README：长期个人 Agent、常驻 Agent 与渐进式 Harness 案例
+- `easy-langent` Ch01：含 LLM 节点的固定工作流反例
+- `harness-engineering` Part1/Part7、`claude-code-analysis` Ch01：编码 Agent 的平台化 Harness 案例
+
+学习方式：
+
+- 以 `hello-agents` 建立通用概念和问题驱动的历史主线。
+- 把 `Model + Harness` 作为 LLM Agent 产品的工程模型，不替代智能体通用定义。
+- 产品来源只用于说明可迁移架构，不纳入安装、配置、命令、宣传和未公开实现细节。
+- 主读 [`融合教材第 1 章`](merged-agent-course/ch01-agent-and-harness.md)，需要原型时再回源。
 
 ### Agent Loop
 
@@ -66,29 +84,38 @@
 - `learn-claude-code` s10
 - `hello-agents` Ch03/Ch04/Ch07/Ch09 和 Extra09
 
+外部补充：
+
+- [OpenAI：GPT-5.6 Prompt Guidance](https://developers.openai.com/api/docs/guides/prompt-guidance-gpt-5p6)：主要来源，用于 Prompt 债务、Outcome-first、工具与停止契约、评测迁移及模型专属控制。
+- [Datawhale：OpenAI 官方 Prompt 指南中文解读](https://mp.weixin.qq.com/s/lSvGH3nCK9oWf8wOyeCTGA)：辅助阅读，用于中文结构梳理，不作为独立事实来源。
+
 学习方式：
 
-- 先掌握模板和输出解析。
-- 再实现 runtime prompt assembler。
-- 最后加 provider router、fallback、缓存友好结构。
+- 先把模糊需求写成目标、成功标准、约束、权限、输出和停止契约。
+- 再掌握模板、少样本和输出解析，实现 runtime prompt assembler。
+- 用代表性任务建立基线，结合 Trace 做单变量修改，并通过减法审计偿还 Prompt 债务。
+- 最后加 provider router、fallback、缓存友好结构，并把模型专属参数留在 Provider 适配层。
 
-### 上下文与记忆
+### 会话、状态、上下文与记忆
 
 合并来源：
 
 - `learn-claude-code` s08-s09
 - `claw0` s03/s06
+- `easy-langent` Ch03 与狼人杀项目中的 thread、checkpoint、interrupt/resume
+- `hello-claw` 构建篇 Ch05/Ch06 的 session 串行、入站去重与隔离边界
 - `Alice_methodology` Ch05 和记忆博客
 - `Hermes` Ch10-Ch12
 - `harness` Part3/Part4/Ch24
 - `claude-code-analysis` Memory、Context、Session Storage
-- `easy-langent` Ch03/Ch04
+- `easy-langent` Ch04 的 memory store 与跨轮数据持久化
 - `hello-agents` Ch08/Ch09、Extra02、Extra09
 
 学习方式：
 
-- 会话持久化、上下文压缩、长期记忆分三层学习；在融合教材中拆成“会话与上下文管理”和“长期记忆系统”两章。
-- 先做简单 JSONL，再做 compact，最后做 memory recall。
+- 会话记录回答“发生过什么”，执行状态回答“现在怎样继续”，模型上下文回答“本次推理看什么”，长期记忆回答“哪些知识跨会话保留”。
+- 在融合教材中拆成第 6 章“会话、状态与上下文工程”和第 7 章“长期记忆系统”，不再把任务状态藏在聊天摘要里。
+- 实践顺序为：事件日志与状态归约、检查点与恢复、GSSC 与分层压缩，最后在下一章实现 memory recall。
 
 ### 安全与权限
 

@@ -1,20 +1,24 @@
 # Agent 学习方案
 
-本方案基于 `source/` 下 9 份教程整理，目标是覆盖所有内容，同时把重复章节合并成一条可执行的学习路线。
+本方案基于 `source/` 下 9 份教程整理，目标是覆盖其中可迁移的 Agent 知识，同时把重复章节合并成一套可直接学习的教材。
 
 ## 总体策略
 
-学习路线分为 10 个阶段。每个阶段包含三件事：
+当前融合教材正在从旧版 10 阶段重构为 [20 章主线教材](merged-agent-course/README.md)。学习时不再要求先按顺序阅读多份来源文件：
 
-- 读：阅读对应教程章节。
-- 做：实现一个最小可运行机制。
-- 对照：比较不同教程对同一主题的设计取舍。
+- **主读**：阅读融合教材对应章节，获得该主题的完整内容。
+- **回源**：只在需要查看原型代码、论证上下文或实现细节时打开章末原文链接。
+- **实践**：完成章节中的设计题、验证题或最小实验。
 
-多语言重复内容以中文和主线版本为准；旧版轨道作为对应关系参考，不重复安排。
+下面的 10 阶段来源列表暂时作为覆盖索引保留，不是必读顺序。每完成一章新版重构，就用融合章节替代对应阶段的来源阅读任务。多语言重复内容以中文和主线版本为准，不重复安排。
 
 ## 阶段 1：Agent 基础心智与系统地图
 
-读：
+主读：
+
+- [`第 1 章：Agent、智能体历史与 Harness`](merged-agent-course/ch01-agent-and-harness.md)
+
+按需回源：
 
 - `source/learn-claude-code/README-zh.md`
 - `source/Alice_methodology/chapters/00-preface.md`
@@ -31,14 +35,17 @@
 
 目标：
 
-- 建立 Agent = Model + Harness 的心智模型。
-- 理解 Agent Loop、工具、上下文、权限、记忆、渠道、运行时之间的关系。
-- 形成一张本项目自己的 Agent 能力地图。
+- 从目标、环境、感知、状态、决策、行动和评价理解智能体。
+- 理解符号主义、联结主义、强化学习、预训练与 LLM Agent 的演进关系。
+- 区分 Chatbot、Workflow、Agent 和 Hybrid system。
+- 把 `Agent Product = Model + Harness` 理解为工程模型，而不是通用学术定义。
+- 建立一张连接任务环境与 LLM Agent 产品栈的系统地图。
 
 产出：
 
-- 一页系统地图笔记。
-- 一张术语表：Agent Loop、Harness、Tool、Skill、MCP、Memory、Gateway、Permission。
+- 用 PEAS 描述一个自己准备实现的 Agent。
+- 标出该 Agent 中由 Workflow 固定的路径与交给模型决策的路径。
+- 回答第 1 章的自检题与开放性问题。
 
 ## 阶段 2：Agent Loop 与工具调用
 
@@ -97,10 +104,18 @@
 - `source/hello-agents/docs/chapter9/第九章 上下文工程.md`
 - `source/hello-agents/Extra-Chapter/Extra09-Agent应用开发实践踩坑与经验分享.md`
 
+外部补充：
+
+- [OpenAI：GPT-5.6 Prompt Guidance（主要来源）](https://developers.openai.com/api/docs/guides/prompt-guidance-gpt-5p6)
+- [Datawhale：OpenAI 官方 Prompt 指南中文解读（辅助阅读）](https://mp.weixin.qq.com/s/lSvGH3nCK9oWf8wOyeCTGA)
+
 目标：
 
 - 掌握系统提示词运行时组装。
 - 掌握提示词模板、少样本、输出解析、结构化输出。
+- 掌握 Outcome-first、成功标准、权限边界与停止条件的契约式写法。
+- 识别 Prompt 债务，并用基线评测、Trace 和单变量改动完成减法式迁移。
+- 区分通用提示工程原则与 verbosity、reasoning effort、工具搜索等模型专属运行时能力。
 - 设计多模型 provider、fallback、日志与配置分层。
 
 产出：
@@ -108,8 +123,16 @@
 - 一个 prompt assembler。
 - 一个 provider router。
 - 一个 Pydantic/JSON 输出解析示例。
+- 一组包含行为、工具、边界、输出和停止条件的 Prompt 回归案例。
 
 ## 阶段 4：会话与上下文管理 + 长期记忆系统
+
+主读：
+
+- [融合教材第 6 章：会话、状态与上下文工程](merged-agent-course/ch06-session-state-context-engineering.md)
+- 融合教材第 7 章：长期记忆系统（待重构）
+
+以下来源用于覆盖核对和查看实现原型，不再要求顺序通读。
 
 读：
 
@@ -118,6 +141,11 @@
 - `source/learn-claude-code/s10_system_prompt/README.md`
 - `source/claw0/sessions/zh/s03_sessions.md`
 - `source/claw0/sessions/zh/s06_intelligence.md`
+- `source/easy-langent/docs/guide/chapter3.md`
+- `source/easy-langent/project/WhoIsTheSpyBaocaiLi/spy_game/runner.py`
+- `source/easy-langent/project/WhoIsTheSpyBaocaiLi/spy_game/engine_nodes.py`
+- `source/hello-claw/docs/cn/build/chapter5/index.md`
+- `source/hello-claw/docs/cn/build/chapter6/index.md`
 - `source/Alice_methodology/chapters/05-context-memory.md`
 - `source/Alice_methodology/blog/blog-04-memory-system.md`
 - `source/hermes-book/src/part4/ch10-session-db.md`
@@ -141,15 +169,17 @@
 
 目标：
 
-- 掌握 JSONL 会话、append-only 事件流、resume。
-- 掌握自动压缩、微压缩、token 预算、工具结果落盘。
-- 单独掌握长期记忆、用户画像、项目记忆、召回与去重。
+- 区分会话记录、执行状态、模型上下文和长期记忆，理解它们各自的真相来源与生命周期。
+- 掌握追加式事件流、状态归约、检查点以及 Resume、Workflow Replay、Fork 的不同语义。
+- 掌握 GSSC、即时上下文、token 预算、工具结果落盘和分层压缩。
+- 在第 7 章单独掌握长期记忆、用户画像、项目记忆、召回、巩固、去重与遗忘。
 
 产出：
 
-- 一个文件型 session store。
-- 一个 compact 策略。
-- 一个 memory recall 原型。
+- 一个带事件 ID、顺序、因果关联和幂等键的文件型 session store。
+- 一个由事件归约状态、生成检查点并支持崩溃恢复的最小运行时。
+- 一个能记录选择与丢弃原因的 Context Builder，以及分层 compact 策略。
+- 一个 memory recall 原型（第 7 章）。
 
 ## 阶段 5：LangChain 与 LangGraph 应用开发
 
