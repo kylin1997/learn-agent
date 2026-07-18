@@ -5,7 +5,7 @@
 ## 学习入口
 
 - [学习方案](docs/agent-learning-plan.md)：按 Agent 能力栈合并后的主线学习路线。
-- [融合版 Agent 教材](docs/merged-agent-course/README.md)：融合 9 份教程并补充外部资料，当前正按新版 20 章目录逐章重构。
+- [融合版 Agent 教材](docs/merged-agent-course/README.md)：融合 9 份教程并补充外部资料，新版 20 章正文已经生成，当前按章 Review。
 - [教程覆盖地图](docs/source-coverage-map.md)：9 份教程各自侧重点、去重合并方式和最终覆盖关系。
 - [Codex 协作规约](AGENTS.md)：后续再次打开项目时，Codex 应遵循的项目约定。
 

@@ -4,13 +4,42 @@
 
 ## 总体策略
 
-当前融合教材正在从旧版 10 阶段重构为 [20 章主线教材](merged-agent-course/README.md)。学习时不再要求先按顺序阅读多份来源文件：
+融合教材已经完成 [20 章主线教材](merged-agent-course/README.md) 的初稿生成。第 1、6 章已经过用户 Review，其余章节等待逐章 Review。学习时不再要求先按顺序阅读多份来源文件：
 
 - **主读**：阅读融合教材对应章节，获得该主题的完整内容。
 - **回源**：只在需要查看原型代码、论证上下文或实现细节时打开章末原文链接。
 - **实践**：完成章节中的设计题、验证题或最小实验。
 
-下面的 10 阶段来源列表暂时作为覆盖索引保留，不是必读顺序。每完成一章新版重构，就用融合章节替代对应阶段的来源阅读任务。多语言重复内容以中文和主线版本为准，不重复安排。
+推荐从第 2 章开始逐章 Review 和学习；遇到实现细节再使用章末原文入口回源。下面的 10 阶段来源列表作为覆盖索引保留，不是必读顺序。多语言重复内容以中文和主线版本为准，不重复安排。
+
+## 20 章主学习路径
+
+| 篇 | 章节 | 当前状态 |
+| --- | --- | --- |
+| 基础心智 | [1. Agent、智能体历史与 Harness](merged-agent-course/ch01-agent-and-harness.md) | 已 Review |
+| 基础心智 | [2. 大语言模型基础与模型行为](merged-agent-course/ch02-llm-foundations-model-behavior.md) | 待 Review |
+| 基础心智 | [3. Agent Loop、经典范式与工具运行时](merged-agent-course/ch03-agent-loop-paradigms-tools.md) | 待 Review |
+| 运行时与知识 | [4. Prompt Engineering 与 Prompt Runtime](merged-agent-course/ch04-prompt-engineering-runtime.md) | 待 Review |
+| 运行时与知识 | [5. 模型运行时、路由与调用可靠性](merged-agent-course/ch05-model-runtime-routing-reliability.md) | 待 Review |
+| 运行时与知识 | [6. 会话、状态与上下文工程](merged-agent-course/ch06-session-state-context-engineering.md) | 已 Review |
+| 运行时与知识 | [7. 长期记忆系统](merged-agent-course/ch07-long-term-memory.md) | 待 Review |
+| 运行时与知识 | [8. RAG 与外部知识系统](merged-agent-course/ch08-rag-knowledge-systems.md) | 待 Review |
+| 框架与应用编排 | [9. Agent 框架与应用编排](merged-agent-course/ch09-agent-frameworks-orchestration.md) | 待 Review |
+| 治理与扩展 | [10. 权限、安全、沙箱与隐私治理](merged-agent-course/ch10-security-permission-sandbox-privacy.md) | 待 Review |
+| 治理与扩展 | [11. Skills 与插件系统](merged-agent-course/ch11-skills-plugins.md) | 待 Review |
+| 治理与扩展 | [12. MCP、A2A、ANP 与 Agent 互操作](merged-agent-course/ch12-agent-interoperability.md) | 待 Review |
+| 常驻与多 Agent | [13. Gateway、多渠道、身份与路由](merged-agent-course/ch13-gateway-channel-identity-routing.md) | 待 Review |
+| 常驻与多 Agent | [14. 后台任务、Cron、投递与运行时韧性](merged-agent-course/ch14-background-cron-delivery-resilience.md) | 待 Review |
+| 常驻与多 Agent | [15. Loop Engineering](merged-agent-course/ch15-loop-engineering.md) | 待 Review |
+| 常驻与多 Agent | [16. 多 Agent、任务系统与团队协作](merged-agent-course/ch16-multi-agent-task-team.md) | 待 Review |
+| 评测、进化与生产 | [17. Agent 测试、评测与基准体系](merged-agent-course/ch17-agent-testing-evaluation-benchmarks.md) | 待 Review |
+| 评测、进化与生产 | [18. Agent 自进化与后训练](merged-agent-course/ch18-agent-self-evolution-post-training.md) | 待 Review |
+| 评测、进化与生产 | [19. 生产工程、可观测性与产品迭代](merged-agent-course/ch19-production-observability-product-iteration.md) | 待 Review |
+| 评测、进化与生产 | [20. 代表案例与综合 Agent 项目](merged-agent-course/ch20-cases-capstone-agent.md) | 待 Review |
+
+## 旧 10 阶段来源索引
+
+以下阶段用于检查来源覆盖和安排实验，不再作为逐文件阅读顺序。
 
 ## 阶段 1：Agent 基础心智与系统地图
 
@@ -130,7 +159,7 @@
 主读：
 
 - [融合教材第 6 章：会话、状态与上下文工程](merged-agent-course/ch06-session-state-context-engineering.md)
-- 融合教材第 7 章：长期记忆系统（待重构）
+- [融合教材第 7 章：长期记忆系统](merged-agent-course/ch07-long-term-memory.md)
 
 以下来源用于覆盖核对和查看实现原型，不再要求顺序通读。
 
@@ -329,9 +358,9 @@
 - `source/hello-agents/docs/chapter13/第十三章 智能旅行助手.md`
 - `source/hello-agents/docs/chapter15/第十五章 构建赛博小镇.md`
 
-融合补充：
+主教材专题：
 
-- `docs/merged-agent-course/ch11-loop-engineering.md`
+- [第 15 章：Loop Engineering](merged-agent-course/ch15-loop-engineering.md)
 
 目标：
 

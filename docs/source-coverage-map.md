@@ -16,6 +16,31 @@
 | `source/learn-claude-code` | Claude Code 式 Harness 的 20 节渐进实现 | 阶段 1、2、4、6、7、9 |
 | `source/hello-agents` | Datawhale 系统性 Agent 教程，覆盖基础、范式、低代码、框架、记忆/RAG、上下文工程、MCP/A2A/ANP、Agentic RL、评估、旅行助手、Deep Research、赛博小镇和毕业项目 | 阶段 1、2、3、4、5、6、7、8、9、10 |
 
+## 新版 20 章主题落点
+
+| 新版章节 | 主要吸收的旧主题与来源 |
+| --- | --- |
+| 1 Agent、历史与 Harness | 9 个来源的基础定义、架构和产品边界 |
+| 2 LLM 基础与模型行为 | `hello-agents` Ch03、`easy-langent` 模型基础及各工程的模型使用经验 |
+| 3 Agent Loop、范式与工具 | 旧第 2 章、`hello-agents` Ch04/Ch07、各 Harness 的 Loop 与 Tool 实现 |
+| 4 Prompt Engineering 与 Runtime | 旧第 3 章、Prompt 管理、行为引导、上下文装配及外部官方指南 |
+| 5 模型运行时与路由 | 旧第 4 章、Provider 抽象、配置、流式事件、fallback 和可靠性 |
+| 6 会话、状态与上下文 | 会话日志、状态归约、检查点、压缩、恢复与缓存 |
+| 7 长期记忆 | 旧记忆章、Memory Provider、用户画像、巩固、召回、遗忘与隐私 |
+| 8 RAG 与外部知识 | `easy-langent`、`hello-agents` Ch08 及项目中的检索、证据和知识更新 |
+| 9 框架与应用编排 | LangChain、LangGraph、`hello-agents` Ch05-Ch07 及代表应用 |
+| 10 安全与隐私 | 旧安全章、权限、Hook、Sandbox、Prompt Injection 和数据治理 |
+| 11 Skills 与插件 | 旧扩展章中的 Skill/Plugin、渐进披露、能力包与供应链 |
+| 12 Agent 互操作 | MCP、A2A、ANP 的发现、调用、协商、认证和治理 |
+| 13 Gateway 与路由 | 多渠道 Adapter、身份、session key、租户与 Agent 路由 |
+| 14 后台运行与韧性 | Cron、Heartbeat、队列、投递、幂等、重试、熔断和恢复 |
+| 15 Loop Engineering | 旧 Loop 专章、9 个来源的验证/状态/治理及外部核心资料 |
+| 16 多 Agent 与任务系统 | Todo/DAG、Subagent、Team、通信、验证者和 Worktree |
+| 17 测试与评测 | 测试分层、轨迹评测、基准、LLM Judge、回归门和线上实验 |
+| 18 自进化与后训练 | Skill/Prompt/Memory 改进、经验巩固、SFT、RL 与 Agentic RL |
+| 19 生产工程 | 生命周期、Trace/Metric/Log、SLO、配置版本、成本与产品反馈 |
+| 20 案例与综合项目 | 各来源代表案例的可迁移模式和综合 Agent 里程碑 |
+
 ## 重复主题合并规则
 
 ### Agent 基础、历史与边界
