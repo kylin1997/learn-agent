@@ -1,3 +1,4 @@
-source/*/*
+source
 .joycode
 .idea
+.omc
