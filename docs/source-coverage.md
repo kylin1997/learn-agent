@@ -1,0 +1,313 @@
+# 来源覆盖说明
+
+本文件记录 `source/` 下 9 个教程工程如何合并进 20 章主教材，并检查可迁移内容是否存在遗漏。它同时提供两种查询方向：
+
+- 从教材章节查主要来源和合并范围。
+- 从来源工程反查内容进入了哪些章节。
+
+本文件不安排学习顺序。学习方法和阶段产物见[《Agent 学习指南》](agent-learning-guide.md)，章节入口和 Review 状态见[《融合版 Agent 教材目录》](merged-agent-course/course-catalog.md)。
+
+## 覆盖口径
+
+“已覆盖”表示来源中的可迁移原理、运行机制、代表实现和成熟案例已经进入对应章节。它不要求复制原文，也不要求收录每个产品操作和项目功能。
+
+纳入教材：
+
+- Agent 的通用概念、架构和工程方法。
+- 能解释运行机制的数据结构、控制流和代码原型。
+- 能帮助比较设计取舍的成熟案例。
+- 与主题密切相关的论文、标准和官方工程资料。
+
+不纳入教材：
+
+- 重复翻译和内容相同的多语言版本。
+- OpenClaw、Dify、n8n 等产品的安装、配置、点击和命令手册。
+- 硬件部署、环境排错、课程 FAQ 和宣传性学习路径。
+- “龙虾大学”等场景集合的完整功能清单。
+- 低成熟度共创项目、未经证实的产品推测和容易过时的营销结论。
+
+## 9 个来源的定位
+
+| 来源工程 | 主要价值 | 覆盖结论 | 上游项目 |
+| --- | --- | --- | --- |
+| `source/easy-langent` | LangChain、LangGraph、RAG、课程项目和应用编排 | 可迁移内容已覆盖 | [datawhalechina/easy-langent](https://github.com/datawhalechina/easy-langent) |
+| `source/hermes-book` | Hermes 源码、长期个人 Agent、Gateway、记忆、生命周期和测试 | 已覆盖 | [ZhangHanDong/hermes-book](https://github.com/ZhangHanDong/hermes-book) |
+| `source/Alice_methodology` | 桌面 Agent 方法论、权限、记忆、多 Agent、自进化和交互设计 | 已覆盖 | [itshen/Alice_methodology](https://github.com/itshen/Alice_methodology) |
+| `source/hello-claw` | OpenClaw 架构、安全、Skill、运维和多 Agent 场景 | 可迁移内容已覆盖，操作手册已排除 | [datawhalechina/hello-claw](https://github.com/datawhalechina/hello-claw) |
+| `source/claw0` | 从零构建 Agent Gateway，包含渠道、路由、主动任务和可靠投递 | 已覆盖 | [shareAI-lab/claw0](https://github.com/shareAI-lab/claw0) |
+| `source/harness-engineering-from-cc-to-ai-coding` | Claude Code 工程模式、上下文、权限、缓存、多 Agent 和生产实践 | 已覆盖 | [ZhangHanDong/harness-engineering-from-cc-to-ai-coding](https://github.com/ZhangHanDong/harness-engineering-from-cc-to-ai-coding) |
+| `source/claude-code-analysis` | Claude Code 静态分析、安全、组件、实现证据和竞品对照 | 已覆盖 | [liuup/claude-code-analysis](https://github.com/liuup/claude-code-analysis) |
+| `source/learn-claude-code` | Claude Code 式 Agent Harness 的渐进实现 | 已覆盖 | [shareAI-lab/learn-claude-code](https://github.com/shareAI-lab/learn-claude-code) |
+| `source/hello-agents` | Agent 基础、范式、框架、记忆/RAG、上下文、协议、后训练、评测和综合项目 | 可迁移内容已覆盖 | [datawhalechina/hello-agents](https://github.com/datawhalechina/hello-agents) |
+
+## 20 章来源映射
+
+| 章 | 主题 | 主要本地来源 |
+| --- | --- | --- |
+| 1 | Agent、历史与 Harness | 9 个来源的基础定义、架构和产品边界 |
+| 2 | LLM 基础与模型行为 | `hello-agents` Ch03、`easy-langent` 模型基础及各工程的模型使用经验 |
+| 3 | Agent Loop、范式与工具 | `learn-claude-code`、`claw0`、`Alice_methodology`、`hermes-book`、`easy-langent`、`hello-agents` |
+| 4 | Prompt Engineering 与 Runtime | `easy-langent`、`Alice_methodology`、`hermes-book`、`harness-engineering`、`claude-code-analysis`、`hello-agents` |
+| 5 | 模型运行时与路由 | `Alice_methodology`、`hermes-book`、`harness-engineering`、`claude-code-analysis`、`hello-agents` |
+| 6 | 会话、状态与上下文 | 9 个来源中的 Session、State、Checkpoint、Compact 和 Resume 机制 |
+| 7 | 长期记忆 | `learn-claude-code`、`claw0`、`Alice_methodology`、`hermes-book`、`harness-engineering`、`claude-code-analysis`、`hello-agents` |
+| 8 | RAG 与外部知识 | `easy-langent`、`hello-agents` 及项目中的检索、证据和知识更新机制 |
+| 9 | 框架与应用编排 | `easy-langent`、`hello-agents` 及各来源中的状态图和代表应用 |
+| 10 | 安全、权限、沙箱与隐私 | `learn-claude-code`、`Alice_methodology`、`hello-claw`、`harness-engineering`、`claude-code-analysis`、`hello-agents` |
+| 11 | Skills 与插件 | `learn-claude-code`、`Alice_methodology`、`hermes-book`、`hello-claw`、`harness-engineering`、`claude-code-analysis`、`hello-agents` |
+| 12 | MCP、A2A、ANP 与互操作 | `learn-claude-code`、`Alice_methodology`、`claude-code-analysis`、`hello-agents` 及相关协议资料 |
+| 13 | Gateway、多渠道、身份与路由 | `claw0`、`hello-claw`、`hermes-book` 及常驻 Agent 的渠道实现 |
+| 14 | 后台任务、Cron、投递与韧性 | `learn-claude-code`、`claw0`、`hello-claw`、`hermes-book` |
+| 15 | Loop Engineering | 9 个来源中分散的状态、验证、调度、隔离和恢复机制，以及外部专题资料 |
+| 16 | 多 Agent、任务系统与团队协作 | `learn-claude-code`、`Alice_methodology`、`hermes-book`、`easy-langent`、`hello-claw`、`harness-engineering`、`claude-code-analysis`、`hello-agents` |
+| 17 | 测试、评测与基准 | `learn-claude-code`、`hermes-book`、`harness-engineering`、`claude-code-analysis`、`hello-agents` |
+| 18 | 自进化与后训练 | `Alice_methodology`、`harness-engineering`、`hello-agents` |
+| 19 | 生产工程与可观测性 | `claw0`、`hello-claw`、`hermes-book`、`Alice_methodology`、`harness-engineering`、`claude-code-analysis`、`hello-agents` |
+| 20 | 案例与综合项目 | 9 个来源中的代表案例、工程模式和综合 Agent 路线 |
+
+## 按来源反查
+
+### `learn-claude-code`
+
+| 来源内容 | 教材落点 |
+| --- | --- |
+| s01 Agent Loop、s02 Tool Use | 第 3 章 |
+| s03 Permission、s04 Hooks | 第 10 章 |
+| s05 TodoWrite、s06 Subagent、s12 Task、s15-s18 Team/Autonomous/Worktree | 第 15-17、19、20 章，以第 16 章为主 |
+| s07 Skill Loading、s19 MCP | 第 11、12 章 |
+| s08 Context Compact、s09 Memory、s10 System Prompt | 第 4、6、7 章 |
+| s11 Error Recovery | 第 5、14、19 章 |
+| s13 Background Tasks、s14 Cron | 第 14 章 |
+| s20 Comprehensive Agent | 第 20 章 |
+
+### `Alice_methodology`
+
+| 来源内容 | 教材落点 |
+| --- | --- |
+| 哲学、架构、Agent Loop、工具系统 | 第 1、3、20 章 |
+| 上下文、记忆和记忆博客 | 第 6、7 章 |
+| 多 Agent、共建和交互方法 | 第 16、20 章 |
+| 权限、安全 | 第 10 章 |
+| MCP、Skills | 第 11、12 章 |
+| 模型路由、Prompt | 第 4、5 章 |
+| 自我进化 | 第 18 章 |
+| 可观测性、工程范式和快速发布 | 第 17、19、20 章 |
+
+### `hermes-book`
+
+| 来源内容 | 教材落点 |
+| --- | --- |
+| 设计赌注、仓库地图、请求旅程和 AIAgent 核心 | 第 1、3、20 章 |
+| Prompt、配置和模型抽象 | 第 4、5 章 |
+| Tool、Tool Profiles | 第 3、10 章 |
+| Skill、Delegation | 第 11、16 章 |
+| SessionDB、Memory Provider、Context Compression | 第 6、7 章 |
+| CLI/TUI、Gateway | 第 13 章 |
+| Cron、Concurrency、Lifecycle、Runtime Defense | 第 14、15、19 章 |
+| Testing | 第 17、19 章 |
+
+### `easy-langent`
+
+| 来源内容 | 教材落点 |
+| --- | --- |
+| 基础概念、模型、Prompt 和输出解析 | 第 1-4 章 |
+| Memory、Tool 和会话 | 第 3、6、7 章 |
+| Runnable、Router 和 RAG | 第 8、9 章 |
+| LangGraph State、Node、Edge、Checkpoint 和 Human-in-the-loop | 第 6、9 章 |
+| LangGraph 多智能体 | 第 9、16 章 |
+| 课程项目和游戏 Agent | 第 9、20 章，以代表模式覆盖 |
+
+### `claw0`
+
+| 来源内容 | 教材落点 |
+| --- | --- |
+| s01 Agent Loop、s02 Tool Use | 第 3 章 |
+| s03 Sessions、s06 Intelligence | 第 6、7 章 |
+| s04 Channels、s05 Gateway Routing | 第 13 章 |
+| s07 Heartbeat/Cron、s08 Delivery、s09 Resilience、s10 Concurrency | 第 14、15、19 章 |
+| workspace 示例 | 第 7、11、20 章 |
+
+### `harness-engineering-from-cc-to-ai-coding`
+
+| 来源内容 | 教材落点 |
+| --- | --- |
+| Part 1：架构、工具和 Agent Loop | 第 1、3 章 |
+| Part 2：系统提示、行为引导和工具提示 | 第 4 章 |
+| Part 3：压缩和 Token 预算 | 第 6 章 |
+| Part 4：记忆、规则覆盖和缓存 | 第 4、6、7 章 |
+| Part 5：权限、分类器、Hooks 和项目规则 | 第 10 章 |
+| Part 6：Agent 编排、Effort、Skill 和 Memory | 第 5、7、11、16 章 |
+| Part 7：工程、测试、观测和发布 | 第 17-20 章 |
+| 附录：环境变量、Feature Flag 和 Trace | 第 19 章 |
+
+### `claude-code-analysis`
+
+| 来源内容 | 教材落点 |
+| --- | --- |
+| 架构总览和组件分析 | 第 1、3、20 章 |
+| Agent Memory、Context 和 Session Resume | 第 6、7 章 |
+| Tool Call、Prompt 和模型调用 | 第 3-5 章 |
+| 安全、隐私和 Sandbox | 第 10 章 |
+| Skills、MCP | 第 11、12 章 |
+| Multi-Agent | 第 16 章 |
+| 测试证据、竞品和源码索引 | 第 17、19、20 章 |
+
+### `hello-claw`
+
+| 来源内容 | 教材落点 |
+| --- | --- |
+| 构建篇中的底层架构、网关、Session 和并发 | 第 1、13、14、19 章 |
+| 安全与沙箱 | 第 10 章 |
+| Skill 开发、发布和 ClawHub | 第 11 章 |
+| 多智能体场景 | 第 16、20 章 |
+| 场景点评和评测模板 | 第 17、20 章 |
+| 安装、日常配置、硬件部署和命令手册 | 排除，不进入主教材 |
+
+### `hello-agents`
+
+| 来源内容 | 教材落点 |
+| --- | --- |
+| Ch01-Ch02：定义、类型和历史 | 第 1 章 |
+| Ch03：LLM 基础 | 第 2、4、5 章 |
+| Ch04：ReAct、Plan-and-Solve、Reflection | 第 3 章 |
+| Ch05：低代码平台 | 第 9 章提炼编排边界，点击操作排除 |
+| Ch06-Ch07：框架开发 | 第 3、9、16、20 章 |
+| Ch08：记忆与检索 | 第 7、8 章 |
+| Ch09、Extra02：上下文工程 | 第 4、6、19 章 |
+| Ch10：MCP、A2A、ANP | 第 12 章 |
+| Ch11、Extra12：Agentic RL 与后训练 | 第 18 章 |
+| Ch12：性能评估、BFCL、GAIA 和数据生成 | 第 17 章 |
+| Ch13-Ch15：旅行、Deep Research 和赛博小镇 | 第 8、9、16、20 章的代表案例 |
+| Ch16、Co-creation projects | 第 20 章提炼成熟模式和项目方法 |
+| Extra05、Extra08：Agent Skills | 第 11 章 |
+| Extra09：工程踩坑 | 第 3-6、10、17、19 章 |
+| Extra10：Agent 自进化 | 第 18 章 |
+| Extra06、Extra11：GUI/Web Agent | 第 9、20 章的行动环境案例 |
+| 安装指南、环境配置、FAQ 和低代码点击步骤 | 排除，不进入主教材 |
+
+## 重复主题合并规则
+
+### Agent 基础、历史与边界
+
+- 使用 `hello-agents` 建立通用定义、PEAS、历史和 Workflow/Agent 边界。
+- 使用 `learn-claude-code`、`Alice_methodology`、`hermes-book` 等工程来源解释 Model 与 Harness 的职责分工。
+- 产品案例只证明架构取舍，不把产品定义当成通用学术定义。
+
+### Agent Loop 与工具
+
+- 使用 `learn-claude-code` 和 `claw0` 的最小循环建立实现骨架。
+- 合并 `Alice_methodology`、`hermes-book`、`harness-engineering` 和 `claude-code-analysis` 中的生产约束。
+- Tool Schema、Handler、权限、并发、Hook 和 Tool Result 进入同一条执行管线，避免分散重复讲解。
+
+### Prompt 与模型运行时
+
+- 第 4 章处理任务契约、Prompt 组装、少样本、结构化输出和 Prompt 债务。
+- 第 5 章处理 Provider、模型路由、流式事件、重试、fallback、成本和可靠性。
+- 模型专属参数留在 Provider 适配层，不写成跨模型通用原则。
+
+### 会话、状态、上下文、记忆与 RAG
+
+- 第 6 章区分会话记录、执行状态和本次模型上下文。
+- 第 7 章单独处理跨会话长期记忆、画像、巩固、去重和遗忘。
+- 第 8 章处理外部知识、检索、证据和知识更新。
+- 聊天摘要不能代替任务状态、长期记忆或知识证据。
+
+### 框架、安全与扩展
+
+- 第 9 章用 LangChain、LangGraph 和代表应用解释编排抽象，不写成 API 手册。
+- 第 10 章集中处理权限、审批、沙箱、提示注入和隐私治理。
+- 第 11 章处理 Skill 与 Plugin；第 12 章处理 MCP、A2A、ANP 等跨系统协议。
+
+### Gateway、后台运行与 Loop Engineering
+
+- 第 13 章处理渠道适配、身份、租户、Session Key 和路由。
+- 第 14 章处理 Cron、Heartbeat、队列、投递、幂等、重试和恢复。
+- 第 15 章把分散在 9 个来源中的状态、验证、隔离和调度知识组织成跨运行控制系统，不重复讲一次 Agent Loop。
+
+### 多 Agent、评测、自进化与生产
+
+- 第 16 章以任务边界、通信、验证和隔离为主线，不按多 Agent 产品形态分类堆叠。
+- 第 17 章建立测试与评测证据，第 18 章讨论有证据和回滚能力的改进，第 19 章处理生产运行与产品反馈。
+- 第 20 章使用代表案例验证方法，并给出综合 Agent 的里程碑路线。
+
+## 外部补充
+
+本地来源不能完整覆盖的主题可以补充论文、标准和官方工程资料：
+
+- 第 4 章使用 OpenAI 官方 Prompt 指南补充 Prompt 债务、任务契约和模型专属控制。
+- 第 12 章使用协议规范和官方文档校准 MCP、A2A、ANP。
+- 第 15 章使用用户提供的三篇 X 文章，以及 Anthropic、OpenAI 等公开资料建立 Loop Engineering 专题。
+- 第 17、18 章使用评测、强化学习和后训练论文补足理论基础。
+
+外部资料用于补足缺口，不能替代本地来源覆盖检查。
+
+## 补充路径审计
+
+旧学习方案曾列出 185 个来源路径。按新版 20 个主章节重新核对后，143 个具体路径已经保留在章末“原文入口”中，其余 42 项在本节归类。旧稿中的链接不计入新版主教材覆盖。
+
+本节只用于覆盖复核，不是学习者的必读清单。
+
+### 覆盖证据：24 项
+
+| 来源路径 | 对应内容与教材落点 |
+| --- | --- |
+| `source/Alice_methodology/chapters/16-alive-agent.md` | 人格一致性、记忆、子 Agent 角色和人机交互设计进入第 7、16、20 章 |
+| `source/claude-code-analysis/analysis/05-differentiators-and-comparison.md` | 统一内核、权限、记忆和长会话治理进入第 1、6、10、16、19、20 章 |
+| `source/claude-code-analysis/analysis/06-extra-findings.md` | Trust 边界、Unicode 攻击、隐私脱敏和状态传播用于第 10、16、19 章校对 |
+| `source/claude-code-analysis/analysis/07-code-evidence-index.md` | 作为内核、权限、会话、记忆、隐私和协作实现的源码证据索引 |
+| `source/claude-code-analysis/analysis/08-competitive-comparison.md` | 产品比较中的可迁移取舍进入第 19、20 章，使用时需要标注版本 |
+| `source/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch04.md` | 工具权限、并发、流式和中断机制进入第 3、10、17 章 |
+| `source/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch04b.md` | Plan Mode 的状态机、计划持久化和意图对齐进入第 3、4、6 章 |
+| `source/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch10.md` | 压缩后的文件、Skill、计划和运行状态恢复进入第 6 章 |
+| `source/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch14.md` | Prompt Cache 中断检测、状态快照和变化归因进入第 4-6、19 章 |
+| `source/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch15.md` | 缓存友好装配、Skill 预算和运行时优化进入第 4-6、19 章 |
+| `source/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch18.md` | Hooks、自定义拦截点和执行治理进入第 3、10、19 章 |
+| `source/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch18b.md` | 多平台沙箱、文件与网络隔离进入第 10 章 |
+| `source/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch19.md` | 用户指令覆盖层、作用域和循环引用治理进入第 4、10、11 章 |
+| `source/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20c.md` | 远程多 Agent 规划、状态机、轮询和错误处理进入第 15、16、19 章 |
+| `source/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch24.md` | 跨会话记忆、持久学习和作用域进入第 7、18 章 |
+| `source/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch26.md` | 上下文预算、上下文卫生、压缩恢复和循环熔断进入第 6、15、19 章 |
+| `source/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch28.md` | 缓存脆弱性、压缩损失、工具截断和 Feature Flag 复杂性用于第 6、17、19、20 章校对 |
+| `source/hello-agents/Extra-Chapter/Extra11-WebAgent科普与实战.md` | Web Agent 的行动环境、感知和安全边界进入第 9、20 章 |
+| `source/hello-claw/docs/cn/adopt/chapter10/index.md` | 威胁模型和安全原则进入第 10 章，具体配置命令排除 |
+| `source/hello-claw/docs/cn/build/chapter9/index.md` | WASM/Docker 沙箱、密钥保护和注入防御进入第 10 章 |
+| `source/hello-claw/docs/cn/build/skill-practice/index.md` | Skill 边界、目录、Frontmatter、发现和触发机制进入第 11 章 |
+| `source/hermes-book/src/part5/ch13-cli-tui.md` | CLI/TUI 交互层和控制面进入第 13、19、20 章 |
+| `source/hermes-book/src/part5/ch16-terminal-backends.md` | 本地、Docker、SSH 和云端沙箱等执行环境抽象进入第 9、10、13、19、20 章 |
+| `source/learn-claude-code/s05_todo_write/README.md` | TodoWrite、任务外部化和进度约束进入第 16 章 |
+
+### 排除或索引性来源：11 项
+
+| 来源路径 | 处理结果 |
+| --- | --- |
+| `source/claude-code-analysis/analysis/09-final-summary.md` | 属于前文重复总结，由具体分析章节覆盖 |
+| `source/claude-code-analysis/analysis/10-src-file-tree.md` | 属于静态仓库导航附录，容易随版本过时 |
+| `source/claude-code-analysis/analysis/11-hidden-features-and-easter-eggs.md` | 隐藏功能、未发布能力和彩蛋清单排除；通用 Feature Flag 方法由第 19 章其他来源覆盖 |
+| `source/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch23.md` | 以未发布 Feature Flag 推断产品路线，按未经证实且容易过时的产品推测排除 |
+| `source/hello-agents/Co-creation-projects/README.md` | 共创项目索引不直接进入正文，成熟模式由第 20 章代表案例覆盖 |
+| `source/hello-agents/README.md` | 来源工程导航索引，不作为独立知识内容重复计入 |
+| `source/hello-claw/docs/cn/adopt/intro/index.md` | 产品介绍、热度描述和宣传性学习路径排除 |
+| `source/hello-claw/docs/cn/adopt/chapter1/index.md` | 一键安装、Quick Setup 和积分操作排除 |
+| `source/hello-claw/docs/cn/build/chapter10/index.md` | 硬件选型、功耗和部署方案排除 |
+| `source/hello-claw/docs/cn/university/multi-claw-hiclaw/index.md` | 主体是 OpenClaw 安装、配置和排错；通用多 Agent 模式由第 16 章其他来源覆盖 |
+| `source/hello-claw/docs/cn/university/group-debate/index.md` | 主体是飞书应用、实例和角色配置；通用多 Agent 模式由第 16 章其他来源覆盖 |
+
+### 目录级处理规则：7 项
+
+| 来源路径模式 | 处理规则 |
+| --- | --- |
+| `source/Alice_methodology/blog/*.md` | 作为博客集合；有独立机制的文章单列，其余作为章节补充 |
+| `source/claude-code-analysis/analysis/components/*.md` | 作为组件分析集合，按组件主题映射到对应章节 |
+| `source/easy-langent/project/**/README.md` | 作为项目案例池，只选择能证明架构取舍的成熟项目 |
+| `source/harness-engineering-from-cc-to-ai-coding/book/src/appendix/*.md` | 作为附录集合，配置、环境变量和 Trace 内容按需取证 |
+| `source/hello-claw/docs/cn/appendix/*.md` | 作为产品附录集合；安装和命令手册排除，通用工程机制单独取证 |
+| `source/hello-claw/docs/cn/university/*.md` | 按 `source/hello-claw/docs/cn/university/**/*.md` 递归处理整个场景案例池；产品配置、宣传和低成熟度项目排除，通用模式由其他来源交叉验证 |
+| `source/learn-claude-code/skills/**` | 作为 Skill 样例目录，选择代表性 `SKILL.md` 支撑第 11 章 |
+
+## 当前审计结论
+
+- 9 个来源工程中的可迁移知识已经分配到新版 20 章。
+- 重复主题已经按机制合并；多语言版本和同类案例不重复计入。
+- 安装配置、硬件部署、低代码点击、宣传内容和低成熟度项目已按规则排除，不属于遗漏。
+- 20 章正文已经生成，仍需按教材目录记录的进度逐章检查深度、准确性、章间重复和案例质量。
+- Review 中发现来源遗漏时，应同时修改对应章节和本文件；只修改措辞或例子时，不需要更新覆盖关系。

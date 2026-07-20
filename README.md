@@ -1,29 +1,24 @@
 # Learn Agent
 
-这个工程用于系统学习 AI Agent。`source/` 目录下包含 9 份教程材料，既有 LangChain/LangGraph 应用实战，也有 Claude Code、OpenClaw、Hermes、Alice 等 Agent 产品和工程实现分析。
+这个工程用于系统学习 AI Agent。项目把 `source/` 下 9 个教程工程中的可迁移知识合并为一套 20 章教材，并通过持续演进的综合 Agent 完成实践。
 
-## 学习入口
+## 从这里开始
 
-- [学习方案](docs/agent-learning-plan.md)：按 Agent 能力栈合并后的主线学习路线。
-- [融合版 Agent 教材](docs/merged-agent-course/README.md)：融合 9 份教程并补充外部资料，新版 20 章正文已经生成，当前按章 Review。
-- [教程覆盖地图](docs/source-coverage-map.md)：9 份教程各自侧重点、去重合并方式和最终覆盖关系。
-- [Codex 协作规约](AGENTS.md)：后续再次打开项目时，Codex 应遵循的项目约定。
+1. 阅读[《Agent 学习指南》](docs/agent-learning-guide.md)，了解五阶段路线、每章学习动作和实践产物。
+2. 从[《融合版 Agent 教材目录》](docs/merged-agent-course/course-catalog.md)进入主教材，并查看各章 Review 状态。
+3. 需要核查来源、合并规则或排除项时，查看[《来源覆盖说明》](docs/source-coverage.md)。
 
-## 9 份教程
+## 目录说明
 
-1. `source/easy-langent`：LangChain、LangGraph 与应用项目实战。项目地址：[datawhalechina/easy-langent](https://github.com/datawhalechina/easy-langent)
-2. `source/hermes-book`：Hermes Agent 源码与 self-improving personal agent 工程设计。项目地址：[ZhangHanDong/hermes-book](https://github.com/ZhangHanDong/hermes-book)
-3. `source/Alice_methodology`：桌面 AI Agent 的工程方法论、记忆、权限、多 Agent、人格化设计。项目地址：[itshen/Alice_methodology](https://github.com/itshen/Alice_methodology)
-4. `source/hello-claw`：OpenClaw 使用、运维、Skill 场景实战与构建教程。项目地址：[datawhalechina/hello-claw](https://github.com/datawhalechina/hello-claw)
-5. `source/claw0`：从零构建 AI Agent Gateway 的 10 节 Python 教程。项目地址：[shareAI-lab/claw0](https://github.com/shareAI-lab/claw0)
-6. `source/harness-engineering-from-cc-to-ai-coding`：Claude Code 源码到 AI Coding 最佳实践。项目地址：[ZhangHanDong/harness-engineering-from-cc-to-ai-coding](https://github.com/ZhangHanDong/harness-engineering-from-cc-to-ai-coding)
-7. `source/claude-code-analysis`：Claude Code 源码静态分析、架构、安全、组件、竞品对比。项目地址：[liuup/claude-code-analysis](https://github.com/liuup/claude-code-analysis)
-8. `source/learn-claude-code`：从零构建 Claude Code 式 Agent Harness 的 20 节渐进教程。项目地址：[shareAI-lab/learn-claude-code](https://github.com/shareAI-lab/learn-claude-code)
-9. `source/hello-agents`：Datawhale《从零开始构建智能体》，覆盖 Agent 基础、ReAct/Plan/Reflection、低代码平台、框架实践、记忆检索、上下文工程、通信协议、Agentic RL、评估与综合项目。项目地址：[datawhalechina/hello-agents](https://github.com/datawhalechina/hello-agents)
+- `docs/merged-agent-course/`：融合教材正文、配图和暂存旧稿。
+- `source/`：9 个原始教程工程，只在需要代码原型或论证上下文时回源。
+- `docs/`：学习指南、来源覆盖说明及后续学习笔记。
+- `experiments/` 或 `src/`：本项目自己的实验与综合 Agent 实现。
+- [AGENTS.md](AGENTS.md)：Codex 在本工程中的协作和文档同步规约。
 
 ## 学习原则
 
-- 不按目录机械顺序学习，而是按 Agent 能力栈推进。
-- 重复主题合并学习，差异内容用于横向对照。
-- 每个阶段都要有读书笔记、源码走读和最小实现。
-- 最终目标是做出一个综合 Agent：工具调用、权限、上下文、记忆、Skill、MCP、Gateway、Cron、Loop Controller、外部状态、独立验证、停止控制、多 Agent 和可观测性都具备。
+- 主读融合教材，不按来源目录机械通读。
+- 需要实现细节或证据时再回到 `source/`。
+- 每个阶段都给同一个综合 Agent 增加可测试的能力。
+- 使用自检、开放性问题、失败案例和实验结果判断是否真正掌握。
