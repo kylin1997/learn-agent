@@ -258,6 +258,13 @@ Embedding 将文本映射为向量，使语义相近的内容在向量空间中�
 
 混合检索常比单一路线稳，因为企业知识同时包含自然语言和大量精确标识符。
 
+这里还要区分两种经常都被称为“混合检索”的实现：
+
+- **确定性融合**：每次并行运行 sparse 与 dense 检索，再用 RRF 等规则合并排名。它的路径固定、容易复现，适合作为生产基线。
+- **Agent 选路**：让模型根据问题决定调用关键词、向量、图或结构化查询，也可以发起补充检索。它能处理异构知识源，但工具选择、轮次和成本都具有不确定性。
+
+不要因为第二种方式更“Agentic”就默认采用它。若所有查询都需要同一组检索器，确定性融合更简单；只有问题类型确实不同、固定并行代价过高，或需要根据首轮证据调整检索策略时，才值得引入 Agent 选路。即便采用选路，候选集合、最大轮次、权限过滤和最终融合仍应由代码控制。
+
 ### 8.10.3 索引版本必须可识别
 
 记录 embedding 模型、维度、归一化方式、切分配置和索引构建版本。更换 embedding 模型时通常不能混用旧向量；应构建新索引、离线评估，再通过别名或路由原子切换。
@@ -391,11 +398,24 @@ final_score
 
 验证不能停在“证据 ID 属于本次候选集合”。系统还要逐条判断 Claim 与所引片段之间的支持关系：`direct` 表示原文直接陈述，`entailed` 表示在不引入外部前提的情况下可由证据推出，`partial` 表示只支持 Claim 的一部分，`contradicted` 表示证据与 Claim 冲突，`unsupported` 表示没有支持。只有 `direct` 或经策略允许的 `entailed` 才能作为确定陈述的引用；`partial` 必须缩小 Claim，`contradicted` 与 `unsupported` 必须阻止发布或转为不确定表述。验证器同时检查合法 ID、原文版本、授权状态和 Claim-Evidence entailment，才能真正防止“引用存在但不支持结论”的引用漂白。
 
-### 8.15.1 拒答是正常输出
+### 8.15.1 Grounding Validator 与 Critic 不负责同一件事
+
+可以在生成之后增加独立检查，但要先明确检查对象：
+
+| 组件 | 核心问题 | 合适的输出 |
+| --- | --- | --- |
+| Grounding Validator | 每个事实是否被本次允许使用的证据支持 | 支持、部分支持、冲突、无支持，以及对应证据 ID |
+| Critic | 输出是否满足完整性、格式、语气或领域 Rubric | 分维度评分、问题清单和修改建议 |
+
+Grounding 检查不等于事实核查：如果知识源本身错误、过期或被投毒，回答可能“忠实依据证据”却仍然错误。Critic 也不是安全边界：它可以发现语义问题，但同样可能误放行或误拒绝。因此，合法证据 ID、ACL、版本、引用存在性和结构化格式先由确定性代码校验；模型型 Grounding Validator 或 Critic 只处理难以写成规则的语义判断。
+
+检查结果应进入显式控制流：`pass` 才发布，`revise` 进入有上限的重写，`block` 返回安全兜底，`escalate` 交给人工或更权威流程。不能让 Critic 用自然语言说“有问题”，却仍由生成 Agent 自行决定是否忽略；也不能无限执行“生成—批评—重写”。阈值和重试上限必须用人工标注样本校准，并同时记录生成器与检查器的 Trace。
+
+### 8.15.2 拒答是正常输出
 
 当证据低于阈值、关键子问题没有覆盖、来源越权或来源冲突无法判断时，系统应拒绝作确定回答，并说明还缺什么。拒答率不是越低越好；在高风险场景中，适当拒答是质量指标的一部分。
 
-### 8.15.2 引用必须回到可访问原文
+### 8.15.3 引用必须回到可访问原文
 
 引用链接应指向用户有权访问的文档位置。系统不能给出一个内部 `chunk_id` 就声称完成可追溯性，也不能通过引用 URL 泄露文档存在性。链接生成同样要经过授权。
 
@@ -769,6 +789,8 @@ Source Change / Revocation / Deletion
 - [Hello-Agents：健康记录 Agent 检索器](../../source/hello-agents/Co-creation-projects/Shawnxyxy-HealthRecordAgent/backend/rag/retriever.py)
 - [hello-claw：知识库案例](../../source/hello-claw/docs/cn/university/knowledge-base/index.md)
 - [Alice：安全治理](../../source/Alice_methodology/chapters/12-security.md)
+- [AI Agents in Action 第 6 章：混合检索与 Grounding](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/6.为智能体处理记忆与知识RAG.md)
+- [AI Agents in Action 第 7 章：Grounding、Critic 与 Evaluation](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/7.通过评估与反馈构建稳健的智能体.md)
 - [旧稿：LangChain 与 LangGraph 中的 RAG](ch07-langchain-langgraph.md)
 
 ### 外部资料

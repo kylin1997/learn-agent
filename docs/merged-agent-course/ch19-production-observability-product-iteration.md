@@ -429,6 +429,44 @@ Alice 的快速发布与共建材料展示了一个关键事实：产品迭代�
 
 每个版本需要一份可关联的 change record：假设、受影响场景、离线证据、灰度范围、监控指标、回滚条件、责任人和最终结论。这样失败实验也能成为资产。
 
+### 19.9.1 Annotation Registry：生产侧只负责可靠采集与交接
+
+生产系统要把反馈绑定到可复现对象，而不是把自由文本直接送进 Prompt 优化器。一个最小 Annotation 记录包含：
+
+```yaml
+annotation_id: ann-204
+run_id: run-881
+target: artifact:report-v3
+label: unsupported_claim
+evidence_refs: [trace:span-19, claim:c-7]
+reporter_role: user
+consent_scope: quality_evaluation
+privacy_state: pending_review
+adjudication_state: unreviewed
+created_at: 2026-07-21T10:00:00Z
+```
+
+Registry 维护 `captured -> quarantined -> reviewed -> adjudicated -> exported | rejected | deleted` 状态，并记录每次用途变化。生产侧负责身份、关联、权限、保留期和删除，不负责宣布标注是真值。
+
+```text
+Production / 第 19 章
+  采集事件与 Annotation，绑定 run 和版本，隔离敏感内容
+                |
+                v
+Evaluation / 第 17 章
+  脱敏复核、仲裁、补齐可复现 case，晋升回归资产
+                |
+                v
+Evolution / 第 18 章
+  归因、生成最小候选、独立验证、审批与发布
+                |
+                v
+Production / 第 19 章
+  Shadow、Canary、SLO 观察、晋升或回滚
+```
+
+同一条 Annotation 可以被拒绝、修订或因授权撤回而删除。导出到评测或改进系统时只传递允许用途所需的最小字段和受控内容引用；不能因为它已经进入内部 Registry 就扩大数据使用范围。
+
 ## 19.10 最小生产骨架
 
 ```text
@@ -576,6 +614,7 @@ Every node is bound to RuntimeManifest and run_id.
 7. 错误恢复必须先分类、后处置，并用幂等、checkpoint 和补偿保护副作用。
 8. 可观测性默认收集元数据；哈希不等于匿名化，伪名化数据继续按敏感数据治理。
 9. 产品反馈只有经过第 17 章的实验与质量判断，再由本章执行灰度、SLO 操作和回滚，才构成真正闭环。
+10. Annotation Registry 负责可靠采集、关联和治理，不负责自动修改 Agent；回归资产和改进候选分别由第 17、18 章产生。
 
 ## 19.15 本章自检
 
@@ -601,10 +640,13 @@ Every node is bound to RuntimeManifest and run_id.
 7. 如何区分用户没有反馈是“满意”、 “没发现问题”还是“已经放弃”？
 8. 多 Agent 并行时，父任务的 SLO 应如何吸收子任务的取消、部分成功和长尾？
 9. 哪些观测字段应该成为跨框架标准，哪些应保留为产品内部实现？
+10. 用户撤回数据授权后，已由该 Annotation 触发但尚未发布的改进候选应如何处置？
 
 ## 19.17 原文入口
 
 ### 本地来源
+
+- [AI Agents in Action（第二版）：第 7 章，Trace、实验与 Annotation 反馈](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/7.通过评估与反馈构建稳健的智能体.md)
 
 - [Alice 方法论：可观测性](../../source/Alice_methodology/chapters/13-observability.md)
 - [Alice 方法论：十二个可迁移的工程范式](../../source/Alice_methodology/chapters/15-engineering-patterns.md)

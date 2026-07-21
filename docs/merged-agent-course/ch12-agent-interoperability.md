@@ -77,6 +77,33 @@ User
 
 一个 Host 管理多个 Client，Client 与 Server 一一对应，这有助于隔离不同 Server 的状态和信任边界。Server 提供能力，不因此拥有用户对其他 Server 或本机资产的权限。
 
+#### 从内部工具到可复用 MCP Server
+
+MCP 的一个实际迁移路径，是把原本绑定在单个 Agent 进程里的工具变成可被多个 Host 复用的能力：
+
+```text
+Agent 内部函数
+  -> 稳定 Tool Contract：名称、输入 Schema、输出、错误和副作用
+  -> MCP Server 封装：暴露能力并管理资源生命周期
+  -> Host 的 MCP Client：发现、命名、Policy 与上下文适配
+  -> 桌面应用、IDE、CLI 或 Agent Runtime 等多个 Client 复用
+```
+
+迁移的价值不只是少写几份适配代码，而是把工具实现、协议接入和 Agent 策略拆开。不同语言、框架或部署位置的 Host 可以共享同一能力；工具升级也不必同步改写每个 Agent 的内部注册代码。
+
+但“套一层 MCP”不会自动得到可靠服务。内部函数变成 Server 后，原来隐含在进程内的状态、身份和生命周期都必须显式设计：并发调用是否互相影响，模块级变量是否变成多用户共享状态，怎样区分租户，谁负责超时、限流、审计、版本兼容和资源清理。若工具只服务于同一进程、没有跨语言或多 Client 需求，保留普通函数调用通常更简单；只有复用边界和独立生命周期真实存在时，协议化才值得它带来的故障面。
+
+#### 同一能力在交互式 Host 与自主 Agent 中风险不同
+
+桌面聊天应用通常由用户发起一轮请求，并能在高影响工具调用前展示参数、等待确认。自主 Agent 则可能在一个 Run 中连续选择工具，把一次错误结果作为下一步输入，并在无人注视时扩大副作用。两者连接同一个 MCP Server，不代表风险相同：
+
+| 使用方式 | 主要控制机会 | 主要风险 |
+| --- | --- | --- |
+| 交互式 Desktop/IDE | 用户逐次查看、修改或拒绝调用 | 同意疲劳、参数展示不完整、用户误判 |
+| 自主 Agent Runtime | Policy、预算、沙箱和停止条件自动约束整条链 | 错误级联、重复副作用、间接注入和长时间无人监督 |
+
+因此，MCP Server 不能假设“Client 会弹确认框”，Host 也不能把 Server 的工具描述当作安全承诺。Server 要在服务端实施身份、资源级授权、输入校验、幂等和限额；Host 则负责按当前用户意图限制模型可见工具、检查每次参数、控制预算并在高风险节点重新取得同意。交互方式改变时，应重新做威胁建模，而不是原样复制桌面测试环境的权限配置。
+
 ### 12.4.3 发现分为“找到 Server”和“列出能力”
 
 MCP 核心会话内可以列出 Server 提供的 Tools、Resources 和 Prompts，但“全世界有哪些 MCP Server”不是核心协议替你解决的问题。Server 地址通常来自用户配置、项目配置、插件、组织托管目录或产品连接器。
@@ -657,6 +684,7 @@ rate limits | provenance | revocation | tracing | cancellation/compensation
 - [Hermes：Gateway 协议适配层](../../source/hermes-book/src/part5/ch14-gateway.md)
 - [claw0：Gateway 与 JSON-RPC 路由](../../source/claw0/sessions/zh/s05_gateway_routing.md)
 - [hello-claw：轻量 Agent 的 MCP 取舍](../../source/hello-claw/docs/cn/build/chapter8/index.md)
+- [AI Agents in Action 第 3 章：MCP 工具迁移与不同 Client 风险](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/3.AI智能体的MCP操作.md)
 
 ### 官方规范与项目入口
 

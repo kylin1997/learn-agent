@@ -355,6 +355,7 @@ Harness
 
 ### 本地来源
 
+- [《AI Agents in Action（第二版）》第 2 章：核心组件](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/2.核心组件.md)
 - [Hello-Agents Ch03：大语言模型基础](../../source/hello-agents/docs/chapter3/第三章%20大语言模型基础.md)
 - [Hello-Agents Ch04：智能体经典范式构建](../../source/hello-agents/docs/chapter4/第四章%20智能体经典范式构建.md)
 - [Hello-Agents Ch07：构建你的 Agent 框架](../../source/hello-agents/docs/chapter7/第七章%20构建你的Agent框架.md)

@@ -99,6 +99,37 @@ Writer -> Reviewer -> Reviser 这类链式流程适合交付物逐步变换。La
 
 生产系统常采用混合拓扑：Lead 管全局，专业 Worker 从任务图认领，关键结果再交给独立 Verifier。
 
+### 16.3.5 八类协调策略不是八种产品架构
+
+拓扑描述“谁与谁连接”，协调策略描述“连接之后怎样形成下一步”。《AI Agents in Action（第二版）》归纳的八类策略可以放进前述四种拓扑中理解：
+
+| 协调策略 | 运行方式 | 适合条件 | 主要风险 |
+| --- | --- | --- | --- |
+| 顺序执行 | A 完成后把工件交给 B | 强依赖、阶段清楚 | 前序错误层层放大 |
+| 并行执行 | 独立 Worker 同时处理子任务 | 读写范围可隔离 | 重复工作、合并冲突 |
+| 层级协调 | Supervisor 分解、委派并汇总 | 全局目标需要统一控制 | Supervisor 成为瓶颈 |
+| 辩论 | 多个角色提出和反驳方案 | 假设空间开放、可比较证据 | 成本高，同源错误可能被反复强化 |
+| 投票 | 独立候选按规则聚合 | 候选同质、判定可离散化 | 多数不等于正确，少数证据被淹没 |
+| 角色协作 | 研究、执行、审查等角色交换工件 | 职责和契约稳定 | 角色只剩 Prompt 人设，边界虚化 |
+| 条件路由 | 规则或 Router 按任务特征选路径 | 任务类型可识别 | 误路由后难以恢复 |
+| 点对点协作 | Peer 直接请求、转交或共享发现 | 动态任务池、局部信息流 | 难收敛、责任和权限扩散 |
+
+这些策略可以组合，例如层级协调中并行研究，再用顺序的 Writer-Reviewer 流程收尾。组合前要为每次分叉和汇合定义输入、工件、冲突规则与预算。辩论和投票只能增加视角，不能替代事实验证。
+
+### 16.3.6 先决定 Agent 还是 Flow
+
+任务需要多少自主性，和任务需要多少 Agent，是两个问题。路径稳定时，应先把确定步骤固化为 Flow，只把无法提前枚举的判断交给 Agent。
+
+| 问题特征 | 首选结构 |
+| --- | --- |
+| 步骤、分支、回滚和验收均可预先描述 | 确定性 Workflow / Flow |
+| 单个决策者可在有限工具中自适应完成 | 单 Agent + 运行时 Gate |
+| 多个阶段需要不同能力，但交接顺序稳定 | Flow 中嵌入专业 Agent |
+| 子问题可独立探索，结果需要统一综合 | Lead + 并行 Worker |
+| 多方结论冲突且必须保留独立证据 | 多 Agent + 仲裁协议 |
+
+从单 Agent 升级到 Flow 的信号，是相同步骤和纠错反复出现；从 Flow 升级到多 Agent 的信号，是上下文、权限、并行或独立验证确实需要隔离。不要因为 SDK 提供 Handoff 就自动增加角色。
+
 ## 16.4 Todo 不是 Task DAG
 
 Todo 是某个执行者的注意力清单，Task DAG 是多个执行者共享的调度状态。两者不能只靠增加几个字段就混成同一概念。
@@ -388,6 +419,25 @@ request_created -> request_sent -> response_received -> request_resolved
 
 Worker 应返回结论、证据、工件、不确定性和未完成项。完整 transcript 可以归档供审计，但不应默认注入 Lead 上下文。这样既降低上下文污染，也减少 Prompt Injection 从工具结果跨 Agent 传播的机会。
 
+### 16.7.5 Handoff 是有状态协议
+
+Handoff 不是把一段文字发给下一个 Agent。发送方、运行时和接收方要共同维护一个可追踪生命周期：
+
+```text
+proposed
+  -> validated       # 接收者、权限、输入 schema 和预算通过
+  -> accepted        # 接收者取得任务 lease
+  -> running
+  -> returned        # 结构化工件和证据已提交
+  -> verified        # 上游或独立 Verifier 已验收
+
+任一阶段 -> rejected / timed_out / cancelled / escalated
+```
+
+每次交接至少记录 `handoff_id`、父任务、发送者、接收者、输入工件版本、授权范围、预算、开始和结束时间、输出引用与终态。Trace 应把 `delegate -> accept -> work -> return -> verify` 串成父子 span，同时保留状态事件；只记录“调用了哪个 Agent”无法解释延迟、迟到结果或权限变化。
+
+接收者拒绝、超时或返回不完整时，Lead 按契约选择重派、降级或升级。已经超时并重派的 Handoff 即使后来返回，也只能进入迟到结果队列，不能覆盖新 Worker 的有效提交。
+
 ## 16.8 并发、生命周期与收敛
 
 ### 16.8.1 并行必须受任务图约束
@@ -491,6 +541,20 @@ remaining_risks:
 ```
 
 Verifier 不能只看最终文本。代码任务要运行测试、检查 diff 和工作区；研究任务要抽样回到来源；数据任务要重算指标。验证失败后由 Lead 决定修复、重派还是向用户暴露不确定性，不能让 Verifier 悄悄改实现后再自我通过。
+
+### 评估器共谋与同源偏差
+
+多个评估 Agent 一致，不代表证据更强。它们可能共享基础模型、训练数据、Prompt 模板和上游检索结果，于是同时遗漏同一个错误。来源把这种互相强化称为评估器“共谋”；工程上更准确的解释是**共同失效模式**。
+
+降低共同失效风险需要改变证据路径，而不只是增加投票数：
+
+- 至少保留一个确定性 Gate 或可回到环境的检查。
+- 高风险任务使用不同模型家族、不同工具或不同证据抽样的评估器。
+- 让评估器独立产出判定后再汇总，避免前一个结论锚定后续判断。
+- 从通过和失败结果中随机抽样人工复核，不能只审查系统主动升级的边界样本。
+- 记录评估器两两分歧、与人工裁决的一致率，以及共同漏判的事故类型。
+
+冲突不能靠无限追加 Judge 解决。Lead 应按预先定义的权限表处理：硬安全 Gate 拒绝时立即阻断；评估器与环境证据冲突时以可执行证据为先；多个软评估器分歧且影响较大时转人工仲裁；证据不足时返回 `INCONCLUSIVE`。仲裁结果随后进入第 17 章的评估器回归集。
 
 ## 16.11 最小实现：一个可恢复的 Lead / Worker 调度器
 
@@ -688,7 +752,7 @@ flowchart LR
 
 ## 16.17 共同结论
 
-九个来源从不同层面指向同一个工程结论。`learn-claude-code` 和 Harness Engineering 给出 TaskList、Claim、Mailbox、Team 与 Worktree 的运行时结构；Hermes 强调委派预算、中断、深度和认知隔离；Alice 说明角色、并发、二次审查和收敛信号；Claude Code 分析补充进程内上下文与权限实现；`easy-langent` 展示 Supervisor、Sequence、Peer 和并行状态合并；`claw0` 提供 lane 与 generation；Hello-Agents 和 `hello-claw` 则展示框架级与产品级团队案例。
+各来源从不同层面指向同一个工程结论。`learn-claude-code` 和 Harness Engineering 给出 TaskList、Claim、Mailbox、Team 与 Worktree 的运行时结构；Hermes 强调委派预算、中断、深度和认知隔离；Alice 说明角色、并发、二次审查和收敛信号；Claude Code 分析补充进程内上下文与权限实现；`easy-langent` 展示 Supervisor、Sequence、Peer 和并行状态合并；`claw0` 提供 lane 与 generation；Hello-Agents 和 `hello-claw` 展示框架级与产品级团队案例；《AI Agents in Action（第二版）》补充协调策略、Agent/Flow 选择、Handoff 追踪和评估器共同失效治理。
 
 可以把本章压缩为八条结论：
 
@@ -700,6 +764,7 @@ flowchart LR
 6. Worktree 隔离文件修改，但仍需隔离端口、数据库、账号、缓存和密钥。
 7. Lead 负责全局综合，Verifier 负责独立判定，两者都不能被结果拼接替代。
 8. 团队完成必须由可验证工件和明确终态证明。
+9. 多评估器一致只是一项信号；共同失效要靠异构证据、随机人工抽查和明确仲裁机制发现。
 
 ## 16.18 本章自检
 
@@ -724,10 +789,14 @@ flowchart LR
 7. Worktree、容器和远程沙箱应怎样组合，才能在成本、启动速度与隔离强度之间取得平衡？
 8. 团队共享记忆如何避免错误经验快速扩散，同时仍让有效经验跨 Worker 复用？
 9. 多 Agent 的边际收益应该用完成率、延迟、成本、风险还是人的监督负担来优化？这些目标冲突时谁拥有最终权重？
+10. 如果异构评估器仍依赖同一份错误检索结果，系统应怎样测量和隔离这类证据同源性？
 
 ## 16.20 原文入口
 
 ### 本地来源
+
+- [AI Agents in Action（第二版）：第 4 章，多 Agent 协调、Flow 与 Handoff](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/4.架构与构建多智能体系统.md)
+- [AI Agents in Action（第二版）：第 7 章，评估器治理与反馈](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/7.通过评估与反馈构建稳健的智能体.md)
 
 - [learn-claude-code：Subagent](../../source/learn-claude-code/s06_subagent/README.md)
 - [learn-claude-code：Task System](../../source/learn-claude-code/s12_task_system/README.md)

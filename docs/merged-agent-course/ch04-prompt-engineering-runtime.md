@@ -252,6 +252,29 @@ Bug 修复不需要清理周围代码。
 
 用户输出追求可读性；系统输出追求结构稳定。机器消费的数据优先使用 Provider 的结构化输出或 JSON Schema，并在代码侧验证。自然语言里的“请严格输出 JSON”只是软约束。
 
+### Schema 先约束接口，再约束措辞
+
+结构化输出的价值不只是“JSON 更容易解析”，而是让 Agent、工具和下游组件共享一份可测试的接口契约。Schema 应尽量封闭、明确且能被当前 Provider 严格表达。例如，与其让模型生成动态键名的字典：
+
+```json
+{"1": "检索资料", "2": "核对来源"}
+```
+
+更稳妥的契约是固定字段的对象列表：
+
+```json
+{
+  "tasks": [
+    {"id": 1, "description": "检索资料"},
+    {"id": 2, "description": "核对来源"}
+  ]
+}
+```
+
+如果严格模式拒绝某个 Schema，应先修正数据模型，而不是为了让示例运行就关闭严格校验。确实需要兼容旧数据时，可以设计一条显式的宽松解析与修复路径，但要记录原始输出、修复原因和失败率，不能把降级伪装成严格契约。
+
+Schema 只保证形状，代码还要验证业务语义：ID 是否重复、枚举是否合法、数值是否越界、引用对象是否存在。Prompt 负责说明每个字段代表什么，Schema 负责约束机器接口，两边不必重复维护一份易漂移的格式说明。
+
 ### 工具描述是 Prompt 的高密度区域
 
 工具描述至少说明：功能、使用条件、排除条件、输入、返回字段、错误语义与风险。工具列表本身也属于 Prompt 面积：一次暴露越多，选择与消歧越困难。
@@ -629,6 +652,7 @@ Product Intent
 5. Prompt 优化既做加法也做减法；每一段都应有失败案例和回归证据。
 6. 模型专属参数由 Provider Adapter 管理，不能污染跨模型的产品意图。
 7. Policy 决定工具授权上界；Prompt Runtime 只能做相关性收窄，不能扩大权限。
+8. 机器边界优先使用严格、可表达的 Schema；形状校验之后仍要执行语义校验。
 
 ## 4.22 本章自检
 
@@ -644,6 +668,7 @@ Product Intent
 10. GPT-5.6 的 `reasoning.effort` 为什么不应写进通用 Prompt？
 11. 两阶段协议怎样消除 Prompt 组装与模型路由的循环依赖？
 12. 为什么相关工具集必须是 Policy 授权集的子集？
+13. 为什么关闭严格 Schema 校验通常不是修复结构化输出问题的首选方案？
 
 ## 4.23 开放性问题
 
@@ -660,6 +685,7 @@ Product Intent
 
 ### 本地来源
 
+- [《AI Agents in Action（第二版）》第 2 章：核心组件](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/2.核心组件.md)
 - [learn-claude-code s10：System Prompt](../../source/learn-claude-code/s10_system_prompt/README.md)
 - [Hello-Agents Ch03：大语言模型基础](../../source/hello-agents/docs/chapter3/第三章%20大语言模型基础.md)
 - [Hello-Agents Ch04：智能体经典范式构建](../../source/hello-agents/docs/chapter4/第四章%20智能体经典范式构建.md)

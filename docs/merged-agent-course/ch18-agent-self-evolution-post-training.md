@@ -116,6 +116,21 @@ L3 模型参数更新：通过 SFT、偏好优化或 RL 改变权重、adapter �
 
 一句“用户点了差评”不足以告诉系统该改什么。差评可能来自模型能力、工具故障、上下文缺失、错误记忆、产品交互或任务本来不可完成。
 
+#### Annotation 是证据，不是更新指令
+
+第 17 章把生产 Annotation 处理成有来源、用途、脱敏状态和仲裁结果的版本化资产。本章只消费通过该门槛的数据，不直接读取“最新差评”并修改系统。
+
+一个 Annotation 可以支持三种不同动作：加入回归集、进入根因调查、提出改进候选。它不能独自批准任何动作。即使人工标注为“Prompt 问题”，改进流程仍要检查工具错误、上下文缺失和产品预期等竞争解释。
+
+```text
+governed annotation
+  -> regression asset      # 以后必须防止复发
+  -> diagnosis evidence    # 与 trace、工件和环境状态共同归因
+  -> change hypothesis     # 提出最小候选，不直接上线
+```
+
+原始事件、标注、回归 case、变更候选和发布版本使用不同 ID，并通过可审计关系连接。团队由此可以撤销错误标注或删除受限制数据，而不必改写历史运行记录。
+
 ### 18.3.2 先归因，再生成改动
 
 可以使用结构化诊断：
@@ -773,9 +788,9 @@ flowchart LR
 
 ## 18.18 共同结论
 
-Alice 提供 L0-L2、受保护分区、门禁、沙箱、Skill 版本和撤销的产品治理；Hello-Agents 第 11 章提供 SFT、LoRA、奖励函数、GRPO 和 Agentic RL，第 Extra10 章把内建上下文、Skill 资产化、群体经验与参数更新分成四类闭环；Hermes 的 Skill、Memory 与委派展示运行时学习资产；Harness Engineering 的 A/B、Feature Flag、观测与结构化验证补足发布链；其他来源中的 Memory、Skills、任务、恢复和真实应用案例共同提供了进化数据的运行环境。
+Alice 提供 L0-L2、受保护分区、门禁、沙箱、Skill 版本和撤销的产品治理；Hello-Agents 第 11 章提供 SFT、LoRA、奖励函数、GRPO 和 Agentic RL，第 Extra10 章把内建上下文、Skill 资产化、群体经验与参数更新分成四类闭环；Hermes 的 Skill、Memory 与委派展示运行时学习资产；Harness Engineering 的 A/B、Feature Flag、观测与结构化验证补足发布链；《AI Agents in Action（第二版）》补充了 Annotation 到评测资产的反馈入口。其他来源中的 Memory、Skills、任务、恢复和真实应用案例共同提供了进化数据的运行环境。
 
-本章可以压缩为九条原则：
+本章可以压缩为十条原则：
 
 1. 会话内适应、持久非参数资产更新和模型参数更新具有不同的作用域、审批人与回滚对象，必须分开治理。
 2. 优先选择最小有效更新面：先在会话内修正，再判断是否需要持久资产，最后才考虑训练。
@@ -786,6 +801,7 @@ Alice 提供 L0-L2、受保护分区、门禁、沙箱、Skill 版本和撤销�
 7. 发布不仅要求安全门通过，还要在独立 holdout 上优于冻结基线并证明能力非退化。
 8. Policy、Grader、审批、审计和回滚属于受保护控制面，Agent 无权自行改写。
 9. 回滚不只回退模型，还要处理 Memory、状态模式、外部副作用和污染数据。
+10. Annotation 只提供带范围的证据；它要经过治理、归因和独立验证，才能影响持久资产或模型版本。
 
 ## 18.19 本章自检
 
@@ -815,6 +831,8 @@ Alice 提供 L0-L2、受保护分区、门禁、沙箱、Skill 版本和撤销�
 ## 18.21 原文入口
 
 ### 本地来源
+
+- [AI Agents in Action（第二版）：第 7 章，评估反馈与 Annotation](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/7.通过评估与反馈构建稳健的智能体.md)
 
 - [Alice 方法论：自我进化](../../source/Alice_methodology/chapters/10-self-evolution.md)
 - [Hello-Agents：Agentic RL](../../source/hello-agents/docs/chapter11/第十一章%20Agentic-RL.md)

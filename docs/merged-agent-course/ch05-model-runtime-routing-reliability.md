@@ -800,6 +800,7 @@ Agent Loop
 
 ### 本地来源
 
+- [《AI Agents in Action（第二版）》第 2 章：核心组件](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/2.核心组件.md)
 - [Hello-Agents Ch07：构建你的 Agent 框架](../../source/hello-agents/docs/chapter7/第七章%20构建你的Agent框架.md)
 - [learn-claude-code s11：Error Recovery](../../source/learn-claude-code/s11_error_recovery/README.md)
 - [Alice 方法论：模型路由](../../source/Alice_methodology/chapters/11-llm-routing.md)

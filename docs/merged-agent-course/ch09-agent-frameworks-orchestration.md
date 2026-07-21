@@ -107,6 +107,50 @@ input -> classify -> retrieve -> prompt -> model -> parse -> output
 | State Graph | 高 | 支持 | 可接 Checkpointer | 复杂 Agent 应用 |
 | Durable Workflow | 中高 | 支持 | 核心能力 | 长任务和外部副作用 |
 
+### 9.5.6 Agent 节点与确定性节点怎样分工
+
+Flow 不等于“把每一步都换成 Agent”。一个可维护的 Agent Flow 往往交替使用模型节点和普通代码节点：
+
+- 需要理解模糊意图、比较开放证据、生成候选方案时，使用 Agent 节点。
+- 规则已经明确、输入输出可枚举、结果必须复现时，使用确定性节点。
+- Schema 校验、权限裁决、预算、终止条件、幂等、副作用提交和固定业务路由，不应外包给模型自由判断。
+- 模型输出进入下一个节点前，先收窄为结构化状态；不要让后续代码解析一段自由文本来决定是否付款、写文件或继续循环。
+
+例如，研究 Agent 可以决定“还缺哪类证据”，但“候选来源是否为空”“是否超过检索上限”“能否访问该租户文档”应由代码判断。来源教程把一个自由执行的单 Agent 拆成多个专用 Agent 后，又在“是否找到来源”处加入普通条件分支；真正值得迁移的不是具体 SDK 写法，而是这个原则：**只在需要语义判断的局部保留自主性，在稳定边界恢复确定性。**
+
+是否应从单 Agent 升级为 Flow，可以观察三类信号：工具和 Prompt 已多到难以选择；不同职责需要不同上下文或权限；某些阶段需要独立测试、重试或审批。拆分后的节点不必全是 Agent，先加入一个确定性控制点，往往比再增加一个“管理 Agent”更有效。
+
+### 9.5.7 认知控制结构在编排层怎样落地
+
+第 3 章已经区分了推理原语与认知控制结构。本节不重复比较 CoT、ReAct、ToT 和 Reflexion，而是说明框架怎样把策略选择、运行信号和确定性路由落实为可测试的状态编排。
+
+一种实现模式是建立结构化共享工作空间：
+
+```text
+CognitiveWorkspace
+  task: 任务类型、歧义、复杂度
+  strategy: 当前策略、子目标、备选策略
+  evidence: 中间结果、来源、质量标记、矛盾
+  progress: 已执行步骤、失败方法、预算、进展信号
+  attention_signal: NONE | KNOWLEDGE_GAP | CONTRADICTION |
+                    STAGNATION | LOW_CONFIDENCE | TASK_COMPLETE
+```
+
+它不是完整对话历史，也不是让多个 Agent 随意写入的黑板。字段必须有类型、所有权和更新规则；原始工具结果留在工件存储中，工作空间只保存控制流需要的引用和摘要。各模块可以提出信号，但下一步由代码路由：
+
+```text
+TASK_COMPLETE  -> RESPOND
+CONTRADICTION  -> PLAN_WITH_ALTERNATIVES
+STAGNATION     -> CHANGE_STRATEGY_OR_ESCALATE
+KNOWLEDGE_GAP  -> RETRIEVE
+LOW_CONFIDENCE -> GATHER_MORE_OR_ESCALATE
+otherwise      -> NEXT_PLANNED_STEP
+```
+
+这里的“注意力”是工程路由器，不是对模型心智的宣称。模型可以负责识别歧义、评价证据或提出策略，但停滞计数、预算、权限、最大重试和最终路由应尽量由可测试代码执行。也不要直接相信模型自报的置信度；应结合检索覆盖、证据冲突、重复动作、评测器结果和历史校准数据形成信号。
+
+这种模式属于**单个 Agent 应用内部的状态与编排**。它可以嵌在一次短 Run 中，也可以由 Durable Workflow 承载；它不等同于第 15 章讨论的长期执行、恢复和治理，也不应被并入 Loop Engineering。
+
 ## 9.6 框架设计的最小稳定内核
 
 Hello-Agents 的自建框架材料从 Message、Config、LLM、Agent 基类和 Tool Registry 开始。这条学习路线的价值不在于再造所有生态，而在于暴露最小内核。
@@ -778,6 +822,9 @@ Visual Platforms
 - [Hermes Book：模型抽象](../../source/hermes-book/src/part6/ch18-model-abstraction.md)
 - [learn-claude-code：最小 Agent Loop](../../source/learn-claude-code/s01_agent_loop/README.md)
 - [harness-engineering：从 Loop 到 Harness](../../source/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch03.md)
+- [AI Agents in Action 第 4 章：Agent 与 Flow 的边界](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/4.架构与构建多智能体系统.md)
+- [AI Agents in Action 第 10 章：推理原语与认知架构](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/10.探索会思考、监控和适应的认知智能体.md)
+- [AI Agents in Action 第 11 章：五层实践与应用蓝图](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/11.构建智能体系统的实用技巧.md)
 - [旧稿：LangChain 与 LangGraph 应用开发](ch07-langchain-langgraph.md)
 
 ### 外部资料

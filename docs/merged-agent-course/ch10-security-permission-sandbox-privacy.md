@@ -171,6 +171,10 @@ Shell 命令还包含管道、重定向、子命令、解释器和环境变量�
 
 LLM 分类器能理解“清理缓存”和“删除用户数据”的语义差别，适合处理规则未覆盖的灰区。但它仍是概率组件，只能做辅助裁决。
 
+一些 SDK 把这类检查称为 `Agent Guardrail`，并允许检查失败时触发异常或 tripwire。需要区分两层：**运行时强制中断**可以是确定性的，但“是否应该触发”如果由另一个模型判断，结论仍是概率性信号。Grounding Agent、Critic Agent 或风险 Agent 都可能误放行、误拒绝，也可能与被检查 Agent 共享相同盲点。
+
+因此，Agent Guardrail 适合发现语义风险、证据不足、内容偏题和需要人工复核的灰区，不适合替代 Schema 校验、ACL、不可覆盖 deny、参数规范化、配额和沙箱。高风险动作即使通过 Agent Guardrail，也必须继续经过硬边界；Guardrail 超时、解析失败或多个检查器结论冲突时，应按策略转为 `ask` 或 `deny`，不能把“检查器没有返回失败”解释为安全证明。
+
 推荐管线：
 
 ```text
@@ -542,6 +546,8 @@ def execute(raw_call, session, policy):
 - [hello-agents：上下文工程](../../source/hello-agents/docs/chapter9/第九章%20上下文工程.md)
 - [hello-agents：Agent 应用开发实践](../../source/hello-agents/Extra-Chapter/Extra09-Agent应用开发实践踩坑与经验分享.md)
 - [hello-claw：安全实践](../../source/hello-claw/docs/cn/university/security/index.md)
+- [AI Agents in Action 第 4 章：Agent Flow Guardrails](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/4.架构与构建多智能体系统.md)
+- [AI Agents in Action 第 7 章：Grounding 与 Critic Guardrails](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/7.通过评估与反馈构建稳健的智能体.md)
 
 ### 协议与标准入口
 

@@ -131,6 +131,51 @@ Harness Engineering 的代码审查项目选择了一个窄任务：读取变更
 | 前后台分离 | 长期环境、后台任务 | 重工作不阻塞交互和投递 |
 | 每层都可交付 | 递进教程、毕业设计 | 每个里程碑有演示、测试和文档 |
 
+### 20.7.1 三个业务蓝图带来的复杂度控制
+
+《AI Agents in Action（第二版）》第 11 章给出的客服、RAG 和 Deep Research 蓝图，最有价值的不是组件名称，而是**只有遇到相应决策压力时才增加 Agent**。
+
+**客服蓝图**可以写成：
+
+```text
+意图与风险分流
+  -> 检索账户和政策
+  -> Grounding 检查
+  -> 受限业务动作或人工升级
+  -> 输出 Guardrail
+  -> 回复与反馈
+```
+
+查询订单状态可以用确定性路由和一个受限工具完成，不需要让多个 Agent 辩论。只有当不同领域需要隔离权限、上下文或责任时，才拆成专业 Worker。退款、身份变更等动作保留审批和业务 API 的硬约束。
+
+**RAG 蓝图**从单检索器开始：查询改写、检索、重排、Grounding 和回答都可以先放在一个可测 Flow 中。只有语料类型不同、检索策略需要动态选择，或多个证据分支能独立并行时，才加入 Router 或多个检索 Agent。简单 RAG 使用 Orchestrator 往往只会增加延迟和错误传播路径。
+
+**Deep Research 蓝图**可以扩展为 Planner、Research Worker、Critic 与 Writer，但扩展顺序仍受证据约束：先证明单 Agent 在覆盖、上下文或并行上遇到瓶颈，再拆分角色。Critic 检查主张与证据，Writer 只消费冻结后的证据集合；不要让 Writer 一边润色一边无界搜索。
+
+三个蓝图共享一份项目检查清单：
+
+- 这个节点是在执行确定步骤，还是必须根据环境判断？
+- 新 Agent 隔离了哪类上下文、权限、工具或失败？
+- 角色之间传递的是结构化工件，还是互相转述的长文本？
+- 每个写动作由哪个 Policy 和业务系统最终授权？
+- Grounding、Guardrail 与最终验收分别检查什么？
+- 失败时能否指出责任节点、输入版本和恢复路径？
+- 增加角色后，质量或延迟收益是否超过协调成本？
+
+### 20.7.2 高级案例：把 Task Loop 与认知控制组合起来
+
+来源第 9、10 章提供了一个高级研究 Agent 构想：外层 Task Loop 保存 `goal / plan / state / decision`，内层执行者通过共享工作空间选择规划、检索、执行或评估策略，并用停滞和知识边界信号决定转向或升级。
+
+这个构想适合在综合项目通过基础里程碑后做对照实验，不作为首版架构。完整组合至少要满足：
+
+1. 外层控制器持有预算、终止门和状态版本，模型不能自行绕过。
+2. 内层工作空间只处理一次运行的候选信号，不取代持久任务状态。
+3. 自报置信度只触发更多证据、降级或升级，不能单独批准高风险动作。
+4. 停滞检测比较真实工件、失败集合和信息增益，不比较措辞是否变化。
+5. 探索与综合使用不同阶段和输入快照。
+
+来源代码包含状态混用、控制流和环境隔离方面的已知问题。本项目只重写这些控制概念；读者不能把示例文件当成生产原型。
+
 ## 20.8 综合项目：证据驱动的项目研究与交付 Agent
 
 ### 20.8.1 项目定位
@@ -599,6 +644,8 @@ project-evidence-agent/
 
 **验收**：并行结果与 task ID 对齐；两个子 Agent 不写同一状态；一个子任务失败不会污染已完成证据；多 Agent 相比单 Agent 在目标任务上有可证明的时间或覆盖收益。
 
+**高级扩展实验**：在不改变外层 Task Loop 所有权的前提下，引入一次运行内的策略路由或共享工作空间。使用第 17 章的知识边界、停滞和校准指标，与“单一固定策略”基线比较；若只增加调用和自报解释，不改善目标结果，则删除该层。
+
 ### 里程碑 8：生产化与产品迭代
 
 **实现**：第 19 章的 RuntimeManifest、SLI/SLO、成本归因、隐私观测、灰度和反馈闭环。
@@ -821,6 +868,7 @@ Autonomy grows only after evidence, safety and recovery gates pass.
 8. 步骤、Artifact、终态和 outbox 要有明确事务边界；外部交付最多一次依赖幂等键或可对账回执。
 9. 写入、后台运行和多 Agent 各自引入新的风险，必须按里程碑逐层解锁。
 10. 综合项目必须用冻结样本证明事实、引用、稳定性、基线收益、成本、延迟和 SLO，而不只展示一次成功演示。
+11. 客服、RAG 和 Deep Research 应从最小可测 Flow 起步，只有上下文、权限、并行或独立验证出现真实压力时才增加 Agent。
 
 ## 20.22 本章自检
 
@@ -834,6 +882,7 @@ Autonomy grows only after evidence, safety and recovery gates pass.
 8. 为什么投递失败不应该重跑已经完成的研究或写操作？
 9. 为什么输入中的 `approved_change` 不能成为授权依据？
 10. Artifact、run 状态和 outbox 为什么要在同一事务提交？
+11. 为什么简单 RAG 不应默认加入 Orchestrator？
 
 ## 20.23 开放性问题
 
@@ -847,10 +896,15 @@ Autonomy grows only after evidence, safety and recovery gates pass.
 8. 如何评价“证据充分但建议无用”和“建议有用但证据不足”这两种产物？
 9. 当外部网页被更新或删除，历史 Artifact 的结论应如何标注和再验证？
 10. 综合 Agent 何时应从个人工具演进为服务？哪些信号表明部署复杂度值得增加？
+11. 共享认知工作空间带来的策略灵活性，怎样用外部结果证明，而不是用更长的内部叙述证明？
 
 ## 20.24 原文入口
 
 ### 本地来源
+
+- [AI Agents in Action（第二版）：第 9 章，Task Loop 与 Deep Research](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/9.理解智能体循环.md)
+- [AI Agents in Action（第二版）：第 10 章，认知与元认知 Agent 构想](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/10.探索会思考、监控和适应的认知智能体.md)
+- [AI Agents in Action（第二版）：第 11 章，客服、RAG 与 Deep Research 蓝图](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/11.构建智能体系统的实用技巧.md)
 
 - [learn-claude-code s20：综合 Agent](../../source/learn-claude-code/s20_comprehensive/README.md)
 - [claw0：从零重建 Agent](../../source/claw0/README.zh.md)
