@@ -791,7 +791,6 @@ Source Change / Revocation / Deletion
 - [Alice：安全治理](../../source/Alice_methodology/chapters/12-security.md)
 - [AI Agents in Action 第 6 章：混合检索与 Grounding](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/6.为智能体处理记忆与知识RAG.md)
 - [AI Agents in Action 第 7 章：Grounding、Critic 与 Evaluation](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/7.通过评估与反馈构建稳健的智能体.md)
-- [旧稿：LangChain 与 LangGraph 中的 RAG](ch07-langchain-langgraph.md)
 
 ### 外部资料
 

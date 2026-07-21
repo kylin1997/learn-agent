@@ -862,4 +862,3 @@ Consolidation / Forgetting / User Correction
 - [easy-langent：个人记忆助手](../../source/easy-langent/project/PersonalMemoryAssistant/README.md)
 - [claw0 工作区记忆文件](../../source/claw0/workspace/MEMORY.md)
 - [hello-claw：记忆与 Context](../../source/hello-claw/docs/cn/adopt/chapter3/index.md)
-- [旧稿：长期记忆系统](ch06-memory-system.md)

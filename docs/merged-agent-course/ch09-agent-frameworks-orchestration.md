@@ -825,7 +825,6 @@ Visual Platforms
 - [AI Agents in Action 第 4 章：Agent 与 Flow 的边界](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/4.架构与构建多智能体系统.md)
 - [AI Agents in Action 第 10 章：推理原语与认知架构](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/10.探索会思考、监控和适应的认知智能体.md)
 - [AI Agents in Action 第 11 章：五层实践与应用蓝图](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/11.构建智能体系统的实用技巧.md)
-- [旧稿：LangChain 与 LangGraph 应用开发](ch07-langchain-langgraph.md)
 
 ### 外部资料
 

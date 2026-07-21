@@ -10,7 +10,7 @@
 
 ## 目录说明
 
-- `docs/merged-agent-course/`：融合教材正文、配图和暂存旧稿。
+- `docs/merged-agent-course/`：融合教材的 20 章正文、配图和课程目录。
 - `source/`：10 个原始教程工程，只在需要代码原型或论证上下文时回源。
 - `docs/`：学习指南、来源覆盖说明及后续学习笔记。
 - `experiments/` 或 `src/`：本项目自己的实验与综合 Agent 实现。

@@ -10,9 +10,8 @@
 
 - `README.md`：项目入口。
 - `docs/agent-learning-guide.md`：唯一学习指南，维护学习方法、五阶段路线、实践产物和完成标准。
-- `docs/merged-agent-course/course-catalog.md`：唯一教材目录，维护 20 章入口、Review 状态、内容边界和旧稿说明。
+- `docs/merged-agent-course/course-catalog.md`：唯一教材目录，维护 20 章入口、Review 状态和内容边界。
 - `docs/source-coverage.md`：唯一来源覆盖说明，维护 10 个来源与 20 章的映射、合并规则、排除项、缺口和审计结论。
-- `docs/source-assessments/`：单个来源的纳入前评估与用户决策记录；不替代正式覆盖说明。
 - `source/`：原始教程材料。
 
 ## 工作原则
@@ -45,7 +44,6 @@
 - `agent-learning-guide.md` 回答“如何学习”。只有学习阶段、学习动作、实践产物或完成标准变化时才修改。
 - `course-catalog.md` 回答“教材有哪些章节、当前状态如何”。章节增删、改名、排序或用户确认 Review 状态时必须修改。
 - `source-coverage.md` 回答“内容来自哪里、是否覆盖”。来源增删、主题边界、章节落点、排除项或覆盖结论变化时必须修改。
-- `source-assessments/*.md` 记录“某个新增来源准备怎样处理”。用户确认后应写回最终决定，并把正式结果同步到 `source-coverage.md`；后续正文落点变化时，两处要保持一致。
 
 发生以下变化时同步处理：
 
@@ -88,13 +86,13 @@
 - 生成新版融合教材第 1-20 章完整正文；具体 Review 状态只在 `docs/merged-agent-course/course-catalog.md` 中维护。
 - 基于三篇 X 文章及公开官方资料完成新版第 15 章 `Loop Engineering：从单次循环到可持续执行系统`。
 - 用户登录 X 后已逐篇读取三篇原文，并据此校准 14 步路线、五阶段 Loop、轻量生活 Loop 和停止/上下文/工具/验证四个难点。
-- 已将 Loop Engineering 重构为主线教材式文章，并补充人的责任闭环及两张手绘风原创技术图；配图同时提供 SVG 与 Draw.io 可编辑格式。新版第 15 章继续复用 `assets/ch11/` 中的图源，旧 `ch11-loop-engineering.md` 仅作重构前版本留存。
+- 已将 Loop Engineering 重构为主线教材式文章，并补充人的责任闭环及两张手绘风原创技术图；配图同时提供 SVG 与 Draw.io 可编辑格式，并保存在 `assets/ch11/`。
 - 已将 Anthropic 官方 Loop 四分类及其微信公众号中文整理中的新增视角并入新版第 15 章，包括控制权移交、Routine/Task 双层生命周期和成本运行策略。
 - 将 `source/hello-agents` 的内容并入学习指南、来源覆盖说明和融合教材。
 - 将 `source/ai-agents-in-action-2nd-edition-cn` 作为第 10 个来源纳入；原书第 1、8 章按用户决定不进入主教材，其余章节去重后融入对应主题。
+- 已删除重构前的旧版第 2-14 章文件；`docs/merged-agent-course/` 只保留课程目录列出的新版 20 章。
 
 下一步建议：
 
 - 从教材目录中第一章“待 Review”的章节继续逐章 Review、勘误和深度补充；只有用户确认后才修改目录状态。
-- 20 章全部 Review 后，再决定是否把旧版第 2-14 章文件迁入 `legacy/`。
 - 教材确认到可实践阶段后，按第 20 章选择综合项目方向并实现最小 Agent Loop 实验。
