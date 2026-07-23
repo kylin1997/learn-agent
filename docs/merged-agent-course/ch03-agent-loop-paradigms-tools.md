@@ -413,6 +413,19 @@ lock_key = tool.resource_key(call.arguments)  # 例如 workspace:file:path
 
 自动压缩通常是服务；“把这段对话总结成用户指定文档”才是工具。把内部机制全暴露为工具会增加选择噪声、状态污染和越权风险。
 
+### 3.10.1 代码是一种可以创造工具的元能力
+
+对开放任务，预先枚举所有工具既昂贵也不现实。代码执行让 Agent 能临时组合 API、转换数据、验证公式、生成工件，甚至为当前任务创建一个窄而明确的新工具。因此代码不只是“写软件”的业务能力，也是一种**元能力**：它能够创建新的执行方法和可验证约束。
+
+这种能力适合两类问题：
+
+- 路径开放但结果可验证，例如数据清洗、格式转换、统计计算和批量文件处理。
+- 现有工具缺少最后一段适配逻辑，但可以在隔离环境中用短脚本补齐。
+
+它不意味着 Agent 应在每次任务中自由生成并运行任意代码。临时代码必须进入与普通工具相同的治理链：明确输入与输出、限制文件和网络、设置 CPU/内存/时长预算、记录代码与依赖、在执行后验证结果。稳定复用的脚本应晋升为第 10 章的版本化 Skill 或正式工具，而不是长期依赖不可追踪的现场生成。
+
+代码还可以把自然语言规则编译成断言、类型约束、测试或校验器。此时模型负责理解和翻译意图，确定性运行时负责执行规则。真正的价值不是“代码看起来更聪明”，而是把精确计算、过程约束和结果验证移出概率性文本生成。
+
 ## 3.11 最小实现：带治理的循环
 
 下面的伪代码保留关键边界：
@@ -600,6 +613,8 @@ User Goal
 - [Harness Engineering：工具系统](../../source/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch02.md)
 - [Harness Engineering：Agent Loop](../../source/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch03.md)
 - [Claude Code 分析：Tool Call 机制](../../source/claude-code-analysis/analysis/04b-tool-call-implementation.md)
+- [深入理解 AI Agent：第 4 章 工具](../../source/ai-agent-book/book/chapter4.md)
+- [深入理解 AI Agent：第 5 章 Coding Agent 与代码生成](../../source/ai-agent-book/book/chapter5.md)
 
 ### 论文与官方资料
 

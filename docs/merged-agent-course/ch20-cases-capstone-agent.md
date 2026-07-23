@@ -648,7 +648,7 @@ project-evidence-agent/
 
 ### 里程碑 8：生产化与产品迭代
 
-**实现**：第 19 章的 RuntimeManifest、SLI/SLO、成本归因、隐私观测、灰度和反馈闭环。
+**实现**：第 18 章的 RuntimeManifest、SLI/SLO、成本归因、隐私观测、灰度和反馈闭环。
 
 **验收**：任一 run 可回溯版本、Claim-Evidence 图、授权和操作日志；灰度版本可回滚；默认 trace 无原始项目内容；成本、关键路径延迟、累计工作时长和 eligible-run SLO 可按版本比较。
 
@@ -919,3 +919,4 @@ Autonomy grows only after evidence, safety and recovery gates pass.
 - [Hermes：测试](../../source/hermes-book/src/part6/ch22-testing.md)
 - [Claude Code Analysis：架构总览](../../source/claude-code-analysis/analysis/01-architecture-overview.md)
 - [hello-claw：真实场景评审](../../source/hello-claw/docs/cn/adopt/lobster-review.md)
+- [深入理解 AI Agent：第 5 章 Coding Agent 与生成式应用案例](../../source/ai-agent-book/book/chapter5.md)

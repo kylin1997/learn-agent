@@ -135,9 +135,9 @@ Loop Engineering
 
 Agent Loop 是执行机制，Harness 是运行环境，Loop Engineering 是反馈与控制系统。
 
-![Loop Engineering 的控制层级](assets/ch11/loop-engineering-control-layers.svg)
+![Loop Engineering 的控制层级](assets/ch15/loop-engineering-control-layers.svg)
 
-[可编辑 Draw.io 源文件](assets/ch11/loop-engineering-control-layers.drawio)
+[可编辑 Draw.io 源文件](assets/ch15/loop-engineering-control-layers.drawio)
 
 上图最重要的不是模块数量，而是控制关系：Agent Loop 位于 Harness 内部，Harness 位于目标与反馈闭环内部，而人的治理覆盖目标、权限、验证和最终责任。
 
@@ -705,9 +705,9 @@ Agent 可以执行任务，不能承担组织、法律、安全和价值层面�
 
 这三种模式不是成熟度排行榜。高风险付款系统即使技术成熟，也可能长期需要 Human-in-the-loop；低风险 lint 修复则可以很快转向 Human-on-the-loop。
 
-![人在 Loop Engineering 中的三种治理位置](assets/ch11/human-governance-roles.svg)
+![人在 Loop Engineering 中的三种治理位置](assets/ch15/human-governance-roles.svg)
 
-[可编辑 Draw.io 源文件](assets/ch11/human-governance-roles.drawio)
+[可编辑 Draw.io 源文件](assets/ch15/human-governance-roles.drawio)
 
 图中的三种关系可以同时存在：Human-over 设计规则，Human-on 监督运行，Human-in 处理关键判断。它们不是成熟度阶梯，而是根据任务风险组合使用的治理位置。
 
@@ -1184,7 +1184,7 @@ Loop Engineering 把前后章节中的能力组织成反馈系统：
 
 第 13 章回答“消息从哪里进入、是谁、去哪里”；第 14 章回答“什么时候运行、如何可靠执行和投递”；第 15 章回答“为什么继续、如何证明完成、人在何处负责”；第 16 章回答“由谁分工执行和检查”；第 17-19 章回答“如何长期评测、演进和生产化整套系统”。
 
-## 系统地图
+## 15.21 系统地图
 
 ```text
                          HUMAN GOVERNANCE
@@ -1215,7 +1215,7 @@ TRIGGER -> DISCOVER -> PLAN -> PREPARE ------------------------+
 
 这张图中，人不再逐步操纵 Agent，但仍然位于目标、权限、验证、抽查和责任层。把人从重复执行中移开，不等于把人从系统中删除。
 
-## 共同结论
+## 15.22 共同结论
 
 1. Loop Engineering 不是 Agent Loop 的扩展，而是围绕一次或多次执行建立的反馈控制系统。
 2. Loop 的价值不在重复，而在外部反馈能够拒绝错误并改变下一步。
@@ -1229,7 +1229,7 @@ TRIGGER -> DISCOVER -> PLAN -> PREPARE ------------------------+
 10. 生产轨迹应持续转化为 Eval、规则和新的安全边界。
 11. 内部 SPAL、外部 Task Loop 与 Meta Loop 控制不同时间尺度；Loop Engineering 的重点是后两者中的跨运行反馈与治理。
 
-## 本章自检
+## 15.23 本章自检
 
 1. 为什么 Agent Loop 已经存在，仍然需要 Loop Engineering？
 2. Harness 与 Loop Engineering 的边界为什么不应按运行时长划分？
@@ -1242,7 +1242,7 @@ TRIGGER -> DISCOVER -> PLAN -> PREPARE ------------------------+
 9. 哪些迹象说明团队正在积累 Comprehension Debt？
 10. 为什么 Schedule 应该是实施 Loop 的最后一步？
 
-## 开放性问题
+## 15.24 开放性问题
 
 1. 如果一个任务的验收标准本身需要模型判断，如何防止 Loop 学会迎合 Verifier，而不是真正改善结果？
 2. Maker 和 Checker 使用同一种模型、不同上下文，与使用不同模型相比，独立性究竟来自哪里？
@@ -1257,7 +1257,7 @@ TRIGGER -> DISCOVER -> PLAN -> PREPARE ------------------------+
 11. 对一个长期运行的 Routine，外层总预算与内层 Task 预算应如何分配？当单项任务完成、失败或耗尽预算时，两层各自应该继续、暂停还是停止？
 12. 当类型化迭代结果中的 `goal_satisfied` 与硬验证冲突时，控制器应怎样记录并利用这种分歧？
 
-## 原文入口
+## 15.25 原文入口
 
 ### 用户提供的三篇核心文章
 

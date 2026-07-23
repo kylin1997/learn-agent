@@ -292,7 +292,7 @@ Cron 和后台 worker 此时都不是 Gateway 最小实现的一部分。
 
 验收不是“两个渠道都能聊天”，而是任何输入都能解释其认证、身份、租户、Agent 和 session 决策，且负向隔离测试持续通过。
 
-## 系统地图
+## 13.14 系统地图
 
 ```text
 External Platform / Web / CLI
@@ -312,7 +312,7 @@ Cross-cutting:
   Dedupe | Rate Limit | Audit | Privacy | Config Version | Isolation
 ```
 
-## 共同结论
+## 13.15 共同结论
 
 1. Gateway 是入口控制面，不只是消息转发器。
 2. Adapter 统一平台语义，Identity Resolver 统一主体，Session Resolver 隔离工作现场，Router 选择能力与信任域；四者不能混成一个函数。
@@ -321,7 +321,7 @@ Cross-cutting:
 5. 多租户隔离要落到存储、凭证、工作区和审计，不能只写在 Prompt 中。
 6. Gateway 应在边缘拒绝伪造身份、重放和超限输入，不能把控制面安全交给模型判断。
 
-## 本章自检
+## 13.16 本章自检
 
 1. Channel Adapter、Identity Resolver、Agent Router 和 Session Resolver 分别负责什么？
 2. 为什么 `identityLinks` 不应自动导致跨平台共享会话？
@@ -331,7 +331,7 @@ Cross-cutting:
 6. 如何证明一条消息没有被路由到错误租户或错误 Agent？
 7. 为什么 Gateway 已接收不等于任务已完成？
 
-## 开放性问题
+## 13.17 开放性问题
 
 1. 跨平台规范身份应由用户自证、管理员关联还是风险模型建议？撤销链接后历史记忆如何处理？
 2. 一个用户同时属于个人租户与企业租户时，哪些偏好可以共享，哪些必须物理隔离？
@@ -342,7 +342,7 @@ Cross-cutting:
 7. 对互不信任的客户，逻辑多租户何时足够，何时必须拆分 Gateway、主机和凭证？
 8. 渠道能力降级导致交互确认丢失时，系统应该拒绝发送、转为文本确认还是切换渠道？
 
-## 原文入口
+## 13.18 原文入口
 
 ### 本地教程与实现
 

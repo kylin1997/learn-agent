@@ -1,19 +1,20 @@
 # Agent 学习指南
 
-本指南说明如何使用本工程完成系统学习。主线教材已经融合 `source/` 下 10 个来源工程中的可迁移知识；学习者不需要按来源目录逐份通读。
+本指南说明如何使用本工程完成系统学习。主线教材已经融合 `source/` 下 11 个来源工程中的可迁移知识；学习者不需要按来源目录逐份通读。
 
 ## 学习目标
 
 学习的终点不是记住框架 API，而是能够设计、实现和验证一个具备以下能力的综合 Agent：
 
 - Agent Loop、工具调用和停止控制
-- Prompt Runtime、模型路由和调用可靠性
-- 会话、状态、上下文、长期记忆和 RAG
+- 提示工程、Prompt Runtime、模型路由和调用可靠性
+- 会话、状态、上下文、记忆和外部知识
 - 权限、沙箱、隐私和审批边界
 - Skills、插件和互操作协议
+- 多模态、实时交互和数字行动环境
 - Gateway、后台任务、Cron 和可靠投递
 - Loop Engineering、多 Agent 和任务协作
-- 测试、评测、可观测性和产品迭代
+- 测试、评测、可观测性、产品迭代和受控进化
 
 ## 工程资料怎么使用
 
@@ -117,45 +118,46 @@
 - 能解释模型能力与系统授权为什么必须分离。
 - Agent 在工具失败、参数错误和循环超限时能够可控退出。
 
-## 阶段二：建立稳定的认知运行时
+## 阶段二：建立模型与信息运行时
 
 主读：
 
-4. [Prompt Engineering 与 Prompt Runtime](merged-agent-course/ch04-prompt-engineering-runtime.md)
+4. [提示工程：指令设计与行为控制](merged-agent-course/ch04-prompt-engineering.md)
 5. [模型运行时、路由与调用可靠性](merged-agent-course/ch05-model-runtime-routing-reliability.md)
 6. [会话、状态与上下文工程](merged-agent-course/ch06-session-state-context-engineering.md)
-7. [长期记忆系统](merged-agent-course/ch07-long-term-memory.md)
-8. [RAG 与外部知识系统](merged-agent-course/ch08-rag-knowledge-systems.md)
+7. [记忆与外部知识系统](merged-agent-course/ch07-memory-knowledge-systems.md)
 
 核心问题：
 
-- Prompt 如何从一段文本变成运行时契约和装配系统。
+- Prompt 如何把任务、约束、工具和输出要求表达为可测试的行为契约。
 - 模型选择、重试、降级和结构化输出如何影响可靠性。
-- 会话记录、执行状态、模型上下文和长期记忆分别保存什么。
+- Prompt Runtime 如何按信任级别和任务阶段动态装配上下文，同时保持缓存稳定。
+- 会话记录、执行状态、模型上下文、长期记忆和外部知识分别保存什么。
 - Agent 如何选择当前需要的信息，并说明选择和丢弃原因。
-- 长期记忆与外部知识库如何更新、召回、去重和遗忘。
+- 记忆与外部知识为何不能混成一个无边界向量库，又如何共享检索和重排能力。
 
 实践产物：
 
 - Prompt Assembler 和 Provider Router。
 - 追加式事件日志、状态归约、检查点和恢复流程。
 - 可记录选择理由的 Context Builder。
-- 长期记忆召回和带证据的 RAG 原型。
+- 分离存储、统一检索的长期记忆与外部知识原型。
 
 完成标准：
 
 - Agent 重启后可以恢复任务，而不是依赖聊天摘要猜测状态。
 - 模型调用失败时有明确重试、降级和终止策略。
-- 每条长期记忆和知识结论都能追溯来源、版本和更新时间。
+- 每条记忆和知识结论都能追溯来源、作用域、版本和更新时间。
 
-## 阶段三：加入框架、治理与扩展能力
+## 阶段三：加入架构、治理与行动能力
 
 主读：
 
-9. [Agent 框架与应用编排](merged-agent-course/ch09-agent-frameworks-orchestration.md)
-10. [权限、安全、沙箱与隐私治理](merged-agent-course/ch10-security-permission-sandbox-privacy.md)
-11. [Skills 与插件系统](merged-agent-course/ch11-skills-plugins.md)
-12. [MCP、A2A、ANP 与 Agent 互操作](merged-agent-course/ch12-agent-interoperability.md)
+8. [Agent 框架与应用编排](merged-agent-course/ch08-agent-frameworks-orchestration.md)
+9. [权限、安全、沙箱与隐私治理](merged-agent-course/ch09-security-permission-sandbox-privacy.md)
+10. [Skills 与插件系统](merged-agent-course/ch10-skills-plugins.md)
+11. [MCP、A2A、ANP 与 Agent 互操作](merged-agent-course/ch11-agent-interoperability.md)
+12. [多模态、实时交互与行动环境](merged-agent-course/ch12-multimodal-realtime-action-environments.md)
 
 核心问题：
 
@@ -163,6 +165,7 @@
 - 权限判断应该位于工具执行链的什么位置。
 - Tool、Skill、Plugin 和协议提供的远程能力有什么边界。
 - 外部内容、工具结果和跨 Agent 消息如何穿过信任边界。
+- 语音和 Computer Use 为什么需要事件、打断、取消、延迟与动作确认协议，而不只是换一种输入输出格式。
 
 实践产物：
 
@@ -170,12 +173,14 @@
 - 权限结果模型、审批门和最小沙箱策略。
 - 一个标准 Skill 和一个 MCP 工具接入示例。
 - 外部输入的来源标记、参数校验和审计日志。
+- 一个支持流式事件、用户打断和可撤销动作的最小交互环境。
 
 完成标准：
 
 - 高风险副作用必须经过可追溯授权。
 - Skill 和协议能力可以独立启停，不侵入 Agent 核心循环。
 - 不可信内容不能直接改变系统权限、工具策略或长期记忆。
+- 实时交互被打断或行动环境变化后，系统能够取消旧动作、重新观察并恢复到可信状态。
 
 ## 阶段四：走向常驻运行和多 Agent
 
@@ -207,27 +212,28 @@
 - 系统能够识别无进展、预算耗尽和验证失败并停止。
 - 多 Agent 的引入有质量、延迟或隔离方面的证据。
 
-## 阶段五：评测、进化与生产化
+## 阶段五：评测、生产化与受控进化
 
 主读：
 
 17. [Agent 测试、评测与基准体系](merged-agent-course/ch17-agent-testing-evaluation-benchmarks.md)
-18. [Agent 自进化与后训练](merged-agent-course/ch18-agent-self-evolution-post-training.md)
-19. [生产工程、可观测性与产品迭代](merged-agent-course/ch19-production-observability-product-iteration.md)
+18. [生产工程、可观测性与产品迭代](merged-agent-course/ch18-production-observability-product-iteration.md)
+19. [Agent 自进化与后训练](merged-agent-course/ch19-agent-self-evolution-post-training.md)
 20. [代表案例与综合 Agent 项目](merged-agent-course/ch20-cases-capstone-agent.md)
 
 核心问题：
 
 - 如何评测轨迹、工具使用、恢复能力和最终结果。
-- Prompt、Skill、Memory 或模型更新需要什么证据和回滚机制。
 - Trace、Metric、Log 和用户反馈分别回答什么问题。
+- 生产运行如何把评测结论落实为灰度、监控、SLO、恢复和回滚。
+- Prompt、Skill、Memory、Workflow 或模型更新需要什么证据和发布门禁。
 - 综合 Agent 如何从实验进入可维护、可运营的产品状态。
 
 实践产物：
 
 - 冻结的回归任务集和分层测试方案。
-- 可撤销的 Prompt、Skill 或 Memory 改进实验。
 - 运行仪表、成本与延迟基线、版本和发布策略。
+- 可撤销的 Prompt、Skill、Memory、Workflow 或模型改进实验。
 - 第 20 章定义的综合 Agent 项目。
 
 完成标准：
@@ -243,10 +249,10 @@
 | 阶段 | 增量 |
 | --- | --- |
 | 一 | 本地只读 Agent Loop 和工具执行 |
-| 二 | Prompt、模型路由、状态、上下文、记忆和 RAG |
-| 三 | 框架编排、权限、沙箱、Skills 和 MCP |
+| 二 | 提示、模型路由、状态、上下文、记忆和外部知识 |
+| 三 | 框架编排、权限、Skills、协议、实时交互和行动环境 |
 | 四 | Gateway、后台任务、可靠投递、可信 Loop 和多 Agent |
-| 五 | 评测、自进化、可观测性和产品化验收 |
+| 五 | 评测、生产观测、受控进化和产品化验收 |
 
 实现细节和最终里程碑以[第 20 章](merged-agent-course/ch20-cases-capstone-agent.md)为准。
 

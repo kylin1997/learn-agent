@@ -107,7 +107,7 @@ class PreparedModelRequest:
 relevant_tool_ids ⊆ authorized_tool_ids
 ```
 
-Router 只依赖这份模型无关的语义声明和 Registry，不依赖已经为某个模型渲染的 Prompt。选出 Route 后，Prompt Runtime 才根据确定的能力组装消息、输出 Schema 和相关工具，形成 `PreparedModelRequest`。这与第 4 章的两阶段协议一致，也避免 Prompt 与路由互相等待。
+Router 只依赖这份模型无关的语义声明和 Registry，不依赖已经为某个模型渲染的 Prompt。选出 Route 后，Prompt Runtime 才根据确定的能力组装消息、输出 Schema 和相关工具，形成 `PreparedModelRequest`。这与第 6 章的两阶段装配协议一致，也避免 Prompt 与路由互相等待。
 
 `caller` 表示谁发起调用，例如 `main_chat`、`compact`、`memory_extract`、`permission_classify`、`review`、`subagent`。它是成本归因和路由策略的关键字段。`effect_class` 则是恢复策略的硬输入：只要请求允许服务端工具或 PTC，就不能标成 `pure_generation`。
 

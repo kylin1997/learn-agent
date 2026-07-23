@@ -208,6 +208,10 @@ delivery worker -> send -> mark provider_accepted
 
 错误对象应携带 `retryable`、`retry_after`、`provider`、`operation` 和安全的诊断信息，使恢复策略由结构化信号驱动。
 
+对 Agent 运行，还要从位置上区分 API 层、工具层、上下文层和控制流层故障。限流与网络抖动可能原样重试；参数错误和权限拒绝必须改变输入或升级；上下文溢出与工具消息不配对需要修复上下文；重复相同工具指纹、恢复逻辑再次调用模型而形成的死亡螺旋，则必须由循环熔断和全局上限停止。错误路径上的辅助功能应尽量不再次调用模型，否则“恢复失败”本身会成为新的故障源。
+
+长流还需要独立的活性看门狗。连接仍然存在不代表系统仍有进展；超过空闲阈值没有新事件时，应终止挂起调用并按幂等与副作用状态决定恢复方式。产品运行可以用占位事件修补不完整轨迹以继续服务，但训练数据和金标资产不能悄悄接受这种合成修补。
+
 ## 14.9 退避、抖动与重试预算
 
 指数退避的一个常见形式是：
@@ -351,7 +355,7 @@ STARTING
 
 在任务运行、Cron claim、结果提交和投递各阶段随机杀死进程，再启动恢复。验收标准不是“没有异常日志”，而是：没有任务无声丢失，没有不可解释重复副作用，没有跨 lane 串线，所有不确定结果都进入可见状态。
 
-## 系统地图
+## 14.17 系统地图
 
 ```text
 Gateway / API / Event / Clock
@@ -372,7 +376,7 @@ Runtime controls:
   Cancellation | Recovery Scan | Metrics | Audit | Backpressure
 ```
 
-## 共同结论
+## 14.18 共同结论
 
 1. 调度、执行和投递是三个状态机，不能用一个完成标记代替。
 2. Cron 负责按时间产生工作，heartbeat 负责周期巡检；二者都不天然构成目标反馈 Loop。
@@ -381,7 +385,7 @@ Runtime controls:
 5. Lane 同时表达顺序、公平和资源边界；同 session 串行、跨 session 并行、全局再限流。
 6. 韧性不是“永不失败”，而是失败可见、状态可恢复、副作用不失控、系统能有界降级。
 
-## 本章自检
+## 14.19 本章自检
 
 1. 为什么 Cron 触发成功、Agent 执行成功和消息投递成功必须分开记录？
 2. Heartbeat 与 Cron 的触发语义有什么区别？
@@ -392,7 +396,7 @@ Runtime controls:
 7. Session lane 与 global lane 分别保护什么？
 8. 如何通过故障注入证明系统可恢复？
 
-## 开放性问题
+## 14.20 开放性问题
 
 1. 当一次外部写调用超时且无法回读时，系统应该自动重试、请求人工确认还是标记为不确定？
 2. Cron 错过 100 个时间槽时，如何根据业务语义选择跳过、合并或补齐，而不是只看技术配置？
@@ -404,7 +408,7 @@ Runtime controls:
 8. 死信重放时，原任务代码、Prompt 或权限策略已经升级，应按旧版本还是新版本执行？
 9. 当重试成本高于任务价值时，系统如何自动计算并停止恢复？
 
-## 原文入口
+## 14.21 原文入口
 
 ### 本地教程与实现
 
@@ -424,6 +428,8 @@ Runtime controls:
 - [Hermes：测试](../../source/hermes-book/src/part6/ch22-testing.md)
 - [hello-claw：架构总览中的泳道、heartbeat 与分层容错](../../source/hello-claw/docs/cn/build/chapter1/index.md)
 - [hello-claw：消息循环](../../source/hello-claw/docs/cn/build/chapter5/index.md)
+- [深入理解 AI Agent：第 4 章 事件驱动与异步 Agent](../../source/ai-agent-book/book/chapter4.md)
+- [深入理解 AI Agent：第 5 章 故障检测、恢复与终止](../../source/ai-agent-book/book/chapter5.md)
 
 ### 延伸资料
 

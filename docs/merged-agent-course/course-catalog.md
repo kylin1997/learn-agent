@@ -1,6 +1,6 @@
 # 融合版 Agent 教材目录
 
-本目录保存基于 `source/` 下 10 份教程融合重写的 Agent 教材。教材按可迁移的知识主题组织，不按来源工程逐章摘抄。
+本目录保存基于 `source/` 下 11 份教程融合重写的 Agent 教材。教材按可迁移的知识主题组织，不按来源工程逐章摘抄。
 
 - 学习方法与阶段安排见[《Agent 学习指南》](../agent-learning-guide.md)。
 - 来源合并关系和覆盖结论见[《来源覆盖说明》](../source-coverage.md)。
@@ -17,36 +17,33 @@
 2. [大语言模型基础与模型行为](ch02-llm-foundations-model-behavior.md)（待 Review）
 3. [Agent Loop、经典范式与工具运行时](ch03-agent-loop-paradigms-tools.md)（待 Review）
 
-## 第二篇：运行时与知识
+## 第二篇：模型与信息运行时
 
-4. [Prompt Engineering 与 Prompt Runtime](ch04-prompt-engineering-runtime.md)（待 Review）
+4. [提示工程：指令设计与行为控制](ch04-prompt-engineering.md)（待 Review）
 5. [模型运行时、路由与调用可靠性](ch05-model-runtime-routing-reliability.md)（待 Review）
-6. [会话、状态与上下文工程](ch06-session-state-context-engineering.md)（已 Review）
-7. [长期记忆系统](ch07-long-term-memory.md)（待 Review）
-8. [RAG 与外部知识系统](ch08-rag-knowledge-systems.md)（待 Review）
+6. [会话、状态与上下文工程](ch06-session-state-context-engineering.md)（待 Review）
+7. [记忆与外部知识系统](ch07-memory-knowledge-systems.md)（待 Review）
 
-## 第三篇：框架与应用编排
+## 第三篇：架构、治理与行动
 
-9. [Agent 框架与应用编排](ch09-agent-frameworks-orchestration.md)（待 Review）
+8. [Agent 框架与应用编排](ch08-agent-frameworks-orchestration.md)（待 Review）
+9. [权限、安全、沙箱与隐私治理](ch09-security-permission-sandbox-privacy.md)（待 Review）
+10. [Skills 与插件系统](ch10-skills-plugins.md)（待 Review）
+11. [MCP、A2A、ANP 与 Agent 互操作](ch11-agent-interoperability.md)（待 Review）
+12. [多模态、实时交互与行动环境](ch12-multimodal-realtime-action-environments.md)（待 Review）
 
-## 第四篇：治理与扩展
-
-10. [权限、安全、沙箱与隐私治理](ch10-security-permission-sandbox-privacy.md)（待 Review）
-11. [Skills 与插件系统](ch11-skills-plugins.md)（待 Review）
-12. [MCP、A2A、ANP 与 Agent 互操作](ch12-agent-interoperability.md)（待 Review）
-
-## 第五篇：常驻运行与多 Agent
+## 第四篇：常驻运行与多 Agent
 
 13. [Gateway、多渠道、身份与路由](ch13-gateway-channel-identity-routing.md)（待 Review）
 14. [后台任务、Cron、投递与运行时韧性](ch14-background-cron-delivery-resilience.md)（待 Review）
 15. [Loop Engineering：从单次循环到可持续执行系统](ch15-loop-engineering.md)（待 Review）
 16. [多 Agent、任务系统与团队协作](ch16-multi-agent-task-team.md)（待 Review）
 
-## 第六篇：评测、进化与生产
+## 第五篇：质量、生产与进化
 
 17. [Agent 测试、评测与基准体系](ch17-agent-testing-evaluation-benchmarks.md)（待 Review）
-18. [Agent 自进化与后训练](ch18-agent-self-evolution-post-training.md)（待 Review）
-19. [生产工程、可观测性与产品迭代](ch19-production-observability-product-iteration.md)（待 Review）
+18. [生产工程、可观测性与产品迭代](ch18-production-observability-product-iteration.md)（待 Review）
+19. [Agent 自进化与后训练](ch19-agent-self-evolution-post-training.md)（待 Review）
 20. [代表案例与综合 Agent 项目](ch20-cases-capstone-agent.md)（待 Review）
 
 ## 内容边界

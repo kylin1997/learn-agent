@@ -226,7 +226,7 @@ Agent 适合路径难以穷举、反馈会改变下一步、任务需要语义�
 
 ## 1.8 Model 与 Harness
 
-`learn-claude-code` 提出一个鲜明观点：感知、推理和行动选择的通用能力来自模型训练，大多数应用开发者实际构建的是 Harness。这个观点能纠正“堆更多节点就能编码出智能”的误区，但需要加上工程边界。
+`learn-claude-code` 提出一个鲜明观点：感知、推理和行动选择的通用能力来自模型训练，大多数应用开发者实际构建的是 Harness。第 11 个来源用 `Agent = LLM + 上下文 + 工具` 表达相近主张；本课程把状态、权限、反馈、恢复和评测也纳入 Harness，因此采用覆盖面更完整的 `Agent Product = Model + Harness`。这个观点能纠正“堆更多节点就能编码出智能”的误区，但需要加上工程边界。
 
 ### 1.8.1 模型负责什么
 
@@ -342,7 +342,7 @@ OpenClaw 和 `claw0` 展示了另一种增量路径：在 Agent 内核之外逐�
 
 ## 1.13 本课程综合得到的结论
 
-九个来源的证据地位不同。下面六条是本课程把理论主线、工程主线和案例证据合并后得到的判断，不表示每个来源都逐条提出了相同主张。
+十一个来源的证据地位不同。下面六条是本课程把理论主线、工程主线和案例证据合并后得到的判断，不表示每个来源都逐条提出了相同主张。
 
 1. Agent 必须放在环境中理解。脱离目标、观察和行动谈 Agent，只剩产品标签。
 2. 自主性体现为决策权的分配，而且可以按行动风险分级。
@@ -373,7 +373,7 @@ OpenClaw 和 `claw0` 展示了另一种增量路径：在 Agent 内核之外逐�
 5. 在一个混合系统中，怎样证明某个步骤确实需要 Agent，而不是可以改成更便宜、更稳定的 Workflow？
 6. 人把多少决策权交给 Agent，取决于模型能力，还是取决于验证器和损失上限？
 
-## 原文入口
+## 1.16 原文入口
 
 ### 本地主要来源
 
@@ -393,6 +393,7 @@ OpenClaw 和 `claw0` 展示了另一种增量路径：在 Agent 内核之外逐�
 - [easy-langent：LangChain 与 LangGraph 的边界](../../source/easy-langent/docs/guide/chapter1.md)
 - [Harness Engineering：AI 编码 Agent 技术栈](../../source/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch01.md)
 - [Claude Code Analysis：软件架构与程序入口](../../source/claude-code-analysis/analysis/01-architecture-overview.md)
+- [深入理解 AI Agent：第 1 章 Agent 基础知识](../../source/ai-agent-book/book/chapter1.md)
 
 ### 外部补充
 
@@ -400,6 +401,6 @@ OpenClaw 和 `claw0` 展示了另一种增量路径：在 Agent 内核之外逐�
 - [OpenAI：A Practical Guide to Building AI Agents](https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/)
 - [Google Cloud：What Are AI Agents?](https://cloud.google.com/discover/what-are-ai-agents)
 
-## 本章在全书中的位置
+## 1.17 本章在全书中的位置
 
 本章回答了“Agent 是什么、为什么需要 Harness”。下一章进入大语言模型基础，解释 LLM 为什么能成为通用决策核心，也解释它的概率性、上下文限制和幻觉为何会塑造整个 Agent 工程。
