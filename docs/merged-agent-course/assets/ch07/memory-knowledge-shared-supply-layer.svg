@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">两个系统，一个共享供给层</title>
+  <desc id="desc">长期记忆与外部知识分别写入、治理并保存在各自权威存储中。通过独立授权过滤后，它们共享混合检索、重排和上下文供给能力，再将可引用证据交给模型。</desc>
+  <defs>
+    <filter id="rough-box" x="-3%" y="-5%" width="106%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.035" numOctaves="2" seed="31" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.15" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="rough-title" x="-2%" y="-15%" width="104%" height="130%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02 0.06" numOctaves="1" seed="17" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.7" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <marker id="arrow-memory" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 L10 4 L0 8 Z" fill="#23806f"/>
+    </marker>
+    <marker id="arrow-knowledge" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 L10 4 L0 8 Z" fill="#3478b8"/>
+    </marker>
+    <marker id="arrow-shared" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 L10 4 L0 8 Z" fill="#9a6b12"/>
+    </marker>
+    <marker id="arrow-control" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 L10 4 L0 8 Z" fill="#b55353"/>
+    </marker>
+    <style>
+      text {
+        font-family: "Kaiti SC", "STKaiti", "KaiTi", "PingFang SC", "Microsoft YaHei", sans-serif;
+        letter-spacing: 0;
+      }
+      .title { font-size: 34px; font-weight: 700; fill: #172033; }
+      .subtitle { font-size: 17px; fill: #526071; }
+      .section { font-size: 22px; font-weight: 700; fill: #172033; }
+      .section-note { font-size: 14px; fill: #536171; }
+      .node-title { font-size: 19px; font-weight: 700; fill: #172033; }
+      .body { font-size: 15px; fill: #344255; }
+      .small { font-size: 13px; fill: #536171; }
+      .micro { font-size: 12px; fill: #647184; }
+      .boundary {
+        stroke-width: 2.2;
+        stroke-dasharray: 10 7;
+        stroke-linejoin: round;
+        fill-opacity: 0.58;
+        filter: url(#rough-box);
+      }
+      .box {
+        stroke-width: 2.1;
+        stroke-linejoin: round;
+        filter: url(#rough-box);
+      }
+      .memory-edge {
+        fill: none;
+        stroke: #23806f;
+        stroke-width: 2.5;
+        stroke-linecap: butt;
+        stroke-linejoin: miter;
+        marker-end: url(#arrow-memory);
+      }
+      .knowledge-edge {
+        fill: none;
+        stroke: #3478b8;
+        stroke-width: 2.5;
+        stroke-linecap: butt;
+        stroke-linejoin: miter;
+        marker-end: url(#arrow-knowledge);
+      }
+      .shared-edge {
+        fill: none;
+        stroke: #9a6b12;
+        stroke-width: 2.5;
+        stroke-linecap: butt;
+        stroke-linejoin: miter;
+        marker-end: url(#arrow-shared);
+      }
+      .control-dashed-edge {
+        fill: none;
+        stroke: #c36b6b;
+        stroke-width: 2.2;
+        stroke-dasharray: 8 6;
+        stroke-linecap: butt;
+        stroke-linejoin: miter;
+        marker-end: url(#arrow-control);
+      }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1000" fill="#fffdf8"/>
+
+  <g filter="url(#rough-title)">
+    <text x="800" y="52" text-anchor="middle" class="title">两个系统，一个共享供给层</text>
+    <path d="M570 65 C710 62, 890 68, 1030 64" fill="none" stroke="#d39a2f" stroke-width="3.2" stroke-linecap="round"/>
+  </g>
+  <text x="800" y="88" text-anchor="middle" class="subtitle">长期记忆与外部知识分别治理，只在授权之后共享检索、排序和上下文装配能力</text>
+
+  <!-- Independent governance boundaries -->
+  <rect x="50" y="115" width="700" height="370" rx="13" fill="#eef9f6" stroke="#55a997" class="boundary"/>
+  <rect x="850" y="115" width="700" height="370" rx="13" fill="#eff6fd" stroke="#79aee0" class="boundary"/>
+
+  <text x="82" y="153" class="section">长期记忆系统</text>
+  <text x="82" y="178" class="section-note">从交互中形成未来可复用的用户与项目模型</text>
+  <path d="M82 187 H237" fill="none" stroke="#23806f" stroke-width="3" stroke-linecap="round" filter="url(#rough-title)"/>
+
+  <text x="882" y="153" class="section">外部知识系统</text>
+  <text x="882" y="178" class="section-note">从注册来源发布当前可验证、可追溯的事实</text>
+  <path d="M882 187 H1037" fill="none" stroke="#3478b8" stroke-width="3" stroke-linecap="round" filter="url(#rough-title)"/>
+
+  <!-- Memory write path -->
+  <rect x="80" y="210" width="185" height="110" rx="9" fill="#dff4ee" stroke="#4f9f8e" class="box"/>
+  <text x="172.5" y="241" text-anchor="middle" class="node-title">交互 / 任务证据</text>
+  <text x="172.5" y="269" text-anchor="middle" class="body">用户表达 · 工具结果</text>
+  <text x="172.5" y="294" text-anchor="middle" class="body">工件 · 人工确认</text>
+  <text x="172.5" y="312" text-anchor="middle" class="micro">原始证据不是记忆结论</text>
+
+  <rect x="310" y="195" width="205" height="140" rx="9" fill="#ccebe2" stroke="#3f927f" class="box"/>
+  <text x="412.5" y="230" text-anchor="middle" class="node-title">记忆写入治理</text>
+  <text x="412.5" y="260" text-anchor="middle" class="body">Gate · Extract · Verify</text>
+  <text x="412.5" y="285" text-anchor="middle" class="body">Reconcile · Commit</text>
+  <text x="412.5" y="312" text-anchor="middle" class="small">同意 · 作用域 · 置信度</text>
+
+  <rect x="560" y="195" width="160" height="140" rx="9" fill="#b9dfd5" stroke="#23806f" class="box"/>
+  <rect x="572" y="207" width="136" height="116" rx="6" fill="none" stroke="#23806f" stroke-width="1.3" stroke-dasharray="5 4" filter="url(#rough-box)"/>
+  <text x="640" y="232" text-anchor="middle" class="node-title">权威记忆存储</text>
+  <text x="640" y="264" text-anchor="middle" class="body">typed record</text>
+  <text x="640" y="289" text-anchor="middle" class="body">evidence + scope</text>
+  <text x="640" y="314" text-anchor="middle" class="small">版本 · 冲突 · 遗忘</text>
+
+  <path d="M265 265 H310" class="memory-edge"/>
+  <path d="M515 265 H560" class="memory-edge"/>
+
+  <rect x="80" y="365" width="430" height="88" rx="8" fill="#f7fffc" stroke="#87bfb3" class="box"/>
+  <text x="103" y="394" class="node-title">独立治理边界</text>
+  <text x="103" y="420" class="body">同意 · 主体与用途 · 巩固 · 冲突 · 遗忘</text>
+  <text x="103" y="443" class="small">权威依据：原始事件、确认记录、工件证据</text>
+
+  <!-- Knowledge write path -->
+  <rect x="880" y="210" width="185" height="110" rx="9" fill="#e0eefb" stroke="#6fa5d7" class="box"/>
+  <text x="972.5" y="241" text-anchor="middle" class="node-title">文档 / 业务系统</text>
+  <text x="972.5" y="269" text-anchor="middle" class="body">文件 · 数据库 · 网站</text>
+  <text x="972.5" y="294" text-anchor="middle" class="body">API · 发布清单</text>
+  <text x="972.5" y="312" text-anchor="middle" class="micro">来源先注册，再进入摄取</text>
+
+  <rect x="1110" y="195" width="205" height="140" rx="9" fill="#cfe3f6" stroke="#578fc5" class="box"/>
+  <text x="1212.5" y="230" text-anchor="middle" class="node-title">摄取与发布</text>
+  <text x="1212.5" y="260" text-anchor="middle" class="body">Parse · Chunk · Index</text>
+  <text x="1212.5" y="285" text-anchor="middle" class="body">Validate · Publish</text>
+  <text x="1212.5" y="312" text-anchor="middle" class="small">owner · version · freshness</text>
+
+  <rect x="1360" y="195" width="160" height="140" rx="9" fill="#b9d8f2" stroke="#3478b8" class="box"/>
+  <rect x="1372" y="207" width="136" height="116" rx="6" fill="none" stroke="#3478b8" stroke-width="1.3" stroke-dasharray="5 4" filter="url(#rough-box)"/>
+  <text x="1440" y="232" text-anchor="middle" class="node-title">权威知识存储</text>
+  <text x="1440" y="264" text-anchor="middle" class="body">source record</text>
+  <text x="1440" y="289" text-anchor="middle" class="body">version + provenance</text>
+  <text x="1440" y="314" text-anchor="middle" class="small">发布 · 撤权 · 淘汰</text>
+
+  <path d="M1065 265 H1110" class="knowledge-edge"/>
+  <path d="M1315 265 H1360" class="knowledge-edge"/>
+
+  <rect x="880" y="365" width="430" height="88" rx="8" fill="#f8fbff" stroke="#94b9dc" class="box"/>
+  <text x="903" y="394" class="node-title">独立治理边界</text>
+  <text x="903" y="420" class="body">来源 owner · 版本 · 发布 · 撤权 · 合规删除</text>
+  <text x="903" y="443" class="small">权威依据：原文版本、数据库记录、发布清单</text>
+
+  <!-- Shared authorized retrieval -->
+  <rect x="250" y="510" width="1100" height="250" rx="13" fill="#fff8df" stroke="#d39a2f" class="boundary"/>
+  <text x="282" y="545" class="section">共享授权检索层</text>
+  <text x="505" y="545" class="section-note">共享能力，不合并权威数据</text>
+  <path d="M282 555 H456" fill="none" stroke="#d39a2f" stroke-width="3" stroke-linecap="round" filter="url(#rough-title)"/>
+
+  <rect x="390" y="575" width="260" height="78" rx="8" fill="#fae9e6" stroke="#cf7b76" class="box"/>
+  <text x="520" y="604" text-anchor="middle" class="node-title">Memory Hard Filter</text>
+  <text x="520" y="630" text-anchor="middle" class="body">主体 · scope · purpose · consent · status</text>
+  <text x="520" y="647" text-anchor="middle" class="micro">未授权候选不得进入召回</text>
+
+  <rect x="950" y="575" width="260" height="78" rx="8" fill="#fae9e6" stroke="#cf7b76" class="box"/>
+  <text x="1080" y="604" text-anchor="middle" class="node-title">Knowledge Hard Filter</text>
+  <text x="1080" y="630" text-anchor="middle" class="body">租户 · source · version · ACL · revocation</text>
+  <text x="1080" y="647" text-anchor="middle" class="micro">撤权或旧版本先排除</text>
+
+  <rect x="690" y="575" width="220" height="78" rx="8" fill="#fae9e6" stroke="#cf7b76" class="box"/>
+  <text x="800" y="601" text-anchor="middle" class="node-title">控制输入</text>
+  <text x="800" y="626" text-anchor="middle" class="body">Task · Identity · Purpose</text>
+  <text x="800" y="647" text-anchor="middle" class="micro">决定允许检索什么</text>
+
+  <rect x="550" y="682" width="230" height="58" rx="8" fill="#ffefbd" stroke="#c38a1e" class="box"/>
+  <text x="665" y="707" text-anchor="middle" class="node-title">Hybrid Retrieval</text>
+  <text x="665" y="729" text-anchor="middle" class="small">structured + sparse + dense</text>
+
+  <rect x="850" y="682" width="220" height="58" rx="8" fill="#ffe5a3" stroke="#b87a0f" class="box"/>
+  <text x="960" y="707" text-anchor="middle" class="node-title">Rerank</text>
+  <text x="960" y="729" text-anchor="middle" class="small">相关性 · 权威性 · 时效 · 冲突</text>
+
+  <!-- Store-to-gate paths use fixed orthogonal corridors -->
+  <path d="M640 335 V575" class="memory-edge"/>
+  <path d="M1440 335 V550 H1080 V575" class="knowledge-edge"/>
+  <path d="M520 653 V665 H620 V682" class="memory-edge"/>
+  <path d="M1080 653 V665 H710 V682" class="knowledge-edge"/>
+  <path d="M780 711 H850" class="shared-edge"/>
+  <path d="M690 614 H650" class="control-dashed-edge"/>
+  <path d="M910 614 H950" class="control-dashed-edge"/>
+
+  <!-- Context supply -->
+  <rect x="400" y="785" width="850" height="155" rx="13" fill="#fff8df" stroke="#d39a2f" class="boundary"/>
+  <text x="425" y="817" class="section">上下文供给层</text>
+  <text x="600" y="817" class="section-note">只交付当前决策需要、可追溯的少量证据</text>
+
+  <rect x="430" y="840" width="180" height="75" rx="8" fill="#ffefbd" stroke="#c38a1e" class="box"/>
+  <text x="520" y="870" text-anchor="middle" class="node-title">Filter</text>
+  <text x="520" y="895" text-anchor="middle" class="body">安全 · 冲突 · 预算</text>
+
+  <rect x="660" y="840" width="180" height="75" rx="8" fill="#ffefbd" stroke="#c38a1e" class="box"/>
+  <text x="750" y="870" text-anchor="middle" class="node-title">Pack</text>
+  <text x="750" y="895" text-anchor="middle" class="body">原子组 · 去重 · 压缩</text>
+
+  <rect x="890" y="840" width="180" height="75" rx="8" fill="#ffefbd" stroke="#c38a1e" class="box"/>
+  <text x="980" y="870" text-anchor="middle" class="node-title">Cite</text>
+  <text x="980" y="895" text-anchor="middle" class="body">claim ↔ evidence</text>
+
+  <rect x="1340" y="830" width="190" height="95" rx="9" fill="#f7f7f5" stroke="#596579" class="box"/>
+  <text x="1435" y="865" text-anchor="middle" class="node-title">Model</text>
+  <text x="1435" y="893" text-anchor="middle" class="body">临时 Context Bundle</text>
+  <text x="1435" y="914" text-anchor="middle" class="small">回答 / 工具请求</text>
+
+  <path d="M960 740 V770 H520 V840" class="shared-edge"/>
+  <text x="742" y="765" text-anchor="middle" class="small">授权后的候选证据</text>
+  <path d="M610 877 H660" class="shared-edge"/>
+  <path d="M840 877 H890" class="shared-edge"/>
+  <path d="M1070 877 H1340" class="shared-edge"/>
+
+  <text x="800" y="977" text-anchor="middle" class="body">
+    <tspan fill="#23806f" font-weight="700">共享：</tspan>
+    <tspan>检索、排序、上下文装配　</tspan>
+    <tspan fill="#b55353" font-weight="700">不共享：</tspan>
+    <tspan>写入、权威、作用域、版本与删除边界</tspan>
+  </text>
+</svg>

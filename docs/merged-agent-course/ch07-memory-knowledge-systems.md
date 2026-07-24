@@ -22,31 +22,11 @@ Agent 离开当前模型调用后，还可能需要两类持久信息：
 | 删除语义 | 忘记主体信息、撤销同意、纠正历史模型 | 删除来源、撤权、合规清理、版本淘汰 |
 | 常见风险 | 错误画像、自我强化、隐私越界 | 旧知识、错误引用、数据投毒、间接 Prompt Injection |
 
-推荐的总体结构是：
+推荐的总体结构如图 7-1 所示：
 
-```text
-                    ┌──────────────────────────┐
-交互与任务证据 ────>│ Long-term Memory System  │
-                    │ write / reconcile / forget│
-                    └────────────┬─────────────┘
-                                 │ authorized candidates
-                                 ▼
-                    ┌──────────────────────────┐
-                    │ Shared Retrieval Layer   │
-                    │ exact / sparse / dense   │
-                    │ graph / fusion / rerank  │
-                    └────────────┬─────────────┘
-                                 │ ranked records
-                                 ▼
-当前任务 ───────────>│ Context Supply Layer     │────> Model
-身份与权限 ─────────>│ filter / pack / cite     │
-                                 ▲
-                                 │ authorized evidence
-                    ┌────────────┴─────────────┐
-文档与业务系统 ────>│ External Knowledge System│
-                    │ ingest / version / publish│
-                    └──────────────────────────┘
-```
+![图 7-1 两个系统，一个共享供给层](assets/ch07/memory-knowledge-shared-supply-layer.svg)
+
+图 7-1 中，长期记忆和外部知识拥有各自的写入入口、权威存储与治理边界；只有通过身份、任务和用途约束的候选，才会进入共享检索与上下文供给层。可编辑版本：[Draw.io 源文件](assets/ch07/memory-knowledge-shared-supply-layer.drawio)
 
 这张图表达了本章最重要的设计原则：
 

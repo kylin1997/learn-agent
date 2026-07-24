@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-07-24T00:00:00.000Z" agent="Codex" version="24.7.17" type="device" compressed="false">
+  <diagram id="memory-knowledge-shared-supply-layer" name="Page-1">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0" background="#FFFDF8">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="两个系统，一个共享供给层" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fontFamily=Kaiti SC;fontSize=32;fontStyle=1;fontColor=#172033;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="400" y="20" width="800" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="长期记忆与外部知识分别治理，只在授权之后共享检索、排序和上下文装配能力" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontFamily=Kaiti SC;fontSize=17;fontColor=#526071;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="300" y="68" width="1000" height="24" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="memory-boundary" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#EEF9F6;fillOpacity=58;strokeColor=#55A997;strokeWidth=2;dashed=1;dashPattern=10 7;" vertex="1" parent="1">
+          <mxGeometry x="50" y="115" width="700" height="370" as="geometry"/>
+        </mxCell>
+        <mxCell id="knowledge-boundary" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#EFF6FD;fillOpacity=58;strokeColor=#79AEE0;strokeWidth=2;dashed=1;dashPattern=10 7;" vertex="1" parent="1">
+          <mxGeometry x="850" y="115" width="700" height="370" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="memory-heading" value="&lt;b&gt;长期记忆系统&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:14px;color:#536171&quot;&gt;从交互中形成未来可复用的用户与项目模型&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;sketch=1;comic=1;jiggle=1;fontFamily=Kaiti SC;fontSize=22;fontColor=#172033;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="82" y="128" width="510" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="knowledge-heading" value="&lt;b&gt;外部知识系统&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:14px;color:#536171&quot;&gt;从注册来源发布当前可验证、可追溯的事实&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;sketch=1;comic=1;jiggle=1;fontFamily=Kaiti SC;fontSize=22;fontColor=#172033;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="882" y="128" width="510" height="58" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="memory-source" value="&lt;b style=&quot;font-size:19px&quot;&gt;交互 / 任务证据&lt;/b&gt;&lt;br&gt;&lt;br&gt;用户表达 · 工具结果&lt;br&gt;工件 · 人工确认&lt;br&gt;&lt;font style=&quot;font-size:12px;color:#647184&quot;&gt;原始证据不是记忆结论&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#DFF4EE;strokeColor=#4F9F8E;strokeWidth=2;fontFamily=Kaiti SC;fontSize=15;fontColor=#344255;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="80" y="210" width="185" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="memory-governance" value="&lt;b style=&quot;font-size:19px&quot;&gt;记忆写入治理&lt;/b&gt;&lt;br&gt;&lt;br&gt;Gate · Extract · Verify&lt;br&gt;Reconcile · Commit&lt;br&gt;&lt;font style=&quot;font-size:13px;color:#536171&quot;&gt;同意 · 作用域 · 置信度&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#CCEBE2;strokeColor=#3F927F;strokeWidth=2;fontFamily=Kaiti SC;fontSize=15;fontColor=#344255;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="310" y="195" width="205" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="memory-store" value="&lt;b style=&quot;font-size:19px&quot;&gt;权威记忆存储&lt;/b&gt;&lt;br&gt;&lt;br&gt;typed record&lt;br&gt;evidence + scope&lt;br&gt;&lt;font style=&quot;font-size:13px;color:#536171&quot;&gt;版本 · 冲突 · 遗忘&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#B9DFD5;strokeColor=#23806F;strokeWidth=2;double=1;fontFamily=Kaiti SC;fontSize=15;fontColor=#344255;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="560" y="195" width="160" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="memory-policy" value="&lt;div style=&quot;text-align:left&quot;&gt;&lt;b style=&quot;font-size:19px&quot;&gt;独立治理边界&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:15px&quot;&gt;同意 · 主体与用途 · 巩固 · 冲突 · 遗忘&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#536171&quot;&gt;权威依据：原始事件、确认记录、工件证据&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#F7FFFC;strokeColor=#87BFB3;strokeWidth=2;fontFamily=Kaiti SC;fontSize=15;fontColor=#344255;align=left;verticalAlign=middle;spacingLeft=20;spacingRight=14;" vertex="1" parent="1">
+          <mxGeometry x="80" y="365" width="430" height="88" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="knowledge-source" value="&lt;b style=&quot;font-size:19px&quot;&gt;文档 / 业务系统&lt;/b&gt;&lt;br&gt;&lt;br&gt;文件 · 数据库 · 网站&lt;br&gt;API · 发布清单&lt;br&gt;&lt;font style=&quot;font-size:12px;color:#647184&quot;&gt;来源先注册，再进入摄取&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#E0EEFB;strokeColor=#6FA5D7;strokeWidth=2;fontFamily=Kaiti SC;fontSize=15;fontColor=#344255;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="880" y="210" width="185" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="knowledge-publish" value="&lt;b style=&quot;font-size:19px&quot;&gt;摄取与发布&lt;/b&gt;&lt;br&gt;&lt;br&gt;Parse · Chunk · Index&lt;br&gt;Validate · Publish&lt;br&gt;&lt;font style=&quot;font-size:13px;color:#536171&quot;&gt;owner · version · freshness&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#CFE3F6;strokeColor=#578FC5;strokeWidth=2;fontFamily=Kaiti SC;fontSize=15;fontColor=#344255;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="195" width="205" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="knowledge-store" value="&lt;b style=&quot;font-size:19px&quot;&gt;权威知识存储&lt;/b&gt;&lt;br&gt;&lt;br&gt;source record&lt;br&gt;version + provenance&lt;br&gt;&lt;font style=&quot;font-size:13px;color:#536171&quot;&gt;发布 · 撤权 · 淘汰&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#B9D8F2;strokeColor=#3478B8;strokeWidth=2;double=1;fontFamily=Kaiti SC;fontSize=15;fontColor=#344255;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="195" width="160" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="knowledge-policy" value="&lt;div style=&quot;text-align:left&quot;&gt;&lt;b style=&quot;font-size:19px&quot;&gt;独立治理边界&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:15px&quot;&gt;来源 owner · 版本 · 发布 · 撤权 · 合规删除&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#536171&quot;&gt;权威依据：原文版本、数据库记录、发布清单&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#F8FBFF;strokeColor=#94B9DC;strokeWidth=2;fontFamily=Kaiti SC;fontSize=15;fontColor=#344255;align=left;verticalAlign=middle;spacingLeft=20;spacingRight=14;" vertex="1" parent="1">
+          <mxGeometry x="880" y="365" width="430" height="88" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="shared-boundary" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#FFF8DF;fillOpacity=70;strokeColor=#D39A2F;strokeWidth=2;dashed=1;dashPattern=10 7;" vertex="1" parent="1">
+          <mxGeometry x="250" y="510" width="1100" height="250" as="geometry"/>
+        </mxCell>
+        <mxCell id="shared-heading" value="&lt;b&gt;共享授权检索层&lt;/b&gt;　&lt;font style=&quot;font-size:14px;color:#536171&quot;&gt;共享能力，不合并权威数据&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;sketch=1;comic=1;jiggle=1;fontFamily=Kaiti SC;fontSize=22;fontColor=#172033;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="282" y="523" width="640" height="42" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="memory-filter" value="&lt;b style=&quot;font-size:19px&quot;&gt;Memory Hard Filter&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:15px&quot;&gt;主体 · scope · purpose · consent · status&lt;/span&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px;color:#647184&quot;&gt;未授权候选不得进入召回&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#FAE9E6;strokeColor=#CF7B76;strokeWidth=2;fontFamily=Kaiti SC;fontSize=15;fontColor=#344255;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="390" y="575" width="260" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="knowledge-filter" value="&lt;b style=&quot;font-size:19px&quot;&gt;Knowledge Hard Filter&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:15px&quot;&gt;租户 · source · version · ACL · revocation&lt;/span&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px;color:#647184&quot;&gt;撤权或旧版本先排除&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#FAE9E6;strokeColor=#CF7B76;strokeWidth=2;fontFamily=Kaiti SC;fontSize=15;fontColor=#344255;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="950" y="575" width="260" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="hybrid-retrieval" value="&lt;b style=&quot;font-size:19px&quot;&gt;Hybrid Retrieval&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:13px;color:#536171&quot;&gt;structured + sparse + dense&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#FFEFBD;strokeColor=#C38A1E;strokeWidth=2;fontFamily=Kaiti SC;fontSize=15;fontColor=#344255;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="550" y="682" width="230" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="rerank" value="&lt;b style=&quot;font-size:19px&quot;&gt;Rerank&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:13px;color:#536171&quot;&gt;相关性 · 权威性 · 时效 · 冲突&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#FFE5A3;strokeColor=#B87A0F;strokeWidth=2;fontFamily=Kaiti SC;fontSize=15;fontColor=#344255;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="850" y="682" width="220" height="58" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="controls" value="&lt;b style=&quot;font-size:19px&quot;&gt;控制输入&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:15px&quot;&gt;Task · Identity · Purpose&lt;/span&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px;color:#647184&quot;&gt;决定允许检索什么&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#FAE9E6;strokeColor=#CF7B76;strokeWidth=2;fontFamily=Kaiti SC;fontSize=15;fontColor=#344255;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="690" y="575" width="220" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="supply-boundary" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#FFF8DF;fillOpacity=70;strokeColor=#D39A2F;strokeWidth=2;dashed=1;dashPattern=10 7;" vertex="1" parent="1">
+          <mxGeometry x="400" y="785" width="850" height="155" as="geometry"/>
+        </mxCell>
+        <mxCell id="supply-heading" value="&lt;b&gt;上下文供给层&lt;/b&gt;　&lt;font style=&quot;font-size:14px;color:#536171&quot;&gt;只交付当前决策需要、可追溯的少量证据&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;sketch=1;comic=1;jiggle=1;fontFamily=Kaiti SC;fontSize=22;fontColor=#172033;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="425" y="795" width="680" height="34" as="geometry"/>
+        </mxCell>
+        <mxCell id="context-filter" value="&lt;b style=&quot;font-size:19px&quot;&gt;Filter&lt;/b&gt;&lt;br&gt;安全 · 冲突 · 预算" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#FFEFBD;strokeColor=#C38A1E;strokeWidth=2;fontFamily=Kaiti SC;fontSize=15;fontColor=#344255;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="430" y="840" width="180" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="context-pack" value="&lt;b style=&quot;font-size:19px&quot;&gt;Pack&lt;/b&gt;&lt;br&gt;原子组 · 去重 · 压缩" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#FFEFBD;strokeColor=#C38A1E;strokeWidth=2;fontFamily=Kaiti SC;fontSize=15;fontColor=#344255;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="660" y="840" width="180" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="context-cite" value="&lt;b style=&quot;font-size:19px&quot;&gt;Cite&lt;/b&gt;&lt;br&gt;claim ↔ evidence" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#FFEFBD;strokeColor=#C38A1E;strokeWidth=2;fontFamily=Kaiti SC;fontSize=15;fontColor=#344255;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="890" y="840" width="180" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="model" value="&lt;b style=&quot;font-size:19px&quot;&gt;Model&lt;/b&gt;&lt;br&gt;&lt;br&gt;临时 Context Bundle&lt;br&gt;&lt;font style=&quot;font-size:13px;color:#536171&quot;&gt;回答 / 工具请求&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#F7F7F5;strokeColor=#596579;strokeWidth=2;fontFamily=Kaiti SC;fontSize=15;fontColor=#344255;align=center;verticalAlign=middle;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="830" width="190" height="95" as="geometry"/>
+        </mxCell>
+        <mxCell id="footer" value="&lt;font color=&quot;#23806F&quot;&gt;&lt;b&gt;共享：&lt;/b&gt;&lt;/font&gt;检索、排序、上下文装配　&lt;font color=&quot;#B55353&quot;&gt;&lt;b&gt;不共享：&lt;/b&gt;&lt;/font&gt;写入、权威、作用域、版本与删除边界" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontFamily=Kaiti SC;fontSize=15;fontColor=#344255;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="300" y="955" width="1000" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Clean, fixed-anchor edges. sketch=0 is intentional. -->
+        <mxCell id="e-memory-source-governance" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;sketch=0;comic=0;strokeColor=#23806F;strokeWidth=2.5;endArrow=classic;endFill=1;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="memory-source" target="memory-governance">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-memory-governance-store" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;sketch=0;comic=0;strokeColor=#23806F;strokeWidth=2.5;endArrow=classic;endFill=1;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="memory-governance" target="memory-store">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-knowledge-source-publish" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;sketch=0;comic=0;strokeColor=#3478B8;strokeWidth=2.5;endArrow=classic;endFill=1;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="knowledge-source" target="knowledge-publish">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-knowledge-publish-store" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;sketch=0;comic=0;strokeColor=#3478B8;strokeWidth=2.5;endArrow=classic;endFill=1;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="knowledge-publish" target="knowledge-store">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e-memory-store-filter" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;sketch=0;comic=0;strokeColor=#23806F;strokeWidth=2.5;endArrow=classic;endFill=1;endSize=8;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.9615;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="memory-store" target="memory-filter">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="640" y="540"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-knowledge-store-filter" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;sketch=0;comic=0;strokeColor=#3478B8;strokeWidth=2.5;endArrow=classic;endFill=1;endSize=8;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="knowledge-store" target="knowledge-filter">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1440" y="550"/>
+              <mxPoint x="1080" y="550"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-memory-filter-retrieval" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;sketch=0;comic=0;strokeColor=#23806F;strokeWidth=2.5;endArrow=classic;endFill=1;endSize=8;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.3043;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="memory-filter" target="hybrid-retrieval">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="520" y="665"/>
+              <mxPoint x="620" y="665"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-knowledge-filter-retrieval" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;sketch=0;comic=0;strokeColor=#3478B8;strokeWidth=2.5;endArrow=classic;endFill=1;endSize=8;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.6957;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="knowledge-filter" target="hybrid-retrieval">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1080" y="665"/>
+              <mxPoint x="710" y="665"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-retrieval-rerank" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;sketch=0;comic=0;strokeColor=#9A6B12;strokeWidth=2.5;endArrow=classic;endFill=1;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="hybrid-retrieval" target="rerank">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e-rerank-context" value="授权后的候选证据" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;sketch=0;comic=0;strokeColor=#9A6B12;strokeWidth=2.5;endArrow=classic;endFill=1;endSize=8;fontFamily=Kaiti SC;fontSize=13;fontColor=#536171;labelBackgroundColor=#FFFDF8;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="rerank" target="context-filter">
+          <mxGeometry x="-0.2" y="-10" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="960" y="770"/>
+              <mxPoint x="520" y="770"/>
+            </Array>
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-controls-memory-filter" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;sketch=0;comic=0;strokeColor=#C36B6B;strokeWidth=2.2;dashed=1;dashPattern=8 6;endArrow=classic;endFill=1;endSize=8;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="controls" target="memory-filter">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-controls-knowledge-filter" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;sketch=0;comic=0;strokeColor=#C36B6B;strokeWidth=2.2;dashed=1;dashPattern=8 6;endArrow=classic;endFill=1;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="controls" target="knowledge-filter">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-filter-pack" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;sketch=0;comic=0;strokeColor=#9A6B12;strokeWidth=2.5;endArrow=classic;endFill=1;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="context-filter" target="context-pack">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-pack-cite" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;sketch=0;comic=0;strokeColor=#9A6B12;strokeWidth=2.5;endArrow=classic;endFill=1;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="context-pack" target="context-cite">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-cite-model" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;sketch=0;comic=0;strokeColor=#9A6B12;strokeWidth=2.5;endArrow=classic;endFill=1;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="context-cite" target="model">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
