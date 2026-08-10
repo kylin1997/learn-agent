@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-07-28T00:00:00.000Z" agent="Codex" version="24.7.17" type="device" compressed="false">
+  <diagram id="claim-evidence-verification-loop" name="Page-1">
+    <mxGraphModel dx="1800" dy="1050" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1050" math="0" shadow="0" background="#FFFDF8">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="从候选证据到可信回答" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;sketch=1;comic=1;curveFitting=1;jiggle=1;fontFamily=Kaiti SC;fontSize=36;fontStyle=1;fontColor=#172033;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="470" y="20" width="860" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="Claim–Evidence 验证闭环：引用 ID 合法 ≠ 结论被证据支持" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontFamily=Kaiti SC;fontSize=18;fontColor=#526071;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="390" y="76" width="1020" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="evidence-boundary" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#EEF9F6;fillOpacity=54;strokeColor=#55A997;strokeWidth=2;dashed=1;dashPattern=10 7;" vertex="1" parent="1">
+          <mxGeometry x="45" y="145" width="445" height="735" as="geometry"/>
+        </mxCell>
+        <mxCell id="claim-boundary" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#F7F7F5;fillOpacity=54;strokeColor=#9AA39B;strokeWidth=2;dashed=1;dashPattern=10 7;" vertex="1" parent="1">
+          <mxGeometry x="560" y="145" width="355" height="735" as="geometry"/>
+        </mxCell>
+        <mxCell id="verify-boundary" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#FFF8DF;fillOpacity=54;strokeColor=#C59A3A;strokeWidth=2;dashed=1;dashPattern=10 7;" vertex="1" parent="1">
+          <mxGeometry x="975" y="145" width="405" height="735" as="geometry"/>
+        </mxCell>
+        <mxCell id="outcome-boundary" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#EFF6FD;fillOpacity=54;strokeColor=#79AEE0;strokeWidth=2;dashed=1;dashPattern=10 7;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="145" width="315" height="735" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="evidence-heading" value="&lt;b&gt;1 · Evidence Pack&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:14px;color:#647184&quot;&gt;只使用已授权、可追溯的候选证据&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;sketch=1;comic=1;fontFamily=Kaiti SC;fontSize=24;fontColor=#172033;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="78" y="164" width="360" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="claim-heading" value="&lt;b&gt;2 · 原子 Claim&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:14px;color:#647184&quot;&gt;把回答拆成可独立验证的事实主张&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;sketch=1;comic=1;fontFamily=Kaiti SC;fontSize=24;fontColor=#172033;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="592" y="164" width="300" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="verify-heading" value="&lt;b&gt;3 · 支持关系验证&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:14px;color:#647184&quot;&gt;逐条判断，而不是只检查引用是否存在&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;sketch=1;comic=1;fontFamily=Kaiti SC;fontSize=24;fontColor=#172033;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="1008" y="164" width="350" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="outcome-heading" value="&lt;b&gt;4 · 输出决策&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:14px;color:#647184&quot;&gt;发布、修订，或停止生成&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;sketch=1;comic=1;fontFamily=Kaiti SC;fontSize=24;fontColor=#172033;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="1472" y="164" width="250" height="55" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e1" value="&lt;b style=&quot;font-size:20px&quot;&gt;E1 · 长期记忆&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:14px;color:#536171&quot;&gt;[memory:mem_42 · verified]&lt;/font&gt;&lt;br&gt;&lt;br&gt;上次申请因缺少订单号未提交&lt;br&gt;&lt;font style=&quot;font-size:12px;color:#647184&quot;&gt;Evidence: session:s_8/event:e_93&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#DFF4EE;strokeColor=#4F9F8E;strokeWidth=2;fontFamily=Kaiti SC;fontSize=16;fontColor=#344255;align=left;verticalAlign=middle;spacing=14;" vertex="1" parent="1">
+          <mxGeometry x="78" y="245" width="380" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="&lt;b style=&quot;font-size:20px&quot;&gt;E2 · 外部知识&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:14px;color:#536171&quot;&gt;[knowledge:chunk_19 · policy-v7]&lt;/font&gt;&lt;br&gt;&lt;br&gt;签收后 7 天内可申请退款&lt;br&gt;提交时必须提供订单号&lt;br&gt;&lt;font style=&quot;font-size:12px;color:#647184&quot;&gt;Source: policy/refund.md#申请条件&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#E0EEFB;strokeColor=#5E96CA;strokeWidth=2;fontFamily=Kaiti SC;fontSize=16;fontColor=#344255;align=left;verticalAlign=middle;spacing=14;" vertex="1" parent="1">
+          <mxGeometry x="78" y="425" width="380" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="&lt;b style=&quot;font-size:20px&quot;&gt;E3 · 冲突 / 限制证据&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:14px;color:#536171&quot;&gt;[knowledge:chunk_27 · regional-rule]&lt;/font&gt;&lt;br&gt;&lt;br&gt;部分地区和商品不适用 7 天规则&lt;br&gt;&lt;font style=&quot;font-size:12px;color:#647184&quot;&gt;不能被多数证据或更高相似度静默覆盖&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#FAE9E6;strokeColor=#C36B6B;strokeWidth=2;fontFamily=Kaiti SC;fontSize=16;fontColor=#344255;align=left;verticalAlign=middle;spacing=14;" vertex="1" parent="1">
+          <mxGeometry x="78" y="635" width="380" height="150" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="c1" value="&lt;b style=&quot;font-size:20px&quot;&gt;C1 · 历史事实&lt;/b&gt;&lt;br&gt;&lt;br&gt;“你的上次申请&lt;br&gt;没有提交成功”" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#F3F5F2;strokeColor=#8C978E;strokeWidth=2;fontFamily=Kaiti SC;fontSize=16;fontColor=#344255;align=left;verticalAlign=middle;spacing=14;" vertex="1" parent="1">
+          <mxGeometry x="595" y="250" width="287" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="c2" value="&lt;b style=&quot;font-size:20px&quot;&gt;C2 · 当前要求&lt;/b&gt;&lt;br&gt;&lt;br&gt;“这次申请需要&lt;br&gt;提供订单号”" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#F3F5F2;strokeColor=#8C978E;strokeWidth=2;fontFamily=Kaiti SC;fontSize=16;fontColor=#344255;align=left;verticalAlign=middle;spacing=14;" vertex="1" parent="1">
+          <mxGeometry x="595" y="440" width="287" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="c3" value="&lt;b style=&quot;font-size:20px&quot;&gt;C3 · 过度推断&lt;/b&gt;&lt;br&gt;&lt;br&gt;“你一定可以在 7 天内获得退款”&lt;br&gt;&lt;font style=&quot;font-size:12px;color:#647184&quot;&gt;证据只支持申请条件，不支持结果保证&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#FFF3EF;strokeColor=#C36B6B;strokeWidth=2;fontFamily=Kaiti SC;fontSize=16;fontColor=#344255;align=left;verticalAlign=middle;spacing=14;" vertex="1" parent="1">
+          <mxGeometry x="595" y="640" width="287" height="140" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="v1" value="&lt;b style=&quot;font-size:20px&quot;&gt;C1 → E1　&lt;font color=&quot;#23806F&quot;&gt;direct&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;原始事件直接支持历史事实&lt;br&gt;&lt;font style=&quot;font-size:12px;color:#647184&quot;&gt;结论范围没有超过证据&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#EEF9F6;strokeColor=#55A997;strokeWidth=2;fontFamily=Kaiti SC;fontSize=16;fontColor=#344255;align=left;verticalAlign=middle;spacing=14;" vertex="1" parent="1">
+          <mxGeometry x="1005" y="245" width="330" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="v2" value="&lt;b style=&quot;font-size:20px&quot;&gt;C2 → E2　&lt;font color=&quot;#3478B8&quot;&gt;direct&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;当前有效政策直接陈述要求&lt;br&gt;&lt;font style=&quot;font-size:12px;color:#647184&quot;&gt;版本、地域和有效期均可追溯&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#EFF6FD;strokeColor=#79AEE0;strokeWidth=2;fontFamily=Kaiti SC;fontSize=16;fontColor=#344255;align=left;verticalAlign=middle;spacing=14;" vertex="1" parent="1">
+          <mxGeometry x="1005" y="435" width="330" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="v3" value="&lt;b style=&quot;font-size:20px&quot;&gt;C3 → E2 + E3&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#9A6B12&quot;&gt;partial&lt;/font&gt;　&lt;font color=&quot;#B55353&quot;&gt;contradicted&lt;/font&gt;&lt;br&gt;&lt;br&gt;证据不足，并存在适用范围冲突&lt;br&gt;&lt;font style=&quot;font-size:12px;color:#647184&quot;&gt;不能原样发布&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#FAE9E6;strokeColor=#C36B6B;strokeWidth=2;fontFamily=Kaiti SC;fontSize=16;fontColor=#344255;align=left;verticalAlign=middle;spacing=14;" vertex="1" parent="1">
+          <mxGeometry x="1005" y="590" width="330" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="decision" value="&lt;b&gt;关键 Claim&lt;br&gt;支持充分吗？&lt;/b&gt;" style="rhombus;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#FFE5A3;strokeColor=#B78624;strokeWidth=2;fontFamily=Kaiti SC;fontSize=20;fontColor=#172033;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1005" y="745" width="320" height="110" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="publish" value="&lt;b style=&quot;font-size:20px&quot;&gt;带引用发布&lt;/b&gt;&lt;br&gt;&lt;br&gt;只发布被支持的 Claim&lt;br&gt;&lt;font style=&quot;font-size:14px;color:#536171&quot;&gt;C1 [E1] · C2 [E2]&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#DFF4EE;strokeColor=#4F9F8E;strokeWidth=2;fontFamily=Kaiti SC;fontSize=16;fontColor=#344255;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1465" y="245" width="260" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="revise" value="&lt;b style=&quot;font-size:20px&quot;&gt;修订与限制说明&lt;/b&gt;&lt;br&gt;&lt;br&gt;缩小结论范围&lt;br&gt;&lt;font style=&quot;font-size:14px;color:#536171&quot;&gt;保留冲突 · 重新验证&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#FFF8DF;strokeColor=#C59A3A;strokeWidth=2;fontFamily=Kaiti SC;fontSize=16;fontColor=#344255;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1465" y="455" width="260" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="stop" value="&lt;b style=&quot;font-size:20px&quot;&gt;停止生成&lt;/b&gt;&lt;br&gt;&lt;br&gt;继续检索 · 请求澄清&lt;br&gt;查询权威工具 · 拒答&lt;br&gt;&lt;font style=&quot;font-size:12px;color:#647184&quot;&gt;不用流畅性掩盖证据缺口&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;comic=1;curveFitting=1;jiggle=1;fillColor=#FAE9E6;strokeColor=#C36B6B;strokeWidth=2;fontFamily=Kaiti SC;fontSize=16;fontColor=#344255;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1465" y="665" width="260" height="150" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e1-c1" value="direct" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#23806F;strokeWidth=2.5;endArrow=block;endFill=1;fontFamily=Kaiti SC;fontSize=12;fontColor=#23806F;labelBackgroundColor=#FFFDF8;" edge="1" parent="1" source="e1" target="c1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2-c2" value="direct" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#3478B8;strokeWidth=2.5;endArrow=block;endFill=1;fontFamily=Kaiti SC;fontSize=12;fontColor=#3478B8;labelBackgroundColor=#FFFDF8;" edge="1" parent="1" source="e2" target="c2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2-c3" value="partial" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#9A6B12;strokeWidth=2.5;endArrow=block;endFill=1;fontFamily=Kaiti SC;fontSize=12;fontColor=#9A6B12;labelBackgroundColor=#FFFDF8;" edge="1" parent="1" source="e2" target="c3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points"><mxPoint x="515" y="500"/><mxPoint x="515" y="710"/></Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e3-c3" value="contradicted" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#B55353;strokeWidth=2.5;endArrow=block;endFill=1;fontFamily=Kaiti SC;fontSize=12;fontColor=#B55353;labelBackgroundColor=#FFFDF8;" edge="1" parent="1" source="e3" target="c3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="c1-v1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#657063;strokeWidth=2.3;endArrow=block;endFill=1;" edge="1" parent="1" source="c1" target="v1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="c2-v2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#657063;strokeWidth=2.3;endArrow=block;endFill=1;" edge="1" parent="1" source="c2" target="v2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="c3-v3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#657063;strokeWidth=2.3;endArrow=block;endFill=1;" edge="1" parent="1" source="c3" target="v3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="v1-decision" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#657063;strokeWidth=2;endArrow=none;" edge="1" parent="1" source="v1" target="decision"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="v2-decision" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#657063;strokeWidth=2;endArrow=none;" edge="1" parent="1" source="v2" target="decision"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="v3-decision" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#657063;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="v3" target="decision"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="decision-publish" value="充分" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#23806F;strokeWidth=2.5;endArrow=block;endFill=1;fontFamily=Kaiti SC;fontSize=12;fontColor=#23806F;labelBackgroundColor=#FFFDF8;" edge="1" parent="1" source="decision" target="publish">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1405" y="760"/><mxPoint x="1405" y="310"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="decision-revise" value="可修订" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#9A6B12;strokeWidth=2.5;endArrow=block;endFill=1;fontFamily=Kaiti SC;fontSize=12;fontColor=#9A6B12;labelBackgroundColor=#FFFDF8;" edge="1" parent="1" source="decision" target="revise">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1405" y="790"/><mxPoint x="1405" y="520"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="decision-stop" value="不充分" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#B55353;strokeWidth=2.5;endArrow=block;endFill=1;fontFamily=Kaiti SC;fontSize=12;fontColor=#B55353;labelBackgroundColor=#FFFDF8;" edge="1" parent="1" source="decision" target="stop">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1405" y="820"/><mxPoint x="1405" y="740"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="revise-loop" value="修订后重新验证" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#9A6B12;strokeWidth=2.3;dashed=1;dashPattern=9 7;endArrow=block;endFill=1;fontFamily=Kaiti SC;fontSize=14;fontColor=#9A6B12;labelBackgroundColor=#FFFDF8;" edge="1" parent="1" source="revise" target="c3">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1415" y="575"/><mxPoint x="1415" y="925"/><mxPoint x="742" y="925"/></Array></mxGeometry>
+        </mxCell>
+
+        <mxCell id="evidence-note" value="证据保留 domain · source · version · ACL · validity" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontFamily=Kaiti SC;fontSize=14;fontColor=#536171;" vertex="1" parent="1"><mxGeometry x="75" y="815" width="385" height="35" as="geometry"/></mxCell>
+        <mxCell id="claim-note" value="一个 Evidence 可支持多个 Claim&lt;br&gt;一个 Claim 也可需要多条 Evidence" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontFamily=Kaiti SC;fontSize=14;fontColor=#536171;" vertex="1" parent="1"><mxGeometry x="585" y="806" width="305" height="52" as="geometry"/></mxCell>
+        <mxCell id="footer-note" value="可信回答 = 原子 Claim + 可追溯 Evidence + 明确支持关系 + 不充分时停止" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontFamily=Kaiti SC;fontSize=15;fontColor=#536171;" vertex="1" parent="1"><mxGeometry x="470" y="985" width="860" height="30" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

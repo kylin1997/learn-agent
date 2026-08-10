@@ -1,0 +1,46 @@
+%%{init: {
+  "theme": "base",
+  "look": "handDrawn",
+  "themeVariables": {
+    "fontFamily": "Kaiti SC, STKaiti, KaiTi, PingFang SC, Microsoft YaHei, sans-serif",
+    "primaryColor": "#eef9f6",
+    "primaryBorderColor": "#55a997",
+    "primaryTextColor": "#172033",
+    "lineColor": "#657063",
+    "secondaryColor": "#fff8df",
+    "tertiaryColor": "#fae9e6",
+    "background": "#fffdf8"
+  }
+}}%%
+stateDiagram-v2
+  direction LR
+
+  [*] --> Candidate: 交互或任务证据
+  Candidate --> Rejected: Gate 失败 / 不值得记
+  Candidate --> Active: 验证通过 + 确定作用域
+  Rejected --> [*]
+
+  state "持续维护区" as Maintenance {
+    Active --> Reconcile: 出现新证据
+    Reconcile --> Active: noop / merge
+    Reconcile --> Superseded: direct replacement
+    Superseded --> Active: 新版本成为当前值
+    Reconcile --> Conflict: 证据不兼容
+    Conflict --> Active: 用户、权威工件或人工确认
+    Conflict --> Conflict: 暂不能解决 / 召回时同时返回
+    Active --> Consolidating: 重复情景达到巩固条件
+    Consolidating --> Active: 稳定语义 + 原始证据引用
+  }
+
+  Active --> Tombstoned: 身份与范围确认后：删除 / 撤销同意 / 到期
+  Superseded --> Tombstoned: 策略确认：历史版本到期
+  Conflict --> Tombstoned: 已确认删除范围覆盖冲突记录
+
+  state "不可逆删除链路" as Deletion {
+    Tombstoned --> RetrievalBlocked: 立即阻断召回
+    RetrievalBlocked --> Purging: 解析权威记录与全部派生物
+    Purging --> VerifiedAbsent: 清理记录、索引、图边和缓存，并验证不可召回
+    VerifiedAbsent --> MinimalAudit: 保留最小审计证明
+  }
+
+  MinimalAudit --> [*]: 只保留依法要求的最小审计证明

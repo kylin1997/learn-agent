@@ -311,6 +311,14 @@ delete request
 
 如果只删向量，不删权威记录和缓存，数据仍然存在；如果只删数据库行，不加 tombstone，异步索引可能继续召回旧数据。系统还必须向用户准确说明：哪些审计记录依法不能删除，以及它们是否仍可能用于模型推理。
 
+把写入门控、持续维护和不可逆删除放进同一张状态图，可以得到图 7-4：
+
+![图 7-4 记忆的维护、冲突与遗忘状态机](assets/ch07/memory-maintenance-forgetting-state-machine.svg)
+
+图 7-4 的关键不是状态名称，而是两条不同性质的路径。活动记忆可以在 `Reconcile`、`Superseded`、`Conflict` 和 `Consolidating` 之间持续修正，但每次变化都要保留版本和证据谱系；删除请求经过身份认证和影响范围确认并进入 `Tombstoned` 后，“不再恢复为活动记忆”应成为系统不变量。系统要先立即阻断召回，再清理权威记录及向量、关键词、图边和缓存等派生物，最后验证数据无法被查询、召回或复建。`Minimal Audit Proof` 只保留法律或治理要求的最小删除证明，不能成为绕过删除语义的隐性记忆副本。
+
+图形源文件：[Mermaid](assets/ch07/memory-maintenance-forgetting-state-machine.mmd)。
+
 ## 7.6 外部知识：RAG 是知识生命周期，不是向量搜索
 
 外部知识系统由两条管线组成：
@@ -416,6 +424,61 @@ Derived Indexes
 所有派生索引都应可从权威来源重建。更换 embedding 模型或切分策略时，应构建新索引版本并通过评测后切换，不能把不同向量空间混在同一集合中。
 
 ## 7.7 共享检索层：技术复用，但先保留语义边界
+
+前文分别展开了长期记忆和外部知识的写入过程。把两条写入生命周期与一次读取请求放在一起，可以得到图 7-2：
+
+```mermaid
+flowchart TB
+    subgraph MEMORY["长期记忆写入生命周期"]
+        direction LR
+        ME["交互与任务证据"] --> MO["Observe"]
+        MO --> MG{"Gate"}
+        MG --> MX["Extract / Verify"]
+        MX --> MN["Normalize / Route Scope"]
+        MN --> MC["Reconcile"]
+        MC --> MM["Commit"]
+        MM --> MS[("权威记忆存储")]
+    end
+
+    subgraph KNOWLEDGE["外部知识写入生命周期"]
+        direction LR
+        KS["Source Registry<br/>注册的数据源"] --> KI["Ingest / Parse"]
+        KI --> KN["Normalize"]
+        KN --> KC["Chunk / Index"]
+        KC --> KV["Validate"]
+        KV --> KP["Publish"]
+        KP --> KSTORE[("权威知识存储")]
+    end
+
+    subgraph READ["共享读取路径"]
+        direction LR
+        CTRL["当前任务<br/>身份 + 用途"] --> MHF["Memory<br/>Hard Filter"]
+        CTRL --> KHF["Knowledge<br/>Hard Filter"]
+        MHF --> HR["Structured / Sparse / Dense<br/>Hybrid Retrieval"]
+        KHF --> HR
+        HR --> RR["Fusion / Rerank"]
+        RR --> EP["Evidence Pack"]
+        EP --> CS["Context Supply"]
+        CS --> MODEL["Model"]
+    end
+
+    MEMORY -.->|权威记忆存储提供候选| READ
+    KNOWLEDGE -.->|权威知识存储提供候选| READ
+
+    classDef memory fill:#dff4ee,stroke:#23806f,color:#172033,stroke-width:2px;
+    classDef knowledge fill:#e0eefb,stroke:#3478b8,color:#172033,stroke-width:2px;
+    classDef security fill:#fae9e6,stroke:#b55353,color:#172033,stroke-width:2px;
+    classDef shared fill:#fff1bf,stroke:#c38a1e,color:#172033,stroke-width:2px;
+    classDef model fill:#f7f7f5,stroke:#596579,color:#172033,stroke-width:2px;
+
+    class ME,MO,MG,MX,MN,MC,MM,MS memory;
+    class KS,KI,KN,KC,KV,KP,KSTORE knowledge;
+    class CTRL,MHF,KHF security;
+    class HR,RR,EP,CS shared;
+    class MODEL model;
+```
+
+**图 7-2：两条写入生命周期，一条共享读取路径。** 长期记忆和外部知识分别完成验证、治理和权威存储；读取时，当前任务、可信身份和用途先约束各数据域的 Hard Filter，只有通过授权和有效性检查的候选，才会进入共享的混合检索、重排和证据装配过程。图中的虚线连接泳道边界，分别表示从权威记忆存储和权威知识存储读取候选；它们进入共享读取路径后的第一个实际落点仍是对应的 Hard Filter，不表示绕过授权直接把数据交给模型。
 
 记忆和外部知识都需要“从大量持久信息中找出少量当前相关内容”。因此它们可以共享一套检索平台能力：
 
@@ -539,6 +602,12 @@ rank
 - 政策知识更看重权威版本、有效期和地域。
 - 错误排查经验更看重环境相似度与软件版本。
 
+把授权过滤、多路召回、候选融合、多维重排和上下文选择放在一张图中，可以得到图 7-5：
+
+![图 7-5 从多路检索到 Evidence Pack 的证据漏斗](assets/ch07/multi-retrieval-evidence-funnel.svg)
+
+**图 7-5：从多路检索到 Evidence Pack 的证据漏斗。** 检索请求先依据可信身份、任务用途和数据域生成 Hard Filter；过滤条件不是只执行一次，而要下推到每一路检索器，并在 Graph 扩展等召回过程中持续生效。未授权、已撤权、Tombstone、租户不匹配或已确认、已标记存在注入风险的候选直接进入 `Hard Reject`，不能靠较高的相关性分数回到排序阶段。通过治理边界后，Structured、Sparse、Dense 和 Graph/Hierarchical 四类检索器并行扩大候选覆盖；候选在保留 `domain`、来源、版本和授权信息的前提下完成融合、去重和多维重排，再由覆盖与预算选择器形成最小充分的 `Evidence Pack`。图中的漏斗不是按某个固定数量机械截断，而是从“高召回候选集”逐步收敛为“当前任务可以安全使用的证据集”。可编辑版本：[Draw.io 源文件](assets/ch07/multi-retrieval-evidence-funnel.drawio)。
+
 ## 7.8 上下文供给：把候选变成可使用的证据包
 
 检索结果不能原样拼进 Prompt。供给层要完成：
@@ -593,6 +662,12 @@ evidence:
 - `partial`：只支持结论的一部分。
 - `contradicted`：与结论冲突。
 - `unsupported`：没有支持。
+
+把证据、原子 Claim、支持关系和输出决策放进同一条闭环，可以得到图 7-3：
+
+![图 7-3 从候选证据到可信回答的 Claim-Evidence 验证闭环](assets/ch07/claim-evidence-verification-loop.svg)
+
+**图 7-3：从候选证据到可信回答的 Claim-Evidence 验证闭环。** Evidence Pack 先保留记忆和知识候选的来源、版本、权限与有效期；生成阶段把回答拆成可独立验证的原子 Claim，再逐条建立 `direct`、`entailed`、`partial`、`contradicted` 或 `unsupported` 关系。只有关键 Claim 都得到充分支持时，系统才携带引用发布；可修订的结论缩小范围后重新验证，无法支持的结论则转向继续检索、请求澄清、查询权威工具或拒答。可编辑版本：[Draw.io 源文件](assets/ch07/claim-evidence-verification-loop.drawio)
 
 引用 ID 合法不代表引用支持结论。输出前应检查关键 Claim 的支持关系；证据不足时应拒答、说明缺口或转向权威工具查询。
 

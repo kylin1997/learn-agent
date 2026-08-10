@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1000" viewBox="0 0 1800 1000" role="img" aria-labelledby="figure-7-4-svg-title figure-7-4-svg-desc">
+  <title id="figure-7-4-svg-title">记忆的维护、冲突与遗忘状态机</title>
+  <desc id="figure-7-4-svg-desc">候选记忆经过门控和验证成为活动记忆，并在新证据到来时进行合并、替代、冲突处理或巩固。删除请求、撤销同意和到期会进入不可逆删除链路，先用 tombstone 立即阻断召回，再清理权威记录与派生物并验证不可召回。</desc>
+  <defs>
+    <filter id="c4-rough-box" x="-3%" y="-5%" width="106%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.035" numOctaves="2" seed="47" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.05" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="c4-rough-title" x="-2%" y="-15%" width="104%" height="130%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02 0.06" numOctaves="1" seed="37" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.65" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <marker id="c4-arrow-neutral" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 L10 4 L0 8 Z" fill="#657063"/>
+    </marker>
+    <marker id="c4-arrow-active" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 L10 4 L0 8 Z" fill="#23806f"/>
+    </marker>
+    <marker id="c4-arrow-maintain" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 L10 4 L0 8 Z" fill="#9a6b12"/>
+    </marker>
+    <marker id="c4-arrow-conflict" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 L10 4 L0 8 Z" fill="#b55353"/>
+    </marker>
+    <style>
+      text {
+        font-family: "Kaiti SC", "STKaiti", "KaiTi", "PingFang SC", "Microsoft YaHei", sans-serif;
+        letter-spacing: 0;
+      }
+      .title { font-size: 36px; font-weight: 700; fill: #172033; }
+      .subtitle { font-size: 18px; fill: #526071; }
+      .section { font-size: 24px; font-weight: 700; fill: #172033; }
+      .section-note { font-size: 14px; fill: #647184; }
+      .node-title { font-size: 20px; font-weight: 700; fill: #172033; }
+      .body { font-size: 16px; fill: #344255; }
+      .small { font-size: 14px; fill: #536171; }
+      .micro { font-size: 12px; fill: #647184; }
+      .boundary {
+        stroke-width: 2.2;
+        stroke-dasharray: 10 7;
+        stroke-linejoin: round;
+        fill-opacity: 0.54;
+        filter: url(#c4-rough-box);
+      }
+      .box {
+        stroke-width: 2.1;
+        stroke-linejoin: round;
+        filter: url(#c4-rough-box);
+      }
+      .neutral-edge {
+        fill: none;
+        stroke: #657063;
+        stroke-width: 2.5;
+        stroke-linecap: butt;
+        stroke-linejoin: miter;
+        marker-end: url(#c4-arrow-neutral);
+      }
+      .active-edge {
+        fill: none;
+        stroke: #23806f;
+        stroke-width: 2.7;
+        stroke-linecap: butt;
+        stroke-linejoin: miter;
+        marker-end: url(#c4-arrow-active);
+      }
+      .maintain-edge {
+        fill: none;
+        stroke: #9a6b12;
+        stroke-width: 2.5;
+        stroke-linecap: butt;
+        stroke-linejoin: miter;
+        marker-end: url(#c4-arrow-maintain);
+      }
+      .conflict-edge {
+        fill: none;
+        stroke: #b55353;
+        stroke-width: 2.6;
+        stroke-linecap: butt;
+        stroke-linejoin: miter;
+        marker-end: url(#c4-arrow-conflict);
+      }
+      .delete-edge {
+        fill: none;
+        stroke: #b55353;
+        stroke-width: 2.4;
+        stroke-dasharray: 9 7;
+        stroke-linecap: butt;
+        stroke-linejoin: miter;
+        marker-end: url(#c4-arrow-conflict);
+      }
+      .label-bg { fill: #fffdf8; opacity: 0.96; }
+    </style>
+  </defs>
+
+  <rect width="1800" height="1000" fill="#fffdf8"/>
+
+  <g filter="url(#c4-rough-title)">
+    <text class="title" x="900" y="54" text-anchor="middle">记忆的维护、冲突与遗忘状态机</text>
+    <path d="M520 69 L1280 69" fill="none" stroke="#9a6b12" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <text class="subtitle" x="900" y="104" text-anchor="middle">活动记忆可以持续修正；一旦进入 Tombstone，必须先阻断召回，再完成可验证清理</text>
+
+  <!-- Boundaries -->
+  <rect class="boundary" x="45" y="140" width="330" height="770" rx="18" fill="#f7f7f5" stroke="#9aa39b"/>
+  <rect class="boundary" x="425" y="140" width="815" height="770" rx="18" fill="#eef9f6" stroke="#55a997"/>
+  <rect class="boundary" x="1300" y="140" width="455" height="770" rx="18" fill="#fae9e6" stroke="#c36b6b"/>
+
+  <!-- Headings -->
+  <text class="section" x="78" y="184">1 · 写入门控</text>
+  <text class="section-note" x="78" y="211">不是所有事件都值得跨会话保存</text>
+  <text class="section" x="458" y="184">2 · 持续维护区</text>
+  <text class="section-note" x="458" y="211">允许合并、替代、冲突、巩固和用户纠正</text>
+  <text class="section" x="1333" y="184">3 · 不可逆删除链路</text>
+  <text class="section-note" x="1333" y="211">确认身份与范围后，先停止使用，再清理派生物</text>
+
+  <!-- Intake edges -->
+  <path class="neutral-edge" d="M88 269 H128"/>
+  <path class="active-edge" d="M330 320 H475 V397 H500"/>
+  <rect class="label-bg" x="355" y="297" width="112" height="25" rx="4"/>
+  <text class="micro" x="411" y="315" text-anchor="middle" fill="#23806f">验证通过 + scope</text>
+
+  <path class="conflict-edge" d="M230 380 V560"/>
+  <rect class="label-bg" x="168" y="457" width="124" height="25" rx="4"/>
+  <text class="micro" x="230" y="475" text-anchor="middle" fill="#b55353">Gate 失败 / 低价值</text>
+
+  <!-- Maintenance edges -->
+  <path class="maintain-edge" d="M750 382 H782 V300 H820"/>
+  <rect class="label-bg" x="750" y="326" width="91" height="25" rx="4"/>
+  <text class="micro" x="796" y="344" text-anchor="middle" fill="#9a6b12">出现新证据</text>
+
+  <path class="active-edge" d="M820 338 H785 V458 H750"/>
+  <rect class="label-bg" x="758" y="400" width="70" height="25" rx="4"/>
+  <text class="micro" x="793" y="418" text-anchor="middle" fill="#23806f">noop / merge</text>
+
+  <path class="maintain-edge" d="M960 360 V455"/>
+  <rect class="label-bg" x="968" y="393" width="112" height="25" rx="4"/>
+  <text class="micro" x="1024" y="411" text-anchor="middle" fill="#9a6b12">direct replacement</text>
+
+  <path class="active-edge" d="M820 510 H775 V475 H750"/>
+  <rect class="label-bg" x="760" y="499" width="101" height="25" rx="4"/>
+  <text class="micro" x="810" y="517" text-anchor="middle" fill="#23806f">新版本生效</text>
+
+  <path class="conflict-edge" d="M1100 300 H1162 V668 H1120"/>
+  <rect class="label-bg" x="1118" y="462" width="89" height="25" rx="4"/>
+  <text class="micro" x="1162" y="480" text-anchor="middle" fill="#b55353">证据不兼容</text>
+
+  <path class="active-edge" d="M820 678 H790 V493 H750"/>
+  <rect class="label-bg" x="762" y="579" width="101" height="25" rx="4"/>
+  <text class="micro" x="812" y="597" text-anchor="middle" fill="#23806f">确认后解决</text>
+
+  <path class="conflict-edge" d="M1120 720 H1178 V760 H970 V738"/>
+  <rect class="label-bg" x="1040" y="748" width="106" height="25" rx="4"/>
+  <text class="micro" x="1093" y="766" text-anchor="middle" fill="#b55353">未解决：保留分歧</text>
+
+  <path class="maintain-edge" d="M625 495 V620"/>
+  <rect class="label-bg" x="635" y="547" width="104" height="25" rx="4"/>
+  <text class="micro" x="687" y="565" text-anchor="middle" fill="#9a6b12">重复情景聚合</text>
+
+  <path class="active-edge" d="M750 683 H770 V510 H750"/>
+  <rect class="label-bg" x="674" y="598" width="92" height="25" rx="4"/>
+  <text class="micro" x="720" y="616" text-anchor="middle" fill="#23806f">语义 + 证据链</text>
+
+  <!-- Delete triggers: separate parallel rails in the maintenance/deletion gutter -->
+  <path class="delete-edge" d="M750 425 H1260 V275 H1340"/>
+  <rect class="label-bg" x="1050" y="402" width="190" height="25" rx="4"/>
+  <text class="micro" x="1145" y="420" text-anchor="middle" fill="#b55353">确认后：删除 / 撤销同意 / 到期</text>
+
+  <path class="delete-edge" d="M1100 515 H1278 V292 H1340"/>
+  <rect class="label-bg" x="1095" y="492" width="145" height="25" rx="4"/>
+  <text class="micro" x="1168" y="510" text-anchor="middle" fill="#b55353">策略确认：历史版本到期</text>
+
+  <path class="delete-edge" d="M1120 690 H1296 V309 H1340"/>
+  <rect class="label-bg" x="1065" y="667" width="175" height="25" rx="4"/>
+  <text class="micro" x="1153" y="685" text-anchor="middle" fill="#b55353">已确认删除范围覆盖冲突</text>
+
+  <!-- Deletion path -->
+  <path class="conflict-edge" d="M1527 330 V375"/>
+  <path class="conflict-edge" d="M1527 465 V510"/>
+  <path class="conflict-edge" d="M1527 600 V645"/>
+  <path class="conflict-edge" d="M1527 735 V780"/>
+
+  <!-- Intake nodes -->
+  <circle cx="88" cy="269" r="11" fill="#657063"/>
+
+  <rect class="box" x="128" y="230" width="202" height="150" rx="12" fill="#fff8df" stroke="#c59a3a"/>
+  <text class="node-title" x="229" y="271" text-anchor="middle">Candidate</text>
+  <text class="body" x="229" y="306" text-anchor="middle">交互或任务证据</text>
+  <text class="small" x="229" y="336" text-anchor="middle">尚未成为记忆</text>
+  <text class="micro" x="229" y="361" text-anchor="middle">Gate · Verify · Route Scope</text>
+
+  <rect class="box" x="128" y="560" width="202" height="120" rx="12" fill="#fae9e6" stroke="#c36b6b"/>
+  <text class="node-title" x="229" y="602" text-anchor="middle">Rejected</text>
+  <text class="body" x="229" y="637" text-anchor="middle">不写入长期记忆</text>
+  <text class="micro" x="229" y="663" text-anchor="middle">允许空结果</text>
+  <circle cx="229" cy="730" r="13" fill="none" stroke="#657063" stroke-width="2.2"/>
+  <circle cx="229" cy="730" r="8" fill="#657063"/>
+  <path class="neutral-edge" d="M229 680 V716"/>
+
+  <!-- Maintenance nodes -->
+  <rect class="box" x="500" y="355" width="250" height="140" rx="14" fill="#dff4ee" stroke="#4f9f8e"/>
+  <text class="node-title" x="625" y="395" text-anchor="middle">Active Memory</text>
+  <text class="body" x="625" y="431" text-anchor="middle">当前可召回版本</text>
+  <text class="small" x="625" y="461" text-anchor="middle">subject · scope · evidence · ACL</text>
+  <text class="micro" x="625" y="484" text-anchor="middle">任何更新都保留谱系</text>
+
+  <rect class="box" x="820" y="240" width="280" height="120" rx="12" fill="#fff8df" stroke="#c59a3a"/>
+  <text class="node-title" x="960" y="281" text-anchor="middle">Reconcile</text>
+  <text class="body" x="960" y="316" text-anchor="middle">比较新证据与当前记录</text>
+  <text class="micro" x="960" y="341" text-anchor="middle">noop · merge · supersede · conflict</text>
+
+  <rect class="box" x="820" y="455" width="280" height="110" rx="12" fill="#e0eefb" stroke="#5e96ca"/>
+  <text class="node-title" x="960" y="496" text-anchor="middle">Superseded</text>
+  <text class="body" x="960" y="530" text-anchor="middle">旧版本停止作为当前值</text>
+  <text class="micro" x="960" y="552" text-anchor="middle">仍保留时间与替代关系</text>
+
+  <rect class="box" x="820" y="620" width="300" height="118" rx="12" fill="#fae9e6" stroke="#c36b6b"/>
+  <text class="node-title" x="970" y="660" text-anchor="middle">Conflict</text>
+  <text class="body" x="970" y="695" text-anchor="middle">不兼容证据同时保留</text>
+  <text class="micro" x="970" y="721" text-anchor="middle">澄清前不得静默选择胜者</text>
+
+  <rect class="box" x="500" y="620" width="250" height="118" rx="12" fill="#f1ecfb" stroke="#8b75b4"/>
+  <text class="node-title" x="625" y="660" text-anchor="middle">Consolidating</text>
+  <text class="body" x="625" y="695" text-anchor="middle">从重复情景提取稳定语义</text>
+  <text class="micro" x="625" y="721" text-anchor="middle">保留例外与原始记录引用</text>
+
+  <text class="small" x="832" y="852" text-anchor="middle">维护区允许循环，但每次状态变化都必须版本化、可解释、可回放</text>
+
+  <!-- Deletion nodes -->
+  <rect class="box" x="1340" y="225" width="374" height="105" rx="12" fill="#fff3ef" stroke="#c36b6b"/>
+  <text class="node-title" x="1527" y="263" text-anchor="middle">Tombstoned</text>
+  <text class="body" x="1527" y="295" text-anchor="middle">记录进入逻辑失效状态</text>
+  <text class="micro" x="1527" y="317" text-anchor="middle">删除链路的单一入口</text>
+
+  <rect class="box" x="1340" y="375" width="374" height="90" rx="12" fill="#fae9e6" stroke="#c36b6b"/>
+  <text class="node-title" x="1527" y="412" text-anchor="middle">Retrieval Blocked</text>
+  <text class="body" x="1527" y="445" text-anchor="middle">检索层立即硬阻断</text>
+
+  <rect class="box" x="1340" y="510" width="374" height="90" rx="12" fill="#fae9e6" stroke="#c36b6b"/>
+  <text class="node-title" x="1527" y="547" text-anchor="middle">Purging Derivatives</text>
+  <text class="body" x="1527" y="580" text-anchor="middle">权威记录 · 向量 · 关键词 · 图边 · 缓存</text>
+
+  <rect class="box" x="1340" y="645" width="374" height="90" rx="12" fill="#fff8df" stroke="#c59a3a"/>
+  <text class="node-title" x="1527" y="682" text-anchor="middle">Verified Absent</text>
+  <text class="body" x="1527" y="715" text-anchor="middle">确认无法再被查询、召回或复建</text>
+
+  <rect class="box" x="1340" y="780" width="374" height="90" rx="12" fill="#f7f7f5" stroke="#9aa39b"/>
+  <text class="node-title" x="1527" y="817" text-anchor="middle">Minimal Audit Proof</text>
+  <text class="body" x="1527" y="850" text-anchor="middle">仅保留依法要求的最小证明</text>
+
+  <!-- Legend -->
+  <g transform="translate(65 956)">
+    <path d="M0 0 H48" class="active-edge"/>
+    <text class="small" x="62" y="5">回到活动状态</text>
+    <path d="M245 0 H293" class="maintain-edge"/>
+    <text class="small" x="307" y="5">维护与巩固</text>
+    <path d="M490 0 H538" class="conflict-edge"/>
+    <text class="small" x="552" y="5">冲突或拒绝</text>
+    <path d="M748 0 H796" class="delete-edge"/>
+    <text class="small" x="810" y="5">删除触发</text>
+    <text class="micro" x="1730" y="5" text-anchor="end">Tombstone 的职责是立即停止使用；物理清理和删除验证随后完成</text>
+  </g>
+</svg>

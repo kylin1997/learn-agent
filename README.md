@@ -16,6 +16,17 @@
 - `experiments/` 或 `src/`：本项目自己的实验与综合 Agent 实现。
 - [AGENTS.md](AGENTS.md)：Codex 在本工程中的协作和文档同步规约。
 
+## 含 Agent 演示代码的工程
+
+以下 `source/` 子目录包含 `xxx.py` 形式的 Agent 演示代码，结构与 `learn-claude-code` 类似：
+
+- `source/learn-claude-code/`：20 个 `sXX_name/code.py`（Agent 循环、工具使用、权限、Hook、子 Agent 等）
+- `source/hello-agents/code/`：14 个 `chapterN/*.py`（从 FirstAgentTest 到 MCP、A2A、评估等）
+- `source/claw0/sessions/`：10 个 `sXX_name.py` × 3 语言（en/zh/ja），覆盖 Agent 循环到并发
+- `source/ai-agent-book/`：10 个 `chapterN/sub-project/*.py`（上下文、搜索、编码、浏览器等）
+- `source/ai-agents-in-action-2nd-edition-cn/code/`：12 个 `chapter_NN/*.py`（从首个 Agent 到认知架构）
+- `source/easy-langent/project/`：多个子项目含 `*.py`（MCPChat、DebateGame、MedicalRag 等）
+
 ## 学习原则
 
 - 主读融合教材，不按来源目录机械通读。

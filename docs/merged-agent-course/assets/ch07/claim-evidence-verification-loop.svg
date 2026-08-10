@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1050" viewBox="0 0 1800 1050" role="img" aria-labelledby="figure-7-3-svg-title figure-7-3-svg-desc">
+  <title id="figure-7-3-svg-title">从候选证据到可信回答的 Claim-Evidence 验证闭环</title>
+  <desc id="figure-7-3-svg-desc">记忆与知识证据分别支持或反驳原子 Claim。验证器检查每个关键 Claim 的证据关系，并根据充分性决定带引用发布、修订后重验，或继续检索、澄清和拒答。</desc>
+  <defs>
+    <filter id="c3-rough-box" x="-3%" y="-5%" width="106%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.035" numOctaves="2" seed="43" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.05" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="c3-rough-title" x="-2%" y="-15%" width="104%" height="130%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02 0.06" numOctaves="1" seed="29" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.65" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <marker id="c3-arrow-memory" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 L10 4 L0 8 Z" fill="#23806f"/>
+    </marker>
+    <marker id="c3-arrow-knowledge" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 L10 4 L0 8 Z" fill="#3478b8"/>
+    </marker>
+    <marker id="c3-arrow-partial" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 L10 4 L0 8 Z" fill="#9a6b12"/>
+    </marker>
+    <marker id="c3-arrow-conflict" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 L10 4 L0 8 Z" fill="#b55353"/>
+    </marker>
+    <marker id="c3-arrow-neutral" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 L10 4 L0 8 Z" fill="#657063"/>
+    </marker>
+    <style>
+      text {
+        font-family: "Kaiti SC", "STKaiti", "KaiTi", "PingFang SC", "Microsoft YaHei", sans-serif;
+        letter-spacing: 0;
+      }
+      .title { font-size: 36px; font-weight: 700; fill: #172033; }
+      .subtitle { font-size: 18px; fill: #526071; }
+      .section { font-size: 24px; font-weight: 700; fill: #172033; }
+      .section-note { font-size: 14px; fill: #647184; }
+      .node-title { font-size: 20px; font-weight: 700; fill: #172033; }
+      .body { font-size: 16px; fill: #344255; }
+      .small { font-size: 14px; fill: #536171; }
+      .micro { font-size: 12px; fill: #647184; }
+      .boundary {
+        stroke-width: 2.2;
+        stroke-dasharray: 10 7;
+        stroke-linejoin: round;
+        fill-opacity: 0.54;
+        filter: url(#c3-rough-box);
+      }
+      .box {
+        stroke-width: 2.1;
+        stroke-linejoin: round;
+        filter: url(#c3-rough-box);
+      }
+      .memory-edge {
+        fill: none;
+        stroke: #23806f;
+        stroke-width: 2.7;
+        stroke-linecap: butt;
+        stroke-linejoin: miter;
+        marker-end: url(#c3-arrow-memory);
+      }
+      .knowledge-edge {
+        fill: none;
+        stroke: #3478b8;
+        stroke-width: 2.7;
+        stroke-linecap: butt;
+        stroke-linejoin: miter;
+        marker-end: url(#c3-arrow-knowledge);
+      }
+      .partial-edge {
+        fill: none;
+        stroke: #9a6b12;
+        stroke-width: 2.7;
+        stroke-linecap: butt;
+        stroke-linejoin: miter;
+        marker-end: url(#c3-arrow-partial);
+      }
+      .conflict-edge {
+        fill: none;
+        stroke: #b55353;
+        stroke-width: 2.7;
+        stroke-linecap: butt;
+        stroke-linejoin: miter;
+        marker-end: url(#c3-arrow-conflict);
+      }
+      .neutral-edge {
+        fill: none;
+        stroke: #657063;
+        stroke-width: 2.5;
+        stroke-linecap: butt;
+        stroke-linejoin: miter;
+        marker-end: url(#c3-arrow-neutral);
+      }
+      .loop-edge {
+        fill: none;
+        stroke: #9a6b12;
+        stroke-width: 2.4;
+        stroke-dasharray: 9 7;
+        stroke-linecap: butt;
+        stroke-linejoin: miter;
+        marker-end: url(#c3-arrow-partial);
+      }
+      .label-bg { fill: #fffdf8; opacity: 0.95; }
+    </style>
+  </defs>
+
+  <rect width="1800" height="1050" fill="#fffdf8"/>
+
+  <g filter="url(#c3-rough-title)">
+    <text class="title" x="900" y="56" text-anchor="middle">从候选证据到可信回答</text>
+    <path d="M570 70 L1230 70" fill="none" stroke="#9a6b12" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <text class="subtitle" x="900" y="106" text-anchor="middle">Claim–Evidence 验证闭环：引用 ID 合法 ≠ 结论被证据支持</text>
+
+  <!-- Section boundaries -->
+  <rect class="boundary" x="45" y="145" width="445" height="735" rx="18" fill="#eef9f6" stroke="#55a997"/>
+  <rect class="boundary" x="560" y="145" width="355" height="735" rx="18" fill="#f7f7f5" stroke="#9aa39b"/>
+  <rect class="boundary" x="975" y="145" width="405" height="735" rx="18" fill="#fff8df" stroke="#c59a3a"/>
+  <rect class="boundary" x="1440" y="145" width="315" height="735" rx="18" fill="#eff6fd" stroke="#79aee0"/>
+
+  <!-- Section headings -->
+  <text class="section" x="78" y="187">1 · Evidence Pack</text>
+  <text class="section-note" x="78" y="213">只使用已授权、可追溯的候选证据</text>
+  <text class="section" x="592" y="187">2 · 原子 Claim</text>
+  <text class="section-note" x="592" y="213">把回答拆成可独立验证的事实主张</text>
+  <text class="section" x="1008" y="187">3 · 支持关系验证</text>
+  <text class="section-note" x="1008" y="213">逐条判断，而不是只检查引用是否存在</text>
+  <text class="section" x="1472" y="187">4 · 输出决策</text>
+  <text class="section-note" x="1472" y="213">发布、修订，或停止生成</text>
+
+  <!-- Evidence to Claim edges -->
+  <path class="memory-edge" d="M458 310 H595"/>
+  <rect class="label-bg" x="500" y="287" width="57" height="24" rx="4"/>
+  <text class="micro" x="528" y="304" text-anchor="middle" fill="#23806f">direct</text>
+
+  <path class="knowledge-edge" d="M458 500 H595"/>
+  <rect class="label-bg" x="500" y="477" width="57" height="24" rx="4"/>
+  <text class="micro" x="528" y="494" text-anchor="middle" fill="#3478b8">direct</text>
+
+  <path class="partial-edge" d="M458 520 H515 V692 H595"/>
+  <rect class="label-bg" x="492" y="592" width="62" height="24" rx="4"/>
+  <text class="micro" x="523" y="609" text-anchor="middle" fill="#9a6b12">partial</text>
+
+  <path class="conflict-edge" d="M458 710 H595"/>
+  <rect class="label-bg" x="482" y="687" width="96" height="24" rx="4"/>
+  <text class="micro" x="530" y="704" text-anchor="middle" fill="#b55353">contradicted</text>
+
+  <!-- Claim to verifier edges -->
+  <path class="neutral-edge" d="M882 310 H1005"/>
+  <path class="neutral-edge" d="M882 500 H1005"/>
+  <path class="neutral-edge" d="M882 710 H1005"/>
+
+  <!-- Decision to outcomes edges -->
+  <path class="memory-edge" d="M1285 766 H1405 V305 H1465"/>
+  <rect class="label-bg" x="1375" y="282" width="61" height="24" rx="4"/>
+  <text class="micro" x="1405" y="299" text-anchor="middle" fill="#23806f">充分</text>
+
+  <path class="partial-edge" d="M1325 800 H1405 V515 H1465"/>
+  <rect class="label-bg" x="1375" y="492" width="61" height="24" rx="4"/>
+  <text class="micro" x="1405" y="509" text-anchor="middle" fill="#9a6b12">可修订</text>
+
+  <path class="conflict-edge" d="M1285 834 H1405 V725 H1465"/>
+  <rect class="label-bg" x="1370" y="702" width="70" height="24" rx="4"/>
+  <text class="micro" x="1405" y="719" text-anchor="middle" fill="#b55353">不充分</text>
+
+  <!-- Re-verification loop, routed below all boxes -->
+  <path class="loop-edge" d="M1465 575 H1415 V925 H742 V846"/>
+  <rect class="label-bg" x="1018" y="906" width="168" height="27" rx="4"/>
+  <text class="small" x="1102" y="925" text-anchor="middle" fill="#9a6b12">修订后重新验证</text>
+
+  <!-- Evidence cards -->
+  <rect class="box" x="78" y="245" width="380" height="130" rx="12" fill="#dff4ee" stroke="#4f9f8e"/>
+  <text class="node-title" x="103" y="278">E1 · 长期记忆</text>
+  <text class="small" x="103" y="305">[memory:mem_42 · verified]</text>
+  <text class="body" x="103" y="338">上次申请因缺少订单号未提交</text>
+  <text class="micro" x="103" y="360">Evidence: session:s_8/event:e_93</text>
+
+  <rect class="box" x="78" y="425" width="380" height="150" rx="12" fill="#e0eefb" stroke="#5e96ca"/>
+  <text class="node-title" x="103" y="458">E2 · 外部知识</text>
+  <text class="small" x="103" y="485">[knowledge:chunk_19 · policy-v7]</text>
+  <text class="body" x="103" y="518">签收后 7 天内可申请退款</text>
+  <text class="body" x="103" y="544">提交时必须提供订单号</text>
+  <text class="micro" x="103" y="565">Source: policy/refund.md#申请条件</text>
+
+  <rect class="box" x="78" y="635" width="380" height="150" rx="12" fill="#fae9e6" stroke="#c36b6b"/>
+  <text class="node-title" x="103" y="668">E3 · 冲突 / 限制证据</text>
+  <text class="small" x="103" y="695">[knowledge:chunk_27 · regional-rule]</text>
+  <text class="body" x="103" y="728">部分地区和商品不适用 7 天规则</text>
+  <text class="micro" x="103" y="758">不能被多数证据或更高相似度静默覆盖</text>
+
+  <text class="small" x="268" y="834" text-anchor="middle">证据保留 domain · source · version · ACL · validity</text>
+
+  <!-- Claim cards -->
+  <rect class="box" x="595" y="250" width="287" height="120" rx="12" fill="#f3f5f2" stroke="#8c978e"/>
+  <text class="node-title" x="620" y="285">C1 · 历史事实</text>
+  <text class="body" x="620" y="319">“你的上次申请</text>
+  <text class="body" x="620" y="343">没有提交成功”</text>
+
+  <rect class="box" x="595" y="440" width="287" height="120" rx="12" fill="#f3f5f2" stroke="#8c978e"/>
+  <text class="node-title" x="620" y="475">C2 · 当前要求</text>
+  <text class="body" x="620" y="509">“这次申请需要</text>
+  <text class="body" x="620" y="533">提供订单号”</text>
+
+  <rect class="box" x="595" y="640" width="287" height="140" rx="12" fill="#fff3ef" stroke="#c36b6b"/>
+  <text class="node-title" x="620" y="675">C3 · 过度推断</text>
+  <text class="body" x="620" y="709">“你一定可以在</text>
+  <text class="body" x="620" y="733">7 天内获得退款”</text>
+  <text class="micro" x="620" y="760">证据只支持申请条件，不支持结果保证</text>
+
+  <text class="small" x="738" y="826" text-anchor="middle">一个 Evidence 可支持多个 Claim</text>
+  <text class="small" x="738" y="849" text-anchor="middle">一个 Claim 也可需要多条 Evidence</text>
+
+  <!-- Verifier rows -->
+  <rect class="box" x="1005" y="245" width="330" height="130" rx="12" fill="#eef9f6" stroke="#55a997"/>
+  <text class="node-title" x="1030" y="280">C1 → E1</text>
+  <rect x="1225" y="259" width="84" height="30" rx="6" fill="#ccebe2" stroke="#4f9f8e"/>
+  <text class="small" x="1267" y="280" text-anchor="middle" fill="#23806f">direct</text>
+  <text class="body" x="1030" y="321">原始事件直接支持历史事实</text>
+  <text class="micro" x="1030" y="349">结论范围没有超过证据</text>
+
+  <rect class="box" x="1005" y="435" width="330" height="130" rx="12" fill="#eff6fd" stroke="#79aee0"/>
+  <text class="node-title" x="1030" y="470">C2 → E2</text>
+  <rect x="1225" y="449" width="84" height="30" rx="6" fill="#cfe3f6" stroke="#5e96ca"/>
+  <text class="small" x="1267" y="470" text-anchor="middle" fill="#3478b8">direct</text>
+  <text class="body" x="1030" y="511">当前有效政策直接陈述要求</text>
+  <text class="micro" x="1030" y="539">版本、地域和有效期均可追溯</text>
+
+  <rect class="box" x="1005" y="590" width="330" height="140" rx="12" fill="#fae9e6" stroke="#c36b6b"/>
+  <text class="node-title" x="1030" y="625">C3 → E2 + E3</text>
+  <rect x="1030" y="641" width="70" height="30" rx="6" fill="#ffefbd" stroke="#c59a3a"/>
+  <text class="micro" x="1065" y="661" text-anchor="middle" fill="#9a6b12">partial</text>
+  <rect x="1108" y="641" width="96" height="30" rx="6" fill="#f4cbc5" stroke="#c36b6b"/>
+  <text class="micro" x="1156" y="661" text-anchor="middle" fill="#b55353">contradicted</text>
+  <text class="body" x="1030" y="696">证据不足，并存在适用范围冲突</text>
+  <text class="micro" x="1030" y="718">不能原样发布</text>
+
+  <!-- Decision diamond -->
+  <path class="box" d="M1165 745 L1325 800 L1165 855 L1005 800 Z" fill="#ffe5a3" stroke="#b78624"/>
+  <text class="node-title" x="1165" y="793" text-anchor="middle">关键 Claim</text>
+  <text class="node-title" x="1165" y="821" text-anchor="middle">支持充分吗？</text>
+
+  <!-- Outcome cards -->
+  <rect class="box" x="1465" y="245" width="260" height="130" rx="12" fill="#dff4ee" stroke="#4f9f8e"/>
+  <text class="node-title" x="1595" y="282" text-anchor="middle">带引用发布</text>
+  <text class="body" x="1595" y="316" text-anchor="middle">只发布被支持的 Claim</text>
+  <text class="small" x="1595" y="345" text-anchor="middle">C1 [E1] · C2 [E2]</text>
+
+  <rect class="box" x="1465" y="455" width="260" height="130" rx="12" fill="#fff8df" stroke="#c59a3a"/>
+  <text class="node-title" x="1595" y="492" text-anchor="middle">修订与限制说明</text>
+  <text class="body" x="1595" y="526" text-anchor="middle">缩小结论范围</text>
+  <text class="small" x="1595" y="555" text-anchor="middle">保留冲突 · 重新验证</text>
+
+  <rect class="box" x="1465" y="665" width="260" height="150" rx="12" fill="#fae9e6" stroke="#c36b6b"/>
+  <text class="node-title" x="1595" y="702" text-anchor="middle">停止生成</text>
+  <text class="body" x="1595" y="738" text-anchor="middle">继续检索 · 请求澄清</text>
+  <text class="body" x="1595" y="766" text-anchor="middle">查询权威工具 · 拒答</text>
+  <text class="micro" x="1595" y="794" text-anchor="middle">证据不足时，不用流畅性掩盖缺口</text>
+
+  <!-- Legend -->
+  <g transform="translate(60 982)">
+    <path d="M0 0 H48" class="memory-edge"/>
+    <text class="small" x="62" y="5">直接支持：记忆证据</text>
+    <path d="M255 0 H303" class="knowledge-edge"/>
+    <text class="small" x="317" y="5">直接支持：知识证据</text>
+    <path d="M535 0 H583" class="partial-edge"/>
+    <text class="small" x="597" y="5">部分支持 / 可修订</text>
+    <path d="M815 0 H863" class="conflict-edge"/>
+    <text class="small" x="877" y="5">冲突或不支持</text>
+    <text class="micro" x="1740" y="5" text-anchor="end">可信回答 = Claim + Evidence + 明确支持关系 + 必要时停止</text>
+  </g>
+</svg>
