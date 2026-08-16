@@ -1,6 +1,6 @@
 # 第 17 章：Agent 测试、评测与基准体系
 
-> 本章目标：建立从确定性单元测试到线上实验的完整质量体系。读完后，你应该能区分测试、评测、基准与观测，把模型与 Harness 作为一个联合系统评价，用 TDAD 在修改 Agent 前定义正确性，同时评价最终结果和执行轨迹，为 LLM-as-judge 设定边界，设计防污染的本地基准集与回归门，并用 `Pass@k`、`Pass^k`、`Best@k`、置信区间和配对比较解释非确定性结果。
+> 本章目标：建立从确定性单元测试到线上实验的完整质量体系。读完后，你应该能区分测试、评测、基准与观测，把模型与 Harness 作为一个联合系统评价，用 TDAD 在修改 Agent 前定义正确性，同时评价最终结果和执行轨迹，为 LLM-as-judge 设定边界，设计防污染且覆盖关键风险与受影响群体的本地基准集与回归门，并用 `Pass@k`、`Pass^k`、`Best@k`、置信区间和配对比较解释非确定性结果。
 
 ## 17.1 学习目标与边界
 
@@ -447,10 +447,13 @@ Hello-Agents 介绍的 BFCL 使用结构化或 AST 语义比较评估函数选�
 | 边界和歧义任务 | 检查澄清、拒绝和不确定性 |
 | 历史事故 | 防止已修问题回归 |
 | 对抗与安全 | 检查注入、越权和数据泄露 |
+| 受影响群体与高风险分片 | 比较误拒、误放、升级、撤销和解释质量，避免总体平均掩盖集中伤害 |
 | 长任务与恢复 | 检查压缩、中断和 checkpoint |
 | 成本与延迟压力 | 检查容量退化和预算行为 |
 
-每个 case 要有来源、目标人群、难度、能力标签、风险等级、创建时间、最后复核时间和评分器版本。
+每个 case 要有来源、目标人群、难度、能力标签、风险等级、创建时间、最后复核时间和评分器版本。高影响决策还要记录适用人群、标签来源、阈值版本和选择该公平目标的理由；敏感属性只在受控评测环境中按合法用途使用，不能因为“需要切片”就复制到普通 Trace 或 Prompt。
+
+总体成功率相同的两个版本，可能把错误分配给完全不同的人群。评测至少同时报告整体结果、关键分片结果和样本量，并检查拒答或人工升级是否只是把困难案例转嫁给某一群体。公平性指标回答不同问题，不应由团队事后挑选最有利的一项；指标、阈值、最小效应和冲突时的裁决规则应在运行前进入评测契约。
 
 ### 17.8.3 数据集分层
 
@@ -822,6 +825,9 @@ Hermes 提供隔离、分层、超时和稳定性专项测试；Hello-Agents 把
 - [AI Agents in Action（第二版）：第 10 章，置信门、停滞与知识边界](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/10.探索会思考、监控和适应的认知智能体.md)
 - [深入理解 AI Agent：第 6 章，Agent 评估](../../source/ai-agent-book/book/chapter6.md)
 - [深入理解 AI Agent：第 6 章配套实验](../../source/ai-agent-book/chapter6/README.md)
+- [30 Agents：第 8 章，验证与确认 Agent](../../source/30-Agents-Every-AI-Engineer-Must-Build/chapter08/ch08_data_analysis_reasoning_agents.ipynb)
+- [30 Agents：第 12 章，公平性监测与解释校准](../../source/30-Agents-Every-AI-Engineer-Must-Build/chapter12/ch12_01_ethical_reasoning_agent.ipynb)
+- [30 Agents：第 12 章，可解释与置信沟通](../../source/30-Agents-Every-AI-Engineer-Must-Build/chapter12/ch12_02_explainable_agent.ipynb)
 
 - [Hermes：测试体系](../../source/hermes-book/src/part6/ch22-testing.md)
 - [Hermes：并发模型](../../source/hermes-book/src/part6/ch19-concurrency.md)

@@ -37,6 +37,17 @@
 
 按这个标准，下面四类案例足以覆盖综合项目最重要的设计张力。
 
+`30-Agents-Every-AI-Engineer-Must-Build` 提供了另一种有用视角：把 30 个命名 Agent 当作**模式目录**，而不是 30 个应分别实现的产品。选择案例时可以把名称拆成四个轴：
+
+| 轴 | 需要判断的问题 |
+| --- | --- |
+| 环境 | 主要面对文本/数据、GUI、实时媒体还是物理世界？ |
+| 控制结构 | 单 Agent、确定性 Flow、链式 Worker 还是 Supervisor 团队？ |
+| 证据与门禁 | 需要检索、验证、合规、公平性、安全包络中的哪些机制？ |
+| 适应方式 | 只使用会话状态，还是需要长期记忆、反馈资产或受控自改进？ |
+
+例如“医疗 Agent”不是一种新的通用 Loop；它通常是证据检索、置信校准、隐私边界、硬升级规则和解释/申诉机制在高风险环境中的组合。“具身 Agent”也不是给通用 Agent 多加一个机械臂工具，而是额外要求多时间尺度控制、世界模型和不可绕过的物理安全门。这样拆解后，领域名称不会成为重复架构的理由，真正新增的约束才进入项目设计。
+
 ## 20.3 案例一：从最小循环到综合 Harness
 
 `learn-claude-code` 用连续的小步骤把模型调用、工具、权限、任务、记忆、后台工作和团队机制逐层放回同一个循环；`claw0` 也用可运行的重建过程暴露各子系统的边界。它们最重要的价值不是“最终拥有多少功能”，而是展示 **能力必须沿稳定内核渐进增加**。
@@ -920,3 +931,6 @@ Autonomy grows only after evidence, safety and recovery gates pass.
 - [Claude Code Analysis：架构总览](../../source/claude-code-analysis/analysis/01-architecture-overview.md)
 - [hello-claw：真实场景评审](../../source/hello-claw/docs/cn/adopt/lobster-review.md)
 - [深入理解 AI Agent：第 5 章 Coding Agent 与生成式应用案例](../../source/ai-agent-book/book/chapter5.md)
+- [30 Agents：30 类架构目录与章节入口](../../source/30-Agents-Every-AI-Engineer-Must-Build/README.md)
+- [30 Agents：第 12 章，伦理与可解释 Agent](../../source/30-Agents-Every-AI-Engineer-Must-Build/chapter12/README.md)
+- [30 Agents：第 16 章，具身与跨域集成 Agent](../../source/30-Agents-Every-AI-Engineer-Must-Build/chapter16/README.md)

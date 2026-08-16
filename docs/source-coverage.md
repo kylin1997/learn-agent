@@ -1,6 +1,6 @@
 # 来源覆盖说明
 
-本文件记录 `source/` 下 11 个教程工程如何合并进 20 章主教材，并检查可迁移内容是否存在遗漏。它同时提供两种查询方向：
+本文件记录 `source/` 下 12 个教程工程如何合并进 20 章主教材，并检查可迁移内容是否存在遗漏。它同时提供两种查询方向：
 
 - 从教材章节查主要来源和合并范围。
 - 从来源工程反查内容进入了哪些章节。
@@ -26,7 +26,7 @@
 - “龙虾大学”等场景集合的完整功能清单。
 - 低成熟度共创项目、未经证实的产品推测和容易过时的营销结论。
 
-## 11 个来源的定位
+## 12 个来源的定位
 
 | 来源工程 | 主要价值 | 覆盖结论 | 上游项目 |
 | --- | --- | --- | --- |
@@ -41,31 +41,32 @@
 | `source/hello-agents` | Agent 基础、范式、框架、记忆/RAG、上下文、协议、后训练、评测和综合项目 | 可迁移内容已覆盖 | [datawhalechina/hello-agents](https://github.com/datawhalechina/hello-agents) |
 | `source/ai-agents-in-action-2nd-edition-cn` | 三层 Loop、认知控制结构、TDAD、混合记忆、多 Agent 协调、MCP 与综合案例 | 原书第 2-7、9-11 章已去重融合；第 1、8 章及操作性附录按用户决定排除 | [yixiangshijie/ai-agents-in-action-2nd-edition-cn](https://github.com/yixiangshijie/ai-agents-in-action-2nd-edition-cn) |
 | `source/ai-agent-book` | 上下文工程、记忆与知识、工具、评估、后训练、自我进化、实时交互和多 Agent | 10 章可迁移机制已去重融合；教学实验按原理取证，不整套移植 | [bojieli/ai-agent-book](https://github.com/bojieli/ai-agent-book) |
+| `source/30-Agents-Every-AI-Engineer-Must-Build` | 30 类 Agent 架构的横向模式库、领域约束、验证、公平性、解释和具身行动案例 | 17 个主题章节按机制去重融合；公平与解释治理、多时间尺度控制和统一约束包络补入正文，重复运行副本和虚构业务数字排除 | [PacktPublishing/30-Agents-Every-AI-Engineer-Must-Build](https://github.com/PacktPublishing/30-Agents-Every-AI-Engineer-Must-Build) |
 
 ## 20 章来源映射
 
 | 章 | 主题 | 主要本地来源 |
 | --- | --- | --- |
-| 1 | Agent、历史与 Harness | 既有来源的基础定义、架构和产品边界；`ai-agent-book` Ch01 补充“模型 + 上下文 + 工具”与 Harness 竞争力 |
+| 1 | Agent、历史与 Harness | 既有来源的基础定义、架构和产品边界；`ai-agent-book` Ch01 补充“模型 + 上下文 + 工具”与 Harness 竞争力；`30-Agents` Ch01/05 作为认知循环和基础架构对照 |
 | 2 | LLM 基础与模型行为 | `hello-agents` Ch03、`easy-langent` 模型基础、`ai-agents-in-action` Ch02 及各工程的模型使用经验 |
-| 3 | Agent Loop、范式与工具 | 既有 Loop 来源、`ai-agents-in-action` Ch05/10，以及 `ai-agent-book` Ch04/05 的工具分类和代码工具边界 |
-| 4 | 提示工程 | 既有 Prompt 来源、OpenAI 官方 Prompt 指南、`ai-agents-in-action` Ch02 和 `ai-agent-book` Ch02 的指令设计部分 |
-| 5 | 模型运行时与路由 | 既有运行时来源；各模型参数、Provider 差异、路由、重试、降级和调用协议 |
+| 3 | Agent Loop、范式与工具 | 既有 Loop 来源、`ai-agents-in-action` Ch05/10、`ai-agent-book` Ch04/05，以及 `30-Agents` Ch05/07/08 的决策、计划、工具和验证模式 |
+| 4 | 提示工程 | 既有 Prompt 来源、OpenAI 官方 Prompt 指南、`ai-agents-in-action` Ch02、`ai-agent-book` Ch02 和 `30-Agents` Ch03 的指令设计部分；隐藏思维链不作为审计证据 |
+| 5 | 模型运行时与路由 | 既有运行时来源；各模型参数、Provider 差异、路由、重试、降级和调用协议；`30-Agents` Ch02/04 的多模型路由和熔断作为对照 |
 | 6 | 会话、状态与上下文工程 | 既有 Session/Context 来源、`ai-agents-in-action` Ch10，以及 `ai-agent-book` Ch02 的静态前缀、轨迹、缓存、动态装配和压缩 |
-| 7 | 记忆与外部知识系统 | 原第 7、8 章全部来源；`ai-agent-book` Ch03 补用户记忆、RAG、结构化索引、知识图谱和评估 |
-| 8 | 框架与应用编排 | `easy-langent`、`hello-agents`、`ai-agents-in-action` Ch04/10 及各来源中的状态图和代表应用 |
-| 9 | 安全、权限、沙箱与隐私 | 既有安全来源及 `ai-agents-in-action` Ch04/07、`ai-agent-book` Ch02/04 的注入与工具边界 |
+| 7 | 记忆与外部知识系统 | 原第 7、8 章全部来源；`ai-agent-book` Ch03 补用户记忆、RAG、结构化索引、知识图谱和评估；`30-Agents` Ch05/06/10/13/15 的记忆、检索和领域知识案例按机制取证 |
+| 8 | 框架与应用编排 | `easy-langent`、`hello-agents`、`ai-agents-in-action` Ch04/10、`30-Agents` Ch02/07/14/15 及各来源中的状态图和代表应用 |
+| 9 | 安全、权限、沙箱与隐私 | 既有安全来源及 `ai-agents-in-action` Ch04/07、`ai-agent-book` Ch02/04；`30-Agents` Ch04/09/12/14/16 补公平性、可解释治理、合规门和物理安全约束 |
 | 10 | Skills 与插件 | `learn-claude-code`、`Alice_methodology`、`hermes-book`、`hello-claw`、`harness-engineering`、`claude-code-analysis`、`hello-agents`、`ai-agent-book` Ch02 |
 | 11 | MCP、A2A、ANP 与互操作 | 既有协议来源、`ai-agents-in-action` Ch03 和 `ai-agent-book` Ch04 的 MCP/协作工具边界 |
-| 12 | 多模态、实时交互与行动环境 | `ai-agent-book` Ch09、`hello-agents` Extra06/Extra11，以及各来源中的 GUI、Web、流式、中断和行动安全机制 |
+| 12 | 多模态、实时交互与行动环境 | `ai-agent-book` Ch09、`hello-agents` Extra06/Extra11、`30-Agents` Ch11/16，以及各来源中的 GUI、Web、流式、中断、具身控制和行动安全机制 |
 | 13 | Gateway、多渠道、身份与路由 | `claw0`、`hello-claw`、`hermes-book` 及常驻 Agent 的渠道实现 |
 | 14 | 后台任务、Cron、投递与韧性 | `learn-claude-code`、`claw0`、`hello-claw`、`hermes-book` |
-| 15 | Loop Engineering | 11 个来源中分散的状态、验证、调度、隔离和恢复机制；`ai-agents-in-action` Ch09/10 提供三层 Loop、外置任务状态和停滞信号 |
-| 16 | 多 Agent、任务系统与团队协作 | 既有多 Agent 来源、`ai-agents-in-action` Ch04/07，以及 `ai-agent-book` Ch10 的上下文共享 × 协作拓扑 |
-| 17 | 测试、评测与基准 | 既有评测来源、`ai-agents-in-action` Ch07/10，以及 `ai-agent-book` Ch06 的评测环境、统计指标和成本分析 |
-| 18 | 生产工程与可观测性 | 既有生产来源、生产反馈入口、版本发布、SLO、灰度和回滚机制 |
-| 19 | 自进化与后训练 | `Alice_methodology`、`harness-engineering`、`hello-agents`、`ai-agents-in-action` Ch07，以及 `ai-agent-book` Ch07/08 |
-| 20 | 案例与综合项目 | 11 个来源中的代表案例、工程模式和综合 Agent 路线；只提炼可迁移机制 |
+| 15 | Loop Engineering | 12 个来源中分散的状态、验证、调度、隔离和恢复机制；`ai-agents-in-action` Ch09/10 提供三层 Loop、外置任务状态和停滞信号 |
+| 16 | 多 Agent、任务系统与团队协作 | 既有多 Agent 来源、`ai-agents-in-action` Ch04/07、`ai-agent-book` Ch10，以及 `30-Agents` Ch07/14/15 的链式协调、Supervisor 和共识案例 |
+| 17 | 测试、评测与基准 | 既有评测来源、`ai-agents-in-action` Ch07/10、`ai-agent-book` Ch06，以及 `30-Agents` Ch04/08/12 的验证代理、公平性分片和置信校准 |
+| 18 | 生产工程与可观测性 | 既有生产来源、生产反馈入口、版本发布、SLO、灰度和回滚机制；`30-Agents` Ch04/12 的公平性监测和解释失败作为治理信号 |
+| 19 | 自进化与后训练 | `Alice_methodology`、`harness-engineering`、`hello-agents`、`ai-agents-in-action` Ch07、`ai-agent-book` Ch07/08，以及 `30-Agents` Ch09/17 的受控自改进案例 |
+| 20 | 案例与综合项目 | 12 个来源中的代表案例、工程模式和综合 Agent 路线；`30-Agents` 的 30 类架构只作为可组合模式库，不复制成 30 个项目 |
 
 ## 按来源反查
 
@@ -233,6 +234,34 @@
 | VLA、机器人硬件、语音模型训练及大规模训练项目 | 只保留 Agent 系统接口和评测边界；训练复现、硬件采购和部署不进入主教材 |
 | 图片、生成脚本和宣传素材 | 不直接复用；确需配图时按本教程概念重新绘制 |
 
+### `30-Agents-Every-AI-Engineer-Must-Build`
+
+该来源由 17 个主题章节构成：Ch01-Ch04 建立基础与工程工具，Ch05-Ch16 展开 30 类 Agent 架构，Ch17 是未来方向实验。仓库包含 18 个原始 Notebook（Ch12 分为伦理与可解释两个 Notebook）和 86 个预执行运行变体。教材把它作为**架构模式与领域约束案例库**，不按 30 个名称重复排课。
+
+| 来源内容 | 教材落点或处理结果 |
+| --- | --- |
+| Ch01：Agent 演进、认知循环、MCP/A2A 和能力级别 | 第 1、3、11 章；基础定义和协议概览与既有正文去重，勘误后的图只作校对，不直接复用 |
+| Ch02：LangChain/LangGraph、模型路由、向量检索和工具集成 | 第 3、5、7、8 章；框架演示和厂商清单只作代码入口，不维护第二套工具选型指南 |
+| Ch03：两层 Prompt、PTCF、Few-shot、ToT 和协作提示 | 第 4、16 章；任务契约和冲突检查保留，“展示思维链”不作为可观测性或审计方案 |
+| Ch04：成本路由、熔断、微服务、零信任和公平性审计 | 第 5、9、17、18 章；公平性进入决策治理与分片评测，部署产品清单排除 |
+| Ch05：自主决策、计划和记忆增强 Agent | 第 3、7、15、20 章；作为三类基础架构对照，不重新定义 Agent Loop |
+| Ch06：知识检索、文档理解和科学研究 Agent | 第 7、12、20 章；RAG、OCR 和研究管线按机制去重，示例语料和安装步骤排除 |
+| Ch07：工具 Agent、Chain-of-Agents 和 Agentic Workflow | 第 3、8、16、20 章；确定性工作流与多 Agent 协调的边界保留 |
+| Ch08：数据分析、验证与通用问题求解 Agent | 第 3、16、17、20 章；Claim -> Evidence -> Verdict 管线作为验证案例，玩具数据不进入正文 |
+| Ch09：代码生成、安全强化和自改进 Agent | 第 9、17、19、20 章；自改进必须沿用评测、审批、灰度和回滚门禁，不直接采用自动修改演示 |
+| Ch10：对话、内容创作和推荐 Agent | 第 4、6、7、9、20 章；健康、内容和推荐案例只提炼分层防护与验证模式，不把模拟输出当领域证据 |
+| Ch11：视觉语言、音频和物理传感 Agent | 第 12、17、20 章；多模态管线、传感器时间戳和降级模式保留，模型/设备配置排除 |
+| Ch12：伦理推理、公平性监测、解释、反事实和置信校准 | 第 9、17、18、20 章；补“决策—硬门—证据—解释—申诉”治理闭环，伦理规则不能替代人的价值选择 |
+| Ch13：医疗智能和科学发现 Agent | 第 7、9、15、17、20 章；FHIR、贝叶斯更新、知识缺口和实验反馈只作高风险领域案例，不作为医疗建议 |
+| Ch14：金融顾问和法律智能 Agent | 第 8、9、16、17、20 章；Supervisor、合规门和引用复核保留，模拟市场与法律数据不作事实来源 |
+| Ch15：教育智能和集体智能 Agent | 第 7、8、16、17、20 章；学生状态、知识追踪和共识引擎只作领域模式，投票不替代独立证据验证 |
+| Ch16：具身智能和跨域集成 Agent | 第 9、12、16、20 章；多时间尺度控制、世界模型契约、硬安全门和统一约束包络进入第 12 章，硬件复现排除 |
+| Ch17：自构架、Agent society、伦理漂移、记忆巩固和人机协作谱 | 第 7、16、19、20 章；作为研究问题和模拟实验，不当作生产默认架构 |
+| 原始 Notebook 与章节 Python 文件 | 用于核对数据结构、控制流和失败路径；不把教学代码整套移植到本项目 |
+| 86 个 `__RUN_*` Notebook、`LLM_COMPARISON*` 和 Provider 依赖文件 | 相同教学内容的运行输出、版本快照和环境配置；只用于比较执行差异，不重复计入知识覆盖 |
+| `USECASE.md` 中的虚构企业、收入和效果数字 | 可用于理解约束和利益相关者，不作为真实生产成效或统计证据 |
+| Errata、图片和 `chapter16/Git-2.53.0.2-64-bit.exe` | Errata 用于校对来源自身；出版图片、宣传资产和无关安装程序不进入教材 |
+
 ## 重复主题合并规则
 
 ### Agent 基础、历史与边界
@@ -264,21 +293,21 @@
 ### 框架、治理、扩展与行动环境
 
 - 第 8 章用 LangChain、LangGraph 和代表应用解释编排抽象，不写成 API 手册。
-- 第 9 章集中处理权限、审批、沙箱、提示注入和隐私治理。
+- 第 9 章集中处理权限、审批、沙箱、提示注入、隐私，以及高影响决策的公平、解释、申诉和补救治理。
 - 第 10 章处理 Skill 与 Plugin；第 11 章处理 MCP、A2A、ANP 等跨系统协议。
-- 第 12 章处理语音、流式事件、打断、Computer Use 和动态行动环境，不展开具体平台配置或机器人硬件部署。
+- 第 12 章处理语音、流式事件、打断、Computer Use 和动态行动环境；具身案例只吸收多时间尺度控制、世界模型和统一约束包络，不展开机器人硬件部署。
 
 ### Gateway、后台运行与 Loop Engineering
 
 - 第 13 章处理渠道适配、身份、租户、Session Key 和路由。
 - 第 14 章处理 Cron、Heartbeat、队列、投递、幂等、重试和恢复。
-- 第 15 章把分散在 11 个来源中的状态、验证、隔离和调度知识组织成跨运行控制系统，不重复讲一次 Agent Loop。
+- 第 15 章把分散在 12 个来源中的状态、验证、隔离和调度知识组织成跨运行控制系统，不重复讲一次 Agent Loop。
 
 ### 多 Agent、评测、自进化与生产
 
 - 第 16 章以任务边界、通信、验证和隔离为主线，不按多 Agent 产品形态分类堆叠。
 - 第 17 章建立测试与评测证据，第 18 章把能力带入生产并形成可信运行反馈，第 19 章才讨论有证据、发布门禁和回滚能力的改进。
-- 第 20 章使用代表案例验证方法，并给出综合 Agent 的里程碑路线。
+- 第 20 章使用代表案例验证方法，并给出综合 Agent 的里程碑路线；领域 Agent 名称拆回环境、控制结构、证据门禁和适应方式，不按名称建立平行项目。
 
 ## 外部补充
 
@@ -294,7 +323,7 @@
 
 ## 补充路径审计
 
-旧学习方案曾为前 9 个来源列出 185 个来源路径。按新版 20 个主章节重新核对后，143 个具体路径已经保留在章末“原文入口”中，其余 42 项在本节归类。第 10、11 个来源由本文件的反向映射完成逐章、代码目录和资产级审计。重构前的旧版章节已经删除，不计入新版主教材覆盖。
+旧学习方案曾为前 9 个来源列出 185 个来源路径。按新版 20 个主章节重新核对后，143 个具体路径已经保留在章末“原文入口”中，其余 42 项在本节归类。第 10-12 个来源由本文件的反向映射完成逐章、代码目录和资产级审计。重构前的旧版章节已经删除，不计入新版主教材覆盖。
 
 本节只用于覆盖复核，不是学习者的必读清单。
 
@@ -357,7 +386,7 @@
 
 ## 当前审计结论
 
-- 11 个来源工程中的可迁移知识已经分配到新版 20 章；第 10 个来源的原书第 1、8 章按用户决定排除，第 11 个来源的操作性复现和硬件训练内容按覆盖口径排除。
+- 12 个来源工程中的可迁移知识已经分配到新版 20 章；第 10 个来源的原书第 1、8 章按用户决定排除，第 11 个来源的操作性复现和硬件训练内容按覆盖口径排除，第 12 个来源的重复运行副本、虚构业务数字、环境配置和无关安装程序排除。
 - 重复主题已经按机制合并；多语言版本和同类案例不重复计入。
 - 安装配置、硬件部署、低代码点击、宣传内容和低成熟度项目已按规则排除，不属于遗漏。
 - 20 章正文已经生成，仍需按教材目录记录的进度逐章检查深度、准确性、章间重复和案例质量。
