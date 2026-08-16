@@ -43,9 +43,10 @@
 | `source/ai-agent-book` | 上下文工程、记忆与知识、工具、评估、后训练、自我进化、实时交互和多 Agent | 10 章可迁移机制已去重融合；教学实验按原理取证，不整套移植 | [bojieli/ai-agent-book](https://github.com/bojieli/ai-agent-book) |
 | `source/30-Agents-Every-AI-Engineer-Must-Build` | 30 类 Agent 架构的横向模式库、领域约束、验证、公平性、解释和具身行动案例 | 17 个主题章节按机制去重融合；公平与解释治理、多时间尺度控制和统一约束包络补入正文，重复运行副本和虚构业务数字排除 | [PacktPublishing/30-Agents-Every-AI-Engineer-Must-Build](https://github.com/PacktPublishing/30-Agents-Every-AI-Engineer-Must-Build) |
 
+
 ## 20 章来源映射
 
-| 章 | 主题 | 主要本地来源 |
+| 章 | 主题 | 主要本地来源  |
 | --- | --- | --- |
 | 1 | Agent、历史与 Harness | 既有来源的基础定义、架构和产品边界；`ai-agent-book` Ch01 补充“模型 + 上下文 + 工具”与 Harness 竞争力；`30-Agents` Ch01/05 作为认知循环和基础架构对照 |
 | 2 | LLM 基础与模型行为 | `hello-agents` Ch03、`easy-langent` 模型基础、`ai-agents-in-action` Ch02 及各工程的模型使用经验 |
