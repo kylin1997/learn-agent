@@ -14,6 +14,7 @@
 6. 对不同故障采用有界重试、降级、恢复、补偿或人工接管。
 7. 在不默认收集原始内容的前提下获得足够的诊断证据。
 8. 把用户反馈、生产信号、版本发布和回滚连接成产品改进闭环。
+9. 在受控分析域中监测高影响决策的分群差异、解释失败和申诉推翻，而不把敏感属性扩散到普通遥测。
 
 本章不重复第 17 章的离线测试、任务集、评分器、对照实验和基准设计。第 17 章负责实验设计与因果性的质量判断：在控制变量、代表性样本和统计不确定性下回答“变化是否真的改善能力”。第 18 章负责发布执行与运行可靠性：回答“这个已决定发布的版本如何灰度、观测、满足 SLO、恢复和回滚”。两章的分工是：
 
@@ -191,8 +192,11 @@ Metric 用于聚合和告警，而不是复原单次任务。最小集合可以�
 | 可靠性 | 成功终止率、恢复率、投递成功率、工具错误率、重复副作用拦截数 |
 | 延迟 | 接受到首个可见响应、TTFT、工具执行、用户等待、端到端完成时长 |
 | 资源 | input/output/cache token、费用、上下文占用、重试开销、子 Agent 数 |
+| 决策治理 | 按批准的低基数分片统计误拒、误放、人工升级、申诉、推翻和解释失败率 |
 
 指标必须有分母。例如只看“失败 100 次”没有意义；要同时知道总调用量和版本分布。分位数通常比平均值更能暴露长尾，至少观察 p50、p95 和 p99。
+
+决策治理指标需要更严格的数据边界。受保护属性不能成为公开、高基数标签，也不应进入每条普通业务日志；可以在受控分析域中用最小必要字段做周期聚合，并设置小样本抑制、访问审计和保留期。线上差异是调查和回滚信号，不会自动说明成因，更不能让系统自行修改阈值来“修平”仪表盘。
 
 ### 18.3.4 三信号如何配合
 
@@ -615,6 +619,7 @@ Every node is bound to RuntimeManifest and run_id.
 8. 可观测性默认收集元数据；哈希不等于匿名化，伪名化数据继续按敏感数据治理。
 9. 产品反馈只有经过第 17 章的实验与质量判断，再由本章执行灰度、SLO 操作和回滚，才构成真正闭环。
 10. Annotation Registry 负责可靠采集、关联和治理，不负责自动修改 Agent；回归资产和改进候选分别由第 17、19 章产生。
+11. 高影响决策的公平性、解释失败和申诉推翻要进入受控生产监测，但线上差异只能触发调查、降级或回滚，不能自动替代规范性裁决。
 
 ## 18.15 本章自检
 
@@ -648,6 +653,8 @@ Every node is bound to RuntimeManifest and run_id.
 
 - [AI Agents in Action（第二版）：第 7 章，Trace、实验与 Annotation 反馈](../../source/ai-agents-in-action-2nd-edition-cn/cn-book/7.通过评估与反馈构建稳健的智能体.md)
 - [深入理解 AI Agent：第 6 章 Agent 评估、成本与运行环境](../../source/ai-agent-book/book/chapter6.md)
+- [30 Agents：第 4 章，部署、熔断与公平性审计](../../source/30-Agents-Every-AI-Engineer-Must-Build/chapter04/ch04_agent_deployment.ipynb)
+- [30 Agents：第 12 章，公平性监测与解释失败](../../source/30-Agents-Every-AI-Engineer-Must-Build/chapter12/ch12_01_ethical_reasoning_agent.ipynb)
 
 - [Alice 方法论：可观测性](../../source/Alice_methodology/chapters/13-observability.md)
 - [Alice 方法论：十二个可迁移的工程范式](../../source/Alice_methodology/chapters/15-engineering-patterns.md)
