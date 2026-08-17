@@ -81,7 +81,7 @@
 | `easy-langent` | `docs/guide/chapter1.md`：LangChain 与 LangGraph 的边界 | 待 Clone 后展开 |
 | `harness-engineering-from-cc-to-ai-coding` | `part1/ch01.md`：AI 编码 Agent 技术栈 | 待 Clone 后展开 |
 | `claude-code-analysis` | `analysis/01-architecture-overview.md`；`analysis/05-differentiators-and-comparison.md` | `analysis/07-code-evidence-index.md` 提供源码证据索引 |
-| `learn-claude-code` | `README-zh.md`：渐进构建 Agent Harness | `s01_agent_loop/` 至 `s20_comprehensive/` 的渐进实现，待 Clone 后展开文件级入口 |
+| `learn-claude-code` | `README-zh.md`：渐进构建 Agent Harness | `s01_agent_loop/` 至 `s17_goal_loop/`（s01-s17 新版共 17 章）的渐进实现，待 Clone 后展开文件级入口 |
 | `claw0` | `README.zh.md`：从最小循环到常驻 Agent | `sessions/zh/s01_agent_loop.md` 至 `s10_concurrency.md` 的配套最小实现 |
 | `hello-claw` | `docs/cn/build/chapter1/index.md`：架构设计哲学与总体架构 | 待 Clone 后展开 |
 | `ai-agent-book` | `book/chapter1.md`：Agent、Harness 与工作流基础 | `chapter1/` 配套实验，待 Clone 后展开 |
@@ -104,7 +104,7 @@
 
 | 来源工程 | 原工程章节 | 对应代码示例 |
 | --- | --- | --- |
-| `learn-claude-code` | `s10_system_prompt/README.md` | `s10_system_prompt/` 同目录实现，待 Clone 后展开 |
+| `learn-claude-code` | `s15_integrated_harness/code.py`：`assemble_system_prompt(context)` 分层组装 | `s15_integrated_harness/` 同章节实现（旧版 s10_system_prompt 已并入新版集成 Harness） |
 | `Alice_methodology` | `chapters/14-prompts.md` | 待 Clone 后展开 |
 | `hermes-book` | `part2/ch05-prompt-system.md` | Prompt 组装实现，待 Clone 后展开 |
 | `harness-engineering-from-cc-to-ai-coding` | `part2/ch05.md`：系统提示架构；`part2/ch06.md`：行为引导；`part2/ch08.md`：工具提示词；`part5/ch19.md`：用户指令覆盖层 | 待 Clone 后展开 |
@@ -238,7 +238,7 @@
 
 | 来源工程 | 原工程章节 | 对应代码示例 |
 | --- | --- | --- |
-| `learn-claude-code` | `s19_mcp_plugin/README.md` | `s19_mcp_plugin/` 同目录实现，待 Clone 后展开 |
+| `learn-claude-code` | `s14_mcp_plugin/README.md` | `s14_mcp_plugin/` 同目录实现，待 Clone 后展开 |
 | `Alice_methodology` | `chapters/08-mcp.md` | 待 Clone 后展开 |
 | `hermes-book` | `part5/ch14-gateway.md` 中的协议适配层 | 待 Clone 后展开 |
 | `harness-engineering-from-cc-to-ai-coding` | `part6/ch20.md` 中的 MCP 就绪检查 | 待 Clone 后展开 |
@@ -254,7 +254,7 @@
 
 | 来源工程 | 原工程章节 | 对应代码示例 |
 | --- | --- | --- |
-| `learn-claude-code` | `s05_todo_write`；`s06_subagent`；`s12_task_system`；`s15_agent_teams`；`s16_team_protocols`；`s17_autonomous_agents`；`s18_worktree_isolation` | 各章节同目录实现，待 Clone 后展开 |
+| `learn-claude-code` | `s05_todo_write`；`s06_subagent`；`s10_task_system`；`s13_agent_teams`（合并旧版 teams/protocols/autonomous/worktree 四章）；`s16_workflow_runtime` | 各章节同目录实现，待 Clone 后展开 |
 | `Alice_methodology` | `chapters/06-multi-agent.md`；`blog/blog-05-multi-agent.md` | 待 Clone 后展开 |
 | `hermes-book` | `part3/ch09-delegation.md` | 子代理与委托源码，待 Clone 后展开 |
 | `harness-engineering-from-cc-to-ai-coding` | `part6/ch20.md`：Agent 派生与编排；`ch20b.md`：Teams 与多进程；`ch20c.md`：远程多 Agent | 待 Clone 后展开 |
@@ -280,7 +280,7 @@
 
 | 来源工程 | 原工程章节 | 对应代码示例 |
 | --- | --- | --- |
-| `learn-claude-code` | `s13_background_tasks/README.md`；`s14_cron_scheduler/README.md` | 同章节目录实现，待 Clone 后展开 |
+| `learn-claude-code` | `s11_background_tasks/README.md`；`s12_cron_scheduler/README.md` | 同章节目录实现，待 Clone 后展开 |
 | `claw0` | `s07_heartbeat_cron.md`；`s08_delivery.md` | `s08_delivery.py`；Heartbeat/Cron 配套实现待 Clone 后展开 |
 | `hermes-book` | `part5/ch15-cron.md` | Cron 调度源码，待 Clone 后展开 |
 | `hello-claw` | `build/chapter1/index.md`：heartbeat 与分层容错；`build/chapter5/index.md`：消息循环 | 待 Clone 后展开 |
@@ -290,7 +290,7 @@
 
 | 来源工程 | 原工程章节 | 对应代码示例 |
 | --- | --- | --- |
-| `learn-claude-code` | `s11_error_recovery/README.md` | `s11_error_recovery/` 同目录实现，待 Clone 后展开 |
+| `learn-claude-code` | `s16_workflow_runtime/README.md`：schema 校验重试、journal 与 resume 断点恢复；`s17_goal_loop/README.md`：评估失败处理 | `s16_workflow_runtime/`；`s17_goal_loop/` 同目录实现（旧版 s11_error_recovery 已并入新版各章），待 Clone 后展开 |
 | `claw0` | `s09_resilience.md`；`s10_concurrency.md` | `s10_concurrency.py`；恢复实现待 Clone 后展开 |
 | `hermes-book` | `part6/ch19-concurrency.md`；`ch20-lifecycle.md`；`ch21-runtime-defense.md`；`ch22-testing.md` | 并发、生命周期和运行时防御源码，待 Clone 后展开 |
 | `harness-engineering-from-cc-to-ai-coding` | `part1/ch04.md`；`part6/ch20c.md`；`part7/ch26.md`；`ch28.md` | 待 Clone 后展开 |
@@ -301,7 +301,7 @@
 
 | 来源工程 | 原工程章节 | 对应代码示例 |
 | --- | --- | --- |
-| `learn-claude-code` | s12 Task System；s13 Background Tasks；s14 Cron；s17 Autonomous Agents；s18 Worktree Isolation | 各章节同目录实现，待 Clone 后展开 |
+| `learn-claude-code` | s10 Task System；s11 Background Tasks；s12 Cron；s13 Agent Teams；s16 Workflow Runtime；s17 Goal Loop | 各章节同目录实现，待 Clone 后展开 |
 | `harness-engineering-from-cc-to-ai-coding` | `part6/ch20c.md`：远程多 Agent 状态机；`part7/ch26.md`：循环熔断和上下文恢复 | 待 Clone 后展开 |
 | `hermes-book` | Ch12 Context Compression；Ch19 Concurrency；Ch20 Lifecycle；Ch21 Runtime Defense；Ch22 Testing | 待 Clone 后展开 |
 | `hello-agents` | Ch09 上下文工程；Ch12 性能评估；Extra10 Agent 自进化 | 待 Clone 后展开 |
@@ -353,7 +353,7 @@
 | `ai-agent-book` | Ch07：预训练、SFT、RL 与工具调用内化；Ch08：经验学习、Prompt/工具自改进、工作流编译和自进化评估 | `chapter8/gaia-experience/README.md`；`self-evolution-eval/README.md`；`chapter7/` 其他训练实验待 Clone 后展开 |
 | `ai-agents-in-action-2nd-edition-cn` | Ch07：评估反馈与 Annotation | `code/chapter_07/`，待 Clone 后展开 |
 | `harness-engineering-from-cc-to-ai-coding` | Ch24：持久学习；Ch25、Ch27、Ch29：受评测和观测约束的改进 | 待 Clone 后展开 |
-| `learn-claude-code` | s07 Skill Loading；s12 Task System | 同章节实现，待 Clone 后展开 |
+| `learn-claude-code` | s07 Skill Loading；s10 Task System | 同章节实现，待 Clone 后展开 |
 | `claude-code-analysis` | Agent Memory、Skills 和用户反馈分析章节 | 记忆提取与 Skill 源码入口见前述知识点 |
 | `30-Agents-Every-AI-Engineer-Must-Build` | Ch09：Self-Improving Agent；Ch17：自构架、伦理漂移和记忆巩固 | `chapter09/ch09_software_dev_agents.ipynb`；`self_improving.py`；`agent_nodes.py`；`chapter17/ch17_future_agents.ipynb`；`mock_engine.py` |
 
@@ -361,7 +361,7 @@
 
 | 来源工程 | 原工程章节 | 对应代码示例 |
 | --- | --- | --- |
-| `learn-claude-code` | README 与 s01-s20 组成的 Claude Code 式 Harness 渐进实现 | 各阶段同目录实现，待 Clone 后展开 |
+| `learn-claude-code` | README 与 s01-s17 组成的 Claude Code 式 Harness 渐进实现 | 各阶段同目录实现，待 Clone 后展开 |
 | `harness-engineering-from-cc-to-ai-coding` | 全书以 AI Coding Agent 为主线；Ch30：构建代码审查 Agent | `part7/ch30.md` 配套代码，待 Clone 后展开 |
 | `claude-code-analysis` | 架构、Tool Call、Context、Sandbox、Skills、MCP、Multi-Agent 等实现分析 | `analysis/07-code-evidence-index.md` 及其中指向的 `src/` 文件 |
 | `ai-agent-book` | Ch05：Coding Agent、代码元能力、执行安全、恢复和生成式界面 | `chapter5/` 配套实验，待 Clone 后展开 |
@@ -390,7 +390,7 @@
 | --- | --- | --- |
 | `hello-agents` | Ch13：智能旅行助手；Ch14：自动化深度研究智能体；Ch15：赛博小镇；Ch16：毕业设计 | 各章配套项目待 Clone 后展开 |
 | `easy-langent` | Ch05：智能体应用设计与实现；Ch08：图式游戏编排 | DataAgent、WhoIsTheSpy 等项目入口见前述知识点 |
-| `learn-claude-code` | `s20_comprehensive/README.md`：综合 Agent | `s20_comprehensive/` 同目录实现，待 Clone 后展开 |
+| `learn-claude-code` | `s15_integrated_harness/README.md`：综合集成 Harness | `s15_integrated_harness/` 同目录实现（旧版 s20_comprehensive 已并入新版 s15），待 Clone 后展开 |
 | `claw0` | `README.zh.md`：从零重建常驻 Agent | s01-s10 完整渐进实现 |
 | `harness-engineering-from-cc-to-ai-coding` | Ch30：代码审查 Agent | 待 Clone 后展开 |
 | `hello-claw` | `adopt/lobster-review.md`；`university/one-person-company/index.md` | 待 Clone 后展开 |
