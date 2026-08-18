@@ -1,9 +1,9 @@
 # 30 天主线学习计划
 
-> **版本**：v3.0  
-> **制定日期**：2026-08-17  
+> **版本**：v4.0  
+> **制定日期**：2026-08-17（v4.0 更新于 2026-08-18）  
 > **执行周期**：30 天（每日 3~6 小时，核心时间盒 270 分钟）  
-> **核心目标**：建立完整的 Agent 知识体系，产出生产级 Agent 项目
+> **核心目标**：完成 Agent 知识体系第一轮（知识骨架 + 最小可运行原型），为后续 4-6 个月源码级深化奠基
 
 ## 计划说明
 
@@ -14,20 +14,60 @@
 - **工程主线**：[`source/learn-claude-code/`](../source/learn-claude-code/)（**s01-s17 新版主线**，生产级 Harness 渐进构建；`agents/`、`docs/` 为旧 12 章过渡版，不再引用）
 - **专题参考**：[`source/ai-agent-book/`](../source/ai-agent-book/)（Ch01-10，上下文工程、记忆、后训练、多模态专题）
 
-**来源分层（A/B/C）与阅读层级**：
-- **A 层（精读跟写）**：hello-agents、learn-claude-code、ai-agent-book —— 章节全部进计划，区分**必读（★）**与**扩展（◯）**
-- **B 层（源码/架构查阅）**：claude-code-analysis、harness-engineering-from-cc-to-ai-coding、hermes-book、claw0 —— 只在"有必要"的日次加入，标注 📂，每次 15-30 分钟架构查阅，不进精读流程、不占精读时长
-- **C 层（定向回源）**：hello-claw、easy-langent、Alice_methodology、ai-agents-in-action-2nd、30-Agents —— 仅定向点位与后续计划
+**资源角色**：
+
+| 角色 | 来源 | 用法 |
+|------|------|------|
+| **主阅读线** | hello-agents（理论）、learn-claude-code（工程）、ai-agent-book（专题） | 章节全部进计划，区分**必读（★）**与**扩展（◯）** |
+| **当日主题扩展阅读** | harness-engineering-from-cc-to-ai-coding、ai-agents-in-action-2nd-edition-cn、hermes-book | 仅在与当日主题对口时定向阅读，标注 📂，每次 15-30 分钟，不进精读流程、不占精读时长 |
+| **源码/架构按问题查阅** | claude-code-analysis、claw0、hello-claw、easy-langent、Alice_methodology | 仅在遇到具体设计/实现问题时查阅对应章节，不安排整线阅读 |
+| **模式复刻实践** | 30-Agents-Every-AI-Engineer-Must-Build（精选 5 模式） | 见下方"精选模式复刻线"，周末/复盘日集中实践 |
 
 **阅读层级定义**：
-- **★ 必读**：走完整"预读→精读跟写→闭卷→实践"流程
+- **★ 必读**：走完整"预读→精读→闭卷→实践"流程
 - **◯ 扩展**：读章节 README + 直接运行 `code.py`，不安排精读与练习
+
+**先读后写闸门（编码准入）**：
+
+每个 ★ 必读主题按固定顺序推进，前一步不通过不得进入下一步：
+
+```text
+预读问题 → 精读 → 闭卷复述/画图（能通过） → 运行参考代码 → 代码考古（精读关键实现） → 脱离源码重写 → 测试与对比
+```
+
+- **闭卷未通过 → 禁止编码**：当日主题降级为"进行中"，次日继续阅读与复述，不跳主题。
+- 闭卷要求：不看材料能画出核心机制图、说清输入输出与失败路径。
+
+**代码活动三级（验收口径）**：
+
+| 层级 | 定义 | 是否算掌握 |
+|------|------|-----------|
+| 运行 | 跑通参考 `code.py` 或示例，验证环境与行为 | 否 |
+| 代码考古 | 精读参考实现的关键函数与控制流，写考古笔记 | 否 |
+| 重写 | 关闭源码后独立实现，正常/失败路径均有测试 | 是 |
+
+- 每日"实践产出物"中的"实现 X"默认指**重写**层级；仅标注"运行"的条目不计入掌握。
+- "跑通 demo"不是完成标准。完成 = 能脱离材料解释 + 独立实现 + 有测试 + 能说明设计权衡。
 
 **每日流程**：参见 [AGENTS.md](../AGENTS.md) 的"每日学习循环"（7 阶段时间盒）。
 
 **进度记录**：每日学习结束后在 [`docs/progress.md`](progress.md) 标记完成状态（✅/⚠️/❌），计划文件本身不再承载进度状态。
 
 **调速规则**：只降速，不跳主题。当日闭卷检查或实践验证不通过时，主题降级为"进行中"，次日继续。
+
+### 精选模式复刻线（30-Agents）
+
+从 [30-Agents-Every-AI-Engineer-Must-Build](../source/30-Agents-Every-AI-Engineer-Must-Build/) 精选 5 个架构模式，安排在各周复盘日，每个模式按"读架构 → 独立复刻最小版 → 测试 → 提取可复用模式"执行（占复盘日 90-120 分钟，与主线补漏按剩余时间调配）：
+
+| 模式 | 安排日 | 对应主线主题 | 验收 |
+|------|--------|-------------|------|
+| Research Agent | D7 | Agent Loop、工具调用（W1） | 复刻最小研究循环：规划 → 检索 → 综合 |
+| Memory Agent | D14 | 记忆系统、RAG（W2） | 复刻记忆读写 + 检索最小闭环 |
+| Planning Agent | D14 | 任务系统、上下文压缩（W2） | 复刻计划生成 + 分步执行 + 重规划 |
+| Coding Agent | D28 | 工具、权限、会话持久化（W1-W4） | 复刻最小代码编辑 Agent，衔接后续 Python Coding Agent 项目 |
+| Multi-Agent | D28 | 子代理、多 Agent 协作（W3） | 复刻最小主从协作拓扑 |
+
+> 复刻遵循"代码活动三级"：读架构属于代码考古，判定完成的唯一标准是**脱离源码重写并通过测试**。
 
 ### learn-claude-code 17 章取舍表
 
@@ -169,7 +209,7 @@ ai-agent-book 的 chapter1-5、chapter10 下共 40+ 个可运行示例，按以�
 - 📖 理论：[hello-agents Ch07](../source/hello-agents/docs/chapter7/)（构建 Agent 框架 - 工具模块）
 - 🔧 工程：[learn-claude-code s02_tool_use ★](../source/learn-claude-code/s02_tool_use/)（工具 dispatch map）
 - 📚 专题：[ai-agent-book Ch04](../source/ai-agent-book/book/chapter4.md)（工具专题）
-- 📂 B 层（可选，30min）：[claude-code-analysis 04b-tool-call-implementation](../source/claude-code-analysis/analysis/04b-tool-call-implementation.md)，真实 CC 的 Tool Call 源码分析对照
+- 📂 按问题查阅（可选，30min）：[claude-code-analysis 04b-tool-call-implementation](../source/claude-code-analysis/analysis/04b-tool-call-implementation.md)，真实 CC 的 Tool Call 源码分析对照
 
 **核心问题**：
 - 工具注册、参数校验、错误返回如何实现？
@@ -193,7 +233,7 @@ ai-agent-book 的 chapter1-5、chapter10 下共 40+ 个可运行示例，按以�
 **主线学习**：
 - 📖 理论：[hello-agents Ch03-04](../source/hello-agents/docs/chapter3/)（Prompt 基础、范式提示）
 - 🔧 工程：无（今日专注理论，Prompt 实践融入 D3-D4 的 Agent Loop 实现）
-- 📂 B 层（可选，30min）：[harness-engineering part2/ch05](../source/harness-engineering-from-cc-to-ai-coding/part2/ch05.md)（系统提示架构）
+- 📂 主题扩展（可选，30min）：[harness-engineering part2/ch05](../source/harness-engineering-from-cc-to-ai-coding/part2/ch05.md)（系统提示架构）
 
 **核心问题**：
 - Prompt 如何把任务、约束、工具和输出要求表达为可测试的行为契约？
@@ -239,6 +279,7 @@ ai-agent-book 的 chapter1-5、chapter10 下共 40+ 个可运行示例，按以�
 - 复盘 W1 所有主题，在 [`docs/progress.md`](progress.md) 标记"已掌握/进行中/未掌握"
 - 补学"进行中"和"未掌握"的主题
 - 整理 W1 学习笔记和代码
+- **模式复刻**：Research Agent（30-Agents，读架构 → 独立复刻最小版 → 测试）
 - P1 选跑：[chapter1/context](../source/ai-agent-book/chapter1/context/)
 
 **验收标准**：W1 所有主题达到"已掌握"或明确的后续计划
@@ -339,7 +380,7 @@ ai-agent-book 的 chapter1-5、chapter10 下共 40+ 个可运行示例，按以�
 
 **主线学习**：
 - 📖 理论：[hello-agents Ch03](../source/hello-agents/docs/chapter3/)（模型调用基础回顾）
-- 📂 B 层（主材料，约 60min）：[hermes-book part6/ch17-config-profiles、ch18-model-abstraction](../source/hermes-book/part6/ch17-config-profiles.md)（Provider 兼容层、配置与成本追踪）
+- 📂 主题扩展（30min）：[hermes-book part6/ch17-config-profiles、ch18-model-abstraction](../source/hermes-book/part6/ch17-config-profiles.md)（Provider 兼容层、配置与成本追踪）
 - 📚 专题：[ai-agent-book Ch02](../source/ai-agent-book/book/chapter2.md)（模型调用部分）
 
 **核心问题**：
@@ -380,7 +421,7 @@ ai-agent-book 的 chapter1-5、chapter10 下共 40+ 个可运行示例，按以�
 
 ### D14: W2 复盘与补漏
 
-**任务**：同 D7（P1 选跑：kv-cache 消融、prompt-engineering、chapter3 检索系列）
+**任务**：同 D7（模式复刻：Memory Agent + Planning Agent；P1 选跑：kv-cache 消融、prompt-engineering、chapter3 检索系列）
 
 ---
 
@@ -393,7 +434,7 @@ ai-agent-book 的 chapter1-5、chapter10 下共 40+ 个可运行示例，按以�
 **主线学习**：
 - 📖 理论：[hello-agents Ch05-06](../source/hello-agents/docs/chapter5/)（低代码平台、框架开发）
 - 🔧 工程：[learn-claude-code s07_skill_loading ★](../source/learn-claude-code/s07_skill_loading/)（框架能力：技能按需加载）
-- 📂 C 层（可选）：[easy-langent](../source/easy-langent/docs/guide/chapter1.md)（LangChain/LangGraph 边界，轻量框架对照）
+- 📂 按问题查阅（可选）：[easy-langent](../source/easy-langent/docs/guide/chapter1.md)（LangChain/LangGraph 边界，轻量框架对照）
 
 **核心问题**：
 - 什么时候使用框架，什么时候保留直接实现？
@@ -415,7 +456,7 @@ ai-agent-book 的 chapter1-5、chapter10 下共 40+ 个可运行示例，按以�
 **主线学习**：
 - 📖 理论：无（今日专注工程）
 - 🔧 工程：[learn-claude-code s03_permission ★](../source/learn-claude-code/s03_permission/)（权限审批管线）
-- 📂 B 层（可选，30min）：[claude-code-analysis 02-security-analysis](../source/claude-code-analysis/analysis/02-security-analysis.md)（真实 CC 权限与沙箱对照）
+- 📂 按问题查阅（可选，30min）：[claude-code-analysis 02-security-analysis](../source/claude-code-analysis/analysis/02-security-analysis.md)（真实 CC 权限与沙箱对照）
 
 **核心问题**：
 - 权限判断应该位于工具执行链的什么位置？
@@ -456,7 +497,7 @@ ai-agent-book 的 chapter1-5、chapter10 下共 40+ 个可运行示例，按以�
 **主线学习**：
 - 📖 理论：[hello-agents Extra05、Extra08](../source/hello-agents/docs/)（Skills 解读、如何写出好的 Skill）
 - 🔧 工程：[learn-claude-code s07_skill_loading ★](../source/learn-claude-code/s07_skill_loading/)（Skill 发现与加载深入）
-- 📂 B 层（可选，30min）：[claude-code-analysis 04c-skills-implementation](../source/claude-code-analysis/analysis/04c-skills-implementation.md)
+- 📂 按问题查阅（可选，30min）：[claude-code-analysis 04c-skills-implementation](../source/claude-code-analysis/analysis/04c-skills-implementation.md)
 
 **核心问题**：
 - Tool vs Skill vs Plugin 的边界是什么？
@@ -477,7 +518,7 @@ ai-agent-book 的 chapter1-5、chapter10 下共 40+ 个可运行示例，按以�
 **主线学习**：
 - 📖 理论：[hello-agents Ch10](../source/hello-agents/docs/chapter10/)（智能体通信协议）
 - 🔧 工程：[learn-claude-code s14_mcp_plugin ★](../source/learn-claude-code/s14_mcp_plugin/)（MCP 工具发现 + 命名空间）
-- 📂 B 层（可选，30min）：[claude-code-analysis 04d-mcp-implementation](../source/claude-code-analysis/analysis/04d-mcp-implementation.md)
+- 📂 按问题查阅（可选，30min）：[claude-code-analysis 04d-mcp-implementation](../source/claude-code-analysis/analysis/04d-mcp-implementation.md)
 
 **核心问题**：
 - MCP 的传输层和工具封装机制是什么？
@@ -521,7 +562,7 @@ ai-agent-book 的 chapter1-5、chapter10 下共 40+ 个可运行示例，按以�
 
 ### D21: W3 复盘与补漏
 
-**任务**：同 D7（P1 选跑：agent-skills-ppt、active-tool-discovery、execution/perception-tools）
+**任务**：同 D7（无新增模式复刻，时间用于补漏与深化；P1 选跑：agent-skills-ppt、active-tool-discovery、execution/perception-tools）
 
 ---
 
@@ -534,7 +575,7 @@ ai-agent-book 的 chapter1-5、chapter10 下共 40+ 个可运行示例，按以�
 **主线学习**：
 - 📖 理论：无（今日专注工程）
 - 🔧 扩展：[learn-claude-code s11_background_tasks ◯](../source/learn-claude-code/s11_background_tasks/)、[s12_cron_scheduler ◯](../source/learn-claude-code/s12_cron_scheduler/)（读 README + 跑 code.py）
-- 📂 B 层（30min）：[claw0 README.zh](../source/claw0/README.zh.md)（常驻式 harness：心跳 + cron + IM 通道 + delivery 架构）
+- 📂 按问题查阅（30min）：[claw0 README.zh](../source/claw0/README.zh.md)（常驻式 harness：心跳 + cron + IM 通道 + delivery 架构）
 
 **核心问题**：
 - 后台任务队列如何实现？
@@ -557,7 +598,7 @@ ai-agent-book 的 chapter1-5、chapter10 下共 40+ 个可运行示例，按以�
 - 📖 理论：[hello-agents Ch11-12](../source/hello-agents/docs/chapter11/)（Agentic RL、性能评估）
 - 🔧 工程：无（今日专注理论）
 - 📚 专题：[ai-agent-book Ch06](../source/ai-agent-book/book/chapter6.md)（评测专题）
-- 📂 C 层（可选，定向）：[ai-agents-in-action-2nd-edition-cn](../source/ai-agents-in-action-2nd-edition-cn/)（测试评测相关章节定向回源）
+- 📂 主题扩展（可选，定向）：[ai-agents-in-action-2nd-edition-cn](../source/ai-agents-in-action-2nd-edition-cn/)（测试评测相关章节定向阅读）
 
 **核心问题**：
 - Agent 的测试策略是什么（单元测试、集成测试、E2E 测试）？
@@ -577,7 +618,7 @@ ai-agent-book 的 chapter1-5、chapter10 下共 40+ 个可运行示例，按以�
 
 **主线学习**：
 - 📖 理论：[hello-agents Extra09](../source/hello-agents/docs/)（Agent 应用开发实践踩坑）
-- 📂 B 层（可选，30min）：[harness-engineering part7/ch29](../source/harness-engineering-from-cc-to-ai-coding/part7/ch29.md)（可观测性）
+- 📂 主题扩展（可选，30min）：[harness-engineering part7/ch29](../source/harness-engineering-from-cc-to-ai-coding/part7/ch29.md)（可观测性）
 
 **核心问题**：
 - 结构化日志如何设计（含 Trace ID、上下文信息）？
@@ -621,7 +662,7 @@ ai-agent-book 的 chapter1-5、chapter10 下共 40+ 个可运行示例，按以�
 **任务**：
 - 精读 [learn-claude-code s15_integrated_harness ★](../source/learn-claude-code/s15_integrated_harness/)（机制归一循环，综合精读）
 - 扩展：[s16_workflow_runtime ◯](../source/learn-claude-code/s16_workflow_runtime/)（读 README + 跑 code.py，journal 续跑概念记入笔记）
-- 📂 B 层：[claude-code-analysis 01-architecture-overview](../source/claude-code-analysis/analysis/01-architecture-overview.md) + [07-code-evidence-index](../source/claude-code-analysis/analysis/07-code-evidence-index.md)（真实 CC 架构对照）；[harness-engineering part1/ch01、ch03](../source/harness-engineering-from-cc-to-ai-coding/part1/ch01.md)（技术栈与从 Loop 到 Harness）
+- 📂 按问题查阅：[claude-code-analysis 01-architecture-overview](../source/claude-code-analysis/analysis/01-architecture-overview.md) + [07-code-evidence-index](../source/claude-code-analysis/analysis/07-code-evidence-index.md)（真实 CC 架构对照）；📂 主题扩展：[harness-engineering part1/ch01、ch03](../source/harness-engineering-from-cc-to-ai-coding/part1/ch01.md)（技术栈与从 Loop 到 Harness）
 - 📚 专题：[ai-agent-book Ch05](../source/ai-agent-book/book/chapter5.md)（Coding Agent 与代码生成，为后续 Python Coding Agent 项目做准备）
 - 对比自己的实现，找出差距；记录可借鉴的设计决策
 - P1 选跑：[chapter1/search-codegen](../source/ai-agent-book/chapter1/search-codegen/)
@@ -645,7 +686,7 @@ ai-agent-book 的 chapter1-5、chapter10 下共 40+ 个可运行示例，按以�
 
 ### D28: W4 复盘与补漏
 
-**任务**：同 D7（P1 选跑：book-translation、staged-system-prompt）
+**任务**：同 D7（模式复刻：Coding Agent + Multi-Agent；P1 选跑：book-translation、staged-system-prompt）
 
 ---
 
@@ -655,7 +696,7 @@ ai-agent-book 的 chapter1-5、chapter10 下共 40+ 个可运行示例，按以�
 
 **任务**：
 - 精读 [learn-claude-code s17_goal_loop ★](../source/learn-claude-code/s17_goal_loop/)（目标闸门 + 独立判断器 + 自动续轮，体系收官章），运行 `python s17_goal_loop/code.py`
-- 📂 C 层（可选）：[Alice_methodology](../source/Alice_methodology/chapters/)（复盘方法论）
+- 📂 按问题查阅（可选）：[Alice_methodology](../source/Alice_methodology/chapters/)（复盘方法论）
 - 绘制完整的 Agent 知识体系图（从内核到生产化）
 - 整理 30 天学习笔记，形成知识图谱
 - 标记仍需深入的专题（列入后续计划）
@@ -668,7 +709,7 @@ ai-agent-book 的 chapter1-5、chapter10 下共 40+ 个可运行示例，按以�
 
 **任务**：
 - 📖 扩展：[hello-agents Ch16 ◯](../source/hello-agents/docs/chapter16/)（毕业设计参考）
-- 📂 定向参考：[claw0](../source/claw0/)、[hello-claw](../source/hello-claw/)（OpenClaw 类常驻 Agent 项目参考）；[30-Agents](../source/30-Agents-Every-AI-Engineer-Must-Build/)（项目灵感池）
+- 📂 按问题查阅：[claw0](../source/claw0/)、[hello-claw](../source/hello-claw/)（OpenClaw 类常驻 Agent 项目参考）；精选模式复刻线成果回顾（见计划说明）
 - 演示综合 Agent 项目（TS 类 OpenClaw Agent）
 - 讲解核心设计决策和权衡
 - 回答预设问题（由 quiz-master 生成）
@@ -689,7 +730,7 @@ ai-agent-book 的 chapter1-5、chapter10 下共 40+ 个可运行示例，按以�
 
 1. **专题参考**：根据兴趣和工作需要，深入 [ai-agent-book](../source/ai-agent-book/) 的特定专题（[Ch09 多模态与实时交互](../source/ai-agent-book/book/chapter9.md) 安排在 30 天主线之外，在此阶段精读；ch12-multimodal 教材校验同步后置）
 2. **实战项目**：启动 Python Coding Agent 项目，应用 30 天所学；[30-Agents-Every-AI-Engineer-Must-Build](../source/30-Agents-Every-AI-Engineer-Must-Build/) 的 30 个 Agent 构建案例作灵感池
-3. **源码级精通**：hermes-book、harness-engineering-from-cc-to-ai-coding 两大 B 层工程源码展开；Claude Code、OpenClaw 源码级精读
+3. **源码级精通**：hermes-book、harness-engineering-from-cc-to-ai-coding 按主题扩展路径展开；Claude Code、OpenClaw 源码级精读（此阶段从"主题扩展"升级为整线精读）
 4. **教材修订**：持续校验和修订 [`docs/merged-agent-course/`](merged-agent-course/)，形成可发布的学习成果
 
 ---
@@ -702,6 +743,7 @@ ai-agent-book 的 chapter1-5、chapter10 下共 40+ 个可运行示例，按以�
 | 2026-08-17 | v2.0 | 重写为以 source 为主线 | 用户反馈：应该是 source 为主线，教材仅作校验 |
 | 2026-08-17 | v2.1 | 补全 ai-agent-book 章节覆盖 | 章节核查：Ch01→D1、Ch04→D4、Ch05→D26、Ch09→后续计划 |
 | 2026-08-17 | v3.0 | learn-claude-code 切换为 s01-s17 新版主线（17 章全映射，区分必读★/扩展◯）；补排 s10→D8、s17→D29；hello-agents 补 Ch13/15/16；教材补 ch13/ch15/ch20 映射；B 层四工程择要点位；进度状态迁移至 progress.md | 用户 review 通过：按 A/B/C 分层与必读/扩展层级重构 |
+| 2026-08-18 | v4.0 | 资源角色重构：A/B/C 分层改为四角色（主阅读线/主题扩展阅读/按问题查阅/模式复刻实践）；harness-engineering、ai-agents-in-action、hermes-book 归为主题扩展；claude-code-analysis、claw0、hello-claw 等归为按问题查阅；加入先读后写闸门（闭卷未通过禁止编码）与代码活动三级（运行/考古/重写）；精选 30-Agents 五模式复刻线落位到复盘日；30 天目标从"生产级"降位为"第一轮知识骨架 + 最小可运行原型" | 用户确认：保持三大主阅读线不变，强化实践准入与模式复刻 |
 
 ---
 
@@ -710,4 +752,4 @@ ai-agent-book 的 chapter1-5、chapter10 下共 40+ 个可运行示例，按以�
 - 每日学习结束后，在 [`docs/progress.md`](progress.md) 标记完成状态（✅/⚠️/❌）
 - 调速规则严格执行：只降速，不跳主题
 - 每天学习完成后，必须对照"校验对象"列的教材章节进行双向校验
-- 📂 标注的 B/C 层材料为架构查阅，不计入精读时长，时间不够时优先裁剪
+- 📂 标注的主题扩展阅读与按问题查阅材料，不计入精读时长，时间不够时优先裁剪
