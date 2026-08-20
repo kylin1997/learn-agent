@@ -42,7 +42,7 @@ class ReActAgent:
 
             messages = [{"role": "user", "content": prompt}]
 
-            response_text = self.llm_client.think(messages=messages, temperature=0.4,top_p = 0.1)
+            response_text = self.llm_client.think(messages=messages, temperature=0,top_p = 0.1)
 
             if not response_text:
                 print("错误：LLM未能返回有效响应。")
@@ -99,6 +99,6 @@ if __name__ == '__main__':
     tool_executor.registerTool("Search", search_desc, search)
 
     agent = ReActAgent(llm_client=llm, tool_executor=tool_executor,max_steps=10)
-    question = "26年7月销量前三名的SUV是那三款车，销量是多少？"
+    question = "在中国26年7月销量前三名的SUV是那三款车，销量是多少？"
     agent.run(question)
 
