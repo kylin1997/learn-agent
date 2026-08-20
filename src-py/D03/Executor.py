@@ -40,8 +40,8 @@ class Executor:
             response_text = self.llm_client.think(messages=messages) or ""
             
             # 更新历史记录，为下一步做准备
-            history += f"步骤 {i+1}: {step}\n结果: {response_text}\n\n"
+            history += f"步骤 {i}: {step}\n结果: {response_text}\n\n"
             final_answer = response_text
-            print(f"✅ 步骤 {i+1} 已完成，结果: {response_text}")
+            print(f"✅ 步骤 {i} 已完成，结果: {response_text}")
         
         return final_answer

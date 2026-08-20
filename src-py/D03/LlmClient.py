@@ -48,6 +48,8 @@ class LlmClient:
                     top_p=top_p,
                     stream=True
                 )
+                
+                
                 # 处理流式响应
                 collected_content = []
                 for chunk in response:
@@ -69,6 +71,8 @@ class LlmClient:
                     stream=False,
                     tools=tools,
                 )
+                print(f"\n📦 response 对象: {response}")  # 流式响应是一个 Stream 迭代器对象
+
                 message = response.choices[0].message
                 text = message.content or ""
                 tool_calls = list(message.tool_calls or [])

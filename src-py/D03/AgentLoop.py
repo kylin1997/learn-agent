@@ -56,7 +56,7 @@ class AgentLoop:
                             "name": tc.function.name,
                             "arguments": tc.function.arguments,
                         },
-                    } for tc in tool_calls]} if tool_calls else {}),
+                    } for tc in tool_calls]} if tool_calls else {})
             })
 
             # 没有工具调用 => 任务完成, 退出循环
@@ -79,3 +79,25 @@ class AgentLoop:
                     "tool_call_id": tc.id,
                     "content": result,
                 })
+
+if __name__ == "__main__":
+    llm_client = LlmClient()
+
+    agent_loop = AgentLoop(llm_client=llm_client)
+
+    print("s01: Agent Loop")
+    print("Enter a question, press Enter to send. Type q to quit.\n")
+
+    history = []
+    while True:
+        try:
+            query = input("\033[36ms01 >> \033[0m")
+        except (EOFError, KeyboardInterrupt):
+            break
+
+        if query.strip().lower() in ("q", "exit", ""):
+            break
+
+        history.append({"role": "user", "content": query})
+        agent_loop.agent_loop(history)
+        
