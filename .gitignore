@@ -2,3 +2,10 @@ source
 .joycode
 .idea
 .omc
+
+# 任意层级子目录下的规则与虚拟环境目录
+**/.joycode
+**/.venv
+**/.venv
+**/__pycache__
+**/.env
